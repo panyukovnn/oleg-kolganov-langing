@@ -1,3 +1,11 @@
+/* Hero-фон (раньше задавался через JS-плейсхолдер background-url) */
+.notary-wellcome.background-display {
+    background-image: url(/static/image/Wallpaper.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .notary-header-menu--link.cta-link,
 .notary-header-mob__menu--link.cta-link {
     color: #2c5aa0;
