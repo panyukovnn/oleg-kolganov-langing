@@ -1,0 +1,108 @@
+.error-page-block{
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+}
+
+.error-page-subtitle{
+  color: #000;
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.375rem;
+  line-height: 2.8125rem;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.01em;
+
+  /* Blue */
+  color: #2C77CF;
+}
+
+.error-page-title{
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 4.5rem;
+  line-height: 5.3125rem;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.01em;
+  
+  /* Blue */
+  color: #2C77CF;
+}
+
+.error-page-label{
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 135.8%;
+  /* or 33px */
+  text-align: center;
+  margin: 1.875rem auto 0;
+
+  /* Text */
+  color: #656565;
+  width: 42.5rem;
+}
+
+.error-page-link{
+  background: #2C77CF;
+  border-radius: 0.3125rem;
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 3.75rem;
+  /* or 29px */
+  display: table;
+  margin: 3.75rem auto 0;
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  /* White */
+  color: #FFFFFF;
+  width: 16.25rem;
+}
+
+body.site-disabled {
+    position: fixed;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    background-color: #2c77cf;
+    text-align: center;
+    color: white;
+}
+
+.disabled-content svg{
+  margin-top: 10%;
+}
+.get-admin-link-btn, .get-admin-link-form{
+  padding-top: 4em;
+  display: block;
+}
+
+.get-admin-link-form.hidden {
+  display: none;
+}
+
+.get-admin-link-form p {
+    padding-top: 1em;
+}
+
+.get-admin-link-form input {
+    height: 1.7em;
+    font-size: 1em;
+}
+
+.get-admin-link-form input[name=name], .get-admin-link-form label[for=id_name]{
+    display: none;
+}

@@ -1,0 +1,2077 @@
+body{
+  background-color: #F3F3F3;
+  margin-top: 8.75rem;
+}
+body.overflow-hidden{
+  overflow: hidden;
+}
+
+.bkg-white{
+  background-color: #fff;
+}
+.bkg-blue{
+  background: #2C77CF;
+  color: #fff;
+}
+.bkg-red{
+  background: #9c9c9c;
+}
+.blue--title-left{
+  color: #2C77CF;
+  display: table;
+  font-size: 2.375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 1.5625rem 1.25rem 1.875rem 0;
+}
+
+.blue--title, .blue--title-center{
+  /*color: #2C77CF;*/
+  color: var(--text-heading);
+  display: table;
+  margin: auto;
+  font-size: 2.375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 1.5625rem 1.25rem 1.875rem;
+}
+.blind-version .blue--title{
+  margin: 0;
+}
+
+.btn-blue{
+  /*background-color: #2C77CF;*/
+  background-color: var(--background-button-primary);
+  border-width: 0rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 3.75rem;
+  text-align: center;
+  padding: 0 1.875rem;
+  transition: .5s;
+  display: table;
+}
+.btn-blue:hover{
+  background: #4184D3;
+}
+.btn-blue:active{
+  background: #1367CA;
+}
+.btn-all{
+  background: #fff;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  color: #020202;
+  display: table;
+  font-weight: 600;
+  line-height: 3.75rem;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  transition: .5s;
+  position: relative;
+  width: 100%;
+}
+.btn-all:hover{
+  box-shadow: 0 0rem 0.625rem 0.3125rem rgba(0,0,0,.05);
+  color: #2C77CF;
+}
+.btn-all:active{
+  color: #1367CA;
+}
+.btn-all--count{
+  background-color: var(--background-badge);
+  /*background-color: #2C77CF;*/
+  border-radius: 3.125rem;
+  color: #fff;
+  display: inline-block;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  margin: 0.9375rem 0.625rem;
+  text-align: center;
+  position: absolute;
+  width: 1.875rem;
+}
+.btn-w-bottom{
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+.center{
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+.checkbox{
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  z-index: 1;
+}
+.checkbox-icn{
+  border: 0.0625rem solid #cccccc;
+  border-radius: 0.1875rem;
+  display: block;
+  margin-top: -1.25rem;
+  position: absolute;
+  height: 1.125rem;
+  width: 1.125rem;
+}
+.checkbox:checked + .checkbox-icn::before {
+  background-image: url(../svg/checked.svg);
+  background-repeat: no-repeat;
+  background-size: 0.6875rem;
+  bottom: 0rem;
+  content: "";
+  display: block;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  position: absolute;
+  width: 1.125rem;
+  z-index: 0;
+}
+.title{
+  color: #2C77CF;
+  font-weight: 500;
+}
+h1.title, .h1.title{
+  font-size: 2.375rem;
+  padding: 0 0 1.875rem;
+}
+h2.title, .h2.title{
+  font-size: 1.75rem;
+  padding: 0 0 1.25rem;
+}
+.grey-txt{
+  color: #767676 !important;
+}
+/* .txt-opacity{ */
+  /* opacity: .35; */
+  /* color: #667687; */
+/* } */
+/* .blue-tel-txt{
+  color: #76a7e0 !important;
+} */
+
+.breadcrumbs {
+  line-height: 3.75rem;
+}
+.breadcrumbs li{
+  display: inline-block;
+  font-size: 0.875rem;
+}
+.breadcrumbs .active{
+  color: #656565;
+}
+.breadcrumbs li{
+  padding: 0;
+}
+.breadcrumbs .separator{
+  color: #cfcfcf;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+}
+.priviledges-nav {
+  margin-bottom: 1.25rem;
+}
+.priviledges-nav li{
+  margin-top: 1.25rem;
+}
+.priviledges-nav li a{
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #4184D3;
+  /* color: #656565; */
+  transition: .25s;
+}
+.priviledges-nav li a:hover {
+  color: #020202;
+}
+.accordion-tariffs .accordion{
+  display: none;
+}
+.accordion-tariffs .accordion.active{
+  display: block;
+}
+.title.tariffs-title {
+  padding-top: 0.9375rem;
+  padding-bottom: 1.5625rem;
+  font-size: 1.125rem;
+}
+.accordion .ui-accordion-header{
+  border: none;
+  border-bottom: 0.0625rem solid #ccc;
+  border-radius: 0;
+  outline: none;
+  line-height: 1.25rem;
+  font-weight: 600;
+  transition: .2s;
+  padding: 1.25rem 2.5rem 1.25rem 0;
+  position: relative;
+}
+.accordion .ui-accordion-header:before{
+  background-image: url('../svg/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  content: '';
+  display: block;
+  right: 0;
+  top: 0;
+  transition: .5s;
+  position: absolute;
+  height: 100%;
+  width: 2.5rem;
+}
+.accordion .ui-accordion-header.ui-accordion-header-active{
+  border-bottom-color: transparent;
+}
+.accordion .ui-accordion-header.ui-accordion-header-active:before{
+  transform: rotate(-180deg);
+}
+.accordion .ui-widget-content{
+  border: none;
+  border-bottom: 0.0625rem solid #ccc;
+  padding: 0 0 1.875rem;
+}
+
+.ui-accordion-content{
+  color: #000;
+}
+.ui-accordion-content ol{
+  counter-reset: myCounter;
+}
+.ui-accordion-content ol,
+.ui-accordion-content ul{
+  margin: 0.9375rem 0;
+}
+.ui-accordion-content ol > li:before{
+  content: counter(myCounter)".";
+  counter-increment: myCounter;
+  width: 1.25rem;
+  left: -0.625rem;
+  text-align: right;
+}
+.ui-accordion-content ul > li:before{
+  border-radius: 50%;
+  content: '';
+  background-color: #2C77CF;
+}
+.ui-accordion-content ol li{
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 1.875rem;
+  font-size: 1rem;
+  line-height: 1.125rem;
+}
+.ui-accordion-content li p,
+.ui-accordion-content p:last-child,
+.ui-accordion-content p:only-child{
+  padding-bottom: 0;
+}
+.ui-accordion-content li:before{
+  color: #2C77CF;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 0.4375rem;
+  width: 0.4375rem;
+}
+.ui-accordion-content ul li:before,
+.ui-accordion-content ol ul li:before,
+.ui-accordion-content ol ol ul li:before,
+.ui-accordion-content ul ol ul li:before,
+.ui-accordion-content ol ul ol ul li:before{
+  top: .5em;
+}
+.ui-accordion-content ol li:before,
+.ui-accordion-content ul ol li:before,
+.ui-accordion-content ul ul ol li:before,
+.ui-accordion-content ol ul ol li:before,
+.ui-accordion-content ul ol ul ol li:before{
+  top: 0;
+}
+
+/* main */
+.notary-wellcome{
+  /* background-attachment: fixed; */
+  background-color: #9c9c9c;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  min-height: 38.75rem;
+  position: relative;
+}
+.notary-wellcome::before{
+  content: '';
+  background: rgba(0,0,0,0.3);
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.notary-wellcome__content{
+  max-width: calc(100% - 28.125rem);
+  text-align: center;
+  padding-top: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+.notary-wellcome__content.auto{
+  margin: auto;
+}
+.notary-wellcome__content-btns{
+  display: flex;
+  margin: auto;
+  max-width: 22.5rem;
+  width: 100%;
+}
+.notary-wellcome__content--btn{
+  background: #fff;
+  border-radius: 0.3125rem;
+  color: #020202;
+  display: table;
+  line-height: 2.5rem;
+  margin: 1.25rem auto 5.625rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  width: 10rem;
+}
+.notary-wellcome__content--btn.notary-wellcome__content--btn-blue{
+  background: #2C77CF;
+  color: #fff;
+}
+.notary-service__description{
+  align-items: center;
+  border-bottom: 0.0625rem solid #D1D1D1;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 10rem;
+  height: auto;
+}
+.notary-service__description--content{
+  display: flex;
+  padding: 2.5rem;
+  margin: auto;
+  width: 100%;
+}
+.notary-service__description--content-article{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 2.5rem;
+}
+.notary-service__description--image{
+  height: 5rem;
+  width: auto;
+}
+.notary-service__description--title{
+  padding-bottom: 0.125rem;
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+.notary-service__description--subtitle{
+  padding-top: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.notary-wellcome__content--photo, .notary-wellcome__content--photo--big{
+  margin-bottom: 0.875rem;
+  border-radius: 5rem;
+}
+.notary-wellcome__content--photo {
+    height: 80px;
+    width: 80px;
+}
+.notary-wellcome__content--photo--big{
+    height: 160px;
+    width: 160px;
+}
+.notary-wellcome__content--title{
+  text-shadow: 0rem 0.0625rem 0.0313rem rgba(0, 0, 0, 0.15);
+  font-size: 2.375rem;
+  font-weight: 500;
+  padding-bottom: 1.25rem;
+}
+.notary-wellcome__content--subtitle{
+  text-shadow: 0rem 0.0625rem 0.0313rem rgba(0, 0, 0, 0.15);
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding-bottom: 3.75rem;
+}
+.notary-wellcome__content--txt{
+  margin: auto;
+  max-width: 43.75rem;
+  text-shadow: 0rem 0.0625rem 0.0313rem rgba(0, 0, 0, 0.15);
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  padding-bottom: 0.625rem;
+  margin-bottom: 0em;
+}
+.notary-wellcome-bottom{
+  background-color: #fff;
+  color: #020202;
+  padding: 2.5rem 0 4.6875rem;
+  position: relative;
+}
+.notary-wellcome-bottom .container{
+  position: relative;
+}
+.notary-article--content{
+  background: #fff;
+  border-radius: 0.3125rem;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  padding-bottom: 2.5rem;
+}
+.notary-article,
+.notary-service-article{
+  color: #656565;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  padding-top: 2.5rem;
+}
+.notary-article,
+.notary-service-article,
+.notary-about-article{
+  margin: auto;
+  max-width: 41.25rem;
+}
+.notary-service-article{
+  padding: 2.5rem 2.5rem 0;
+  max-width: initial;
+}
+.notary-article{
+  letter-spacing: 0.035em;
+  line-height: 127%;
+}
+.notary-article__description{
+  background-color: #767676;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+  color: #fff;
+  position: relative;
+  height: 33.75rem;
+}
+.notary-article__description:before{
+  background: transparent;
+  background: rgba(0,0,0,0.35);
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.notary-article__description--bottom{
+  bottom: 0;
+  box-sizing: border-box;
+  left: 0;
+  padding: 2.5rem;
+  position: absolute;
+  width: 100%;
+}
+.notary-article__description--subtitle{
+  font-weight: 500;
+  margin-bottom: 1.875rem;
+}
+.notary-article__description--title{
+  font-weight: 500;
+  font-size: 3.375rem;
+}
+.notary-article__description--date{
+  margin-top: 1.875rem;
+  font-weight: 100;
+  opacity: .5;
+}
+.notary-article b{
+  color: #000;
+}
+.notary-article p{
+  padding-bottom: 1.875rem;
+}
+.notary-article a{
+  color: #2C77CF;
+}
+.notary-article ul li{
+  position: relative;
+  margin-left: 1.875rem;
+  margin-bottom: 1.875rem;
+}
+.text-plugin ul li:before{
+  border-radius: 50%;
+  content: '';
+  background-color: #2C77CF;
+  position: absolute;
+  height: 0.4375rem;
+  width: 0.4375rem;
+  top: 0.5625rem;
+  left: -1.375rem;
+}
+.notary-article blockquote{
+  border-left: 0.1875rem solid #2C77CF;
+  color: #000;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin-bottom: 1.875rem;
+  padding-left: 2.5rem;
+}
+.notary-article figcaption{
+  color: #000;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.035em;
+  padding-bottom: 1.875rem;
+}
+.notary-article blockquote p:last-child{
+  padding: 0;
+}
+
+.wysiwyg-carusel{
+  overflow: hidden;
+}
+
+
+.advantage--container{
+  position: relative;
+  max-width: calc(100% - 28.125rem);
+}
+.advantage--container.auto{
+  max-width: 100%;
+}
+.advantage--container.auto .owl-stage{
+  margin: auto;
+}
+.advantage--container.auto .owl-stage .owl-item:first-child .advantage__block{
+  border-left: none;
+}
+.advantage--container .owl-nav{
+  opacity: 0;
+}
+.advantage--container:hover .owl-nav{
+  opacity: 1;
+}
+.advantage__content{
+  display: flex;
+  /* flex-wrap: nowrap; */
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  position: relative;
+  width: 100%;
+}
+.advantage__content::before{
+  content: '';
+  background: #fff;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 0.125rem;
+  z-index: 1;
+}
+.advantage__block{
+  box-sizing: border-box;
+  margin: 1.25rem 0;
+  position: relative;
+  width: 25%;
+}
+.advantage__block--txt{
+  color: #000;
+  margin: auto;
+  display: table;
+  max-width: 9.375rem;
+  padding: 0 0.125rem;
+}
+.advantage__block--icon{
+  margin-bottom: 1.5rem;
+}
+
+.container-form{
+  position: relative;
+}
+
+.main-top-section{
+  position: relative;
+}
+
+.notary-wellcome__form{
+  box-shadow: 0 0.625rem 0.9375rem 0.3125rem rgba(0,0,0,.1);
+  right: 2rem;
+  position: absolute;
+  top: 2.5rem;
+  z-index: 2;
+}
+
+.notary-content{
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.125rem;
+  color: #656565;
+}
+.notary-content p{
+  color: #000;
+  line-height: 1.4em;
+}
+.notary-content h2,
+.notary-content h3,
+.notary-content h4,
+.notary-content h5,
+.notary-content h6,
+.notary-content p{
+  padding-bottom: 1.875rem;
+}
+
+.notary-article ol,
+.notary-content ol{
+  counter-reset: myCounter;
+  margin-bottom: 1.875rem;
+}
+.notary-article ol li,
+.notary-content ol li{
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 1.875rem;
+  font-size: 1rem;
+  line-height: 1.125rem;
+}
+.notary-content ol li{
+  font-size: 1rem;
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.notary-content p a{
+  color: #2C77CF;
+  border-bottom: 0.0625rem solid #2C77CF;
+  transition: .25s;
+}
+.notary-content p a:hover{
+  border-bottom: 0.0625rem solid transparent;
+}
+.notary-content ol li:before,
+.text-plugin ol li:before{
+  content: counter(myCounter)".";
+  counter-increment: myCounter;
+  color: #2C77CF;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 0.4375rem;
+  width: 0.4375rem;
+}
+.text-plugin ul li{
+  font-size: 1rem;
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4em;
+}
+
+.notary-content ul li:before,
+.text-plugin ul li:before{
+  border-radius: 50%;
+  content: '';
+  background-color: #2C77CF;
+  top: 0.5em;
+  left: 0;
+  position: absolute;
+  height: 0.4375rem;
+  width: 0.4375rem;
+}
+
+
+.text-plugin table {
+}
+
+.text-plugin table thead {
+  background-color: #D0D0D0;
+}
+
+.text-plugin table th,
+.text-plugin table td {
+  text-align: left;
+  padding: 4px;
+  border: 1px solid gray;
+}
+
+.notary-content blockquote{
+  border-left: 0.1875rem solid #2C77CF;
+  color: #000;
+  font-style: italic;
+  margin-bottom: 1.875rem;
+  padding-left: 2.5rem;
+}
+.notary-content-__block{
+  max-width: 56.25rem;
+  font-size: 1rem;
+}
+.notary-content-contact__block p{
+  line-height: 1.375rem;
+}
+.notary-content__list{
+  margin: 2.5rem 0 1.25rem;
+}
+.notary-content__list--help{
+  margin: 0 0 1.25rem;
+}
+.articles--link,
+.notary-content__list--link{
+  cursor: pointer;
+  color: #4184D3;
+  display: inline-block;
+  line-height: 2.5rem;
+  font-size: 1rem;
+  padding-right: 2.1875rem;
+}
+.articles--link.active,
+.notary-content__list--link.active{
+  color: #000;
+  font-weight: 600;
+}
+.articles--link.active .grey-txt,
+.notary-content__list--link.active .grey-txt{
+  color: #000;
+}
+.notary-content .advantage--container{
+  max-width: 100%;
+}
+.notary-content-about{
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+}
+.notary-content-about p{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.notary-content-about .advantage__content::after,
+  .notary-wellcome-bottom__content .advantage__content::after{
+  background: #fff;
+  display: block;
+  position: absolute;
+  content: '';
+  bottom: 0;
+  height: 0.0625rem;
+  width: 100%;
+}
+.notary-content-about .advantage__block,
+  .notary-wellcome-bottom__content .advantage__block{
+  margin: 2.5rem 0;
+  border-left: 0.0625rem solid #D1D1D1;
+  margin: 2.5rem 0;
+}
+.notary-content-about .advantage__block:nth-child(4n+1){
+  border-left: 0rem solid #D1D1D1;
+}
+.notary-content-about .advantage__block::before,
+  .notary-wellcome-bottom__content .advantage__block::before{
+  background: #D1D1D1;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -2.5rem;
+  height: 0.0625rem;
+  width: 101%;
+}
+
+.icon_link__content .advantage__block {
+  width: 33%;
+}
+
+.notary-wellcome-bottom__content .advantage__block:nth-child(3n+1){
+  border-left: 0rem solid #D1D1D1;
+}
+
+.notary-content--xs p{
+  font-size: 1rem;
+  line-height: 1.125rem;
+}
+.notary-content--xs p:last-child{
+  padding-bottom: 0;
+}
+.notary-content--xl p{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.notary-content--square{
+  background-color: #fff;
+  padding: 2.5rem 0;
+  margin-bottom: 2.5rem;
+  font-size: 1.125rem;
+  color: #656565;
+}
+
+.notary-content-tariffs{
+  padding: 1.875rem 0;
+}
+.notary-content-tariffs .accordion{
+  display: block;
+}
+
+.feedback-form{
+  position: relative;
+}
+.feedback-form.hide .contact-form{
+  pointer-events: none;
+  opacity: 0;
+}
+h1.title.contact-title{
+  padding: 0;
+  margin-bottom: 2.1875rem;
+}
+.contact-row{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.1875rem;
+  margin-bottom: 2em;
+}
+.contact-row-col{
+  border-left: 0.0625rem solid #D1D1D1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 25%;
+}
+.contact-row-col-row{
+  display: flex;
+  line-height: 1.5rem;
+}
+.contact-row-col:first-child{
+  border-left: 0 solid #D1D1D1;
+  padding-right: 2.5rem;
+  /* width: 25%; */
+}
+.contact-row-col:first-child{
+  width: 50%;
+}
+.contact-row-col:nth-child(2){
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+}
+.contact-row-col:nth-child(3){
+  padding-left: 2.5rem;
+}
+.contact-form{
+  margin: 3rem 0 1rem;
+}
+.contact-form--btn{
+  max-width: 19.375rem;
+  width: 100%;
+}
+.contact-chart{
+  margin-top: 0.9375rem;
+}
+.contact-chart .notary-article{
+  max-width: 100%;
+}
+.contact-form--title{
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 2.0625rem;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+
+  /* Black */
+  color: #020202;
+  padding-bottom: 2.1875rem;
+}
+.name-field {
+  display: none;
+}
+.contact-field:not([type="file"]){
+  border: 0.0625rem solid #D1D1D1;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: right -1.25rem center;
+  background-image: url(../svg/error.svg);
+  outline: none;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  transition: .5s;
+  height: 3.75rem;
+  width: 100%;
+}
+.contact-field[type="file"]{
+  margin-top: 0.625rem;
+  margin-bottom: 1.875rem;
+}
+.contact-field.error{
+  background-position: right 1.25rem center;
+  border-color: #F13F3F;
+}
+.contact-field.error:focus{
+  background-position: right -1.25rem center;
+  border-color: #656565;
+}
+.contact-field--textarea{
+  padding: 0.9375rem 1.875rem;
+  min-height: 10rem;
+}
+.contact-field--textarea.error{
+  background-position: right 1.25rem top 1.25rem;
+  border-color: #F13F3F;
+}
+.contact-field--textarea.error:focus{
+  background-position: right -1.25rem top 1.25rem;
+  border-color: #656565;
+}
+.contact-field--textarea-file{
+  position: relative;
+}
+.contact-field--textarea-file--input p{
+  align-items: center;
+  color: #9F9F9F;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem !important;
+  bottom: 2.4375rem;
+  left: 1rem;
+  position: absolute;
+  z-index: 0;
+}
+.contact-field--textarea-file--input input{
+  bottom: 2.4375rem;
+  position: absolute;
+  max-width: 100%;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.contact-image{
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 1.25rem 1.875rem 0;
+  width: 1.875rem;
+}
+.contact-image img{
+  margin: auto;
+  max-width: inherit;
+}
+.contact-image--bottom-txt{
+  line-height: 1.5rem;
+}
+.contact-modal__open{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 1.875rem 0 0;
+}
+.contact-modal__open p{
+  color: #2C77CF;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 0 1.25rem;
+}
+.contact-modal__open--img-first{
+  height: auto;
+  width: 1.875rem;
+}
+
+.notary-modal{
+  display: none;
+  top: 0;
+  left: 0;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.15);
+  min-height: 100vh;
+  transition: .8s;
+  width: 100%;
+  z-index: 999999;
+  overflow-y: scroll;
+  height: 100%;
+}
+.notary-modal__content{
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 0.3125rem;
+  color: #656565;
+  margin: 8.75rem auto 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  overflow: hidden;
+  max-width: 46.25rem;
+  padding: 2.5rem;
+  width: 100%;
+}
+.notary-modal__content .notary-modal--label{
+  padding-top: 0.625rem;
+}
+.notary-modal__content-top{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.contact-modal__open--text{
+  padding-bottom: 1.25rem;
+}
+.contact-modal__open--text p:last-child{
+  padding: 0;
+}
+.notary-modal__content .title{
+  margin: 0;
+  padding: 0;
+}
+.notary-modal__content p{
+  padding: 0 0 1.25rem;
+}
+.notary-modal__content img{
+  margin: 0.625rem 0;
+  width: 100%;
+}
+.notary-modal__content--close{
+  cursor: pointer;
+}
+.notary-modal--label{
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.9375rem;
+}
+.notary-modal--label-last{
+  margin-top: 0.3125rem;
+}
+.notary-modal--label img{
+  margin: 0 !important;
+  height: auto;
+  max-width: 1.875rem;
+  min-width: 1.875rem;
+  width: auto !important;
+}
+.notary-modal--label span{
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.875rem;
+  padding-left: 0.9375rem;
+}
+
+.notary-content__search{
+  background-color: #fff;
+  border: 0.0625rem solid #cccccc;
+  background-image: url(../svg/search.svg);
+  background-position: 1.25rem 1.125rem;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  border-radius: 0.3125rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.notary-content__search--btn{
+  background-color: #2C77CF;
+  cursor: pointer;
+  color: #fff;
+  line-height: 3.75rem;
+  font-size: 1.125rem;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  top: 0;
+  width: 10rem;
+}
+.notary-content__search--field{
+  background: #fff;
+  border: none;
+  font-size: 1.5rem;
+  outline: none;
+  line-height: 3.5rem;
+  padding-left: 1.25rem;
+  transition: .5s;
+  height: 3.75rem;
+  width: calc(100% - 2.5rem);
+}
+.notary-content__search--field:invalid {
+  background: transparent;
+}
+.notary-content__search--field:active,
+.notary-content__search--field:focus{
+  background: #fff;
+}
+
+
+.notary-content-download{
+  display: flex;
+  flex-flow: row nowrap;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+.notary-content-download__block{
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-right: 3.75rem;
+  margin-bottom: 2.5rem;
+  vertical-align: top;
+  width: 15rem;
+}
+.notary-content-download__block--btn{
+  margin-top: 1.25rem;
+  line-height: 2.5rem;
+}
+.notary-content-download__block--title{
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3125rem;
+  padding-top: 1.25rem;
+}
+.notary-content-download__block--size{
+  color: #9F9F9F;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  margin-top: 0.625rem;
+}
+
+.notary-sharing{
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 2.5rem;
+  background: #fff;
+  border-radius: 0.3125rem;
+  overflow: hidden;
+}
+.notary-sharing__block{
+  width: 40%;
+}
+.notary-sharing__block--txt{
+  display: table;
+  padding: 1.25rem;
+}
+.notary-sharing__block .ya-share2__list{
+  display: table;
+  margin: auto;
+}
+.notary-sharing__block--btn{
+  background: #2C77CF;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  float: right;
+  line-height: 3.75rem;
+  max-width: 15rem;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+.notary-sharing__block--btn-image{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.notary-sharing__block--btn-text{
+  padding-left: 1.875rem;
+  position: relative;
+}
+
+.notary-help{
+  padding-bottom: 5rem;
+}
+.announcements_null{
+  background: #F3F3F3;
+  height: 2.5rem;
+  width: 100%;
+}
+.notary-help .owl-carousel .owl-nav{
+  top: 15.625rem;
+  /* opacity: 0; */
+}
+.notary-help .owl-carousel:hover .owl-nav{
+  opacity: 1;
+}
+.notary-help .owl-dots{
+  margin-top: -9.6875rem !important;
+  position: relative;
+  z-index: 1;
+}
+.notary-help__main--btn{
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+.notary-help__main--btn .btn-all{
+  z-index: 1;
+}
+.notary-help__home-slider{
+  background-color: #9F9F9F;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2.5rem 7.5rem;
+  position: relative;
+  height: 27.5rem;
+}
+.notary-help__home-slider::before{
+  background: transparent;
+  background: rgba(0,0,0,0.35);
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.notary-help__home-slider--content{
+  color: #ffffff;
+  font-size: 2.25rem;
+  text-align: center;
+  line-height: 3.0625rem;
+  max-width: 62.5rem;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.25rem;
+  line-height: 2.625rem;
+  position: relative;
+  z-index: 1;
+}
+
+.notary-sections__block{
+  box-sizing: border-box;
+  display: block;
+  margin: 2.5rem 0;
+  height: 8.75rem;
+}
+.notary-sections__block--center{
+  border-right: 0.0625rem solid #D1D1D1;
+  border-left: 0.0625rem solid #D1D1D1;
+}
+.notary-sections__block--image{
+  box-sizing: border-box;
+  display: table;
+  margin: auto;
+  padding: 1.25rem 0 1.875rem;
+}
+.notary-sections__block--txt{
+  color: #656565;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+.about-top{
+  margin-bottom: 2.5rem;
+}
+.about-top__right{
+  height: 26.25rem;
+}
+.about-top__right--image{
+  margin-top: 4.375rem;
+  height: 4.375rem;
+}
+.about-top__right--title{
+  margin: 1.875rem auto 3.75rem;
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+.about-top__right--logo-txt{
+  margin-top: 1.125rem;
+}
+.about-top__right--txt-bottom{
+  margin-bottom: 0.625rem;
+}
+.about-top__right--txt-bottom span{
+  color: #76A7E0;
+  display: table;
+  margin: 0 auto 0.3125rem;
+}
+.about-top__left{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.about-top__left img{
+  opacity: 0;
+  max-height: 26.25rem;
+}
+
+.services__block{
+  border-radius: 0.3125rem;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 2.5rem;
+  transition: .5s;
+  /* height: 440px; */
+}
+
+.services__block:hover{
+  box-shadow: 0 0rem 0.625rem 0.3125rem rgba(0,0,0,.05);
+}
+
+
+.services__block::after{
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,1) 88%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 30%,rgba(255,255,255,1) 88%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 30%,rgba(255,255,255,1) 88%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  content: '';
+  display: block;
+  margin-top: -2.5rem;
+  position: relative;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.services__block_announcement {
+  position: relative;
+}
+
+.services__block_announcement::after {
+  position: absolute;
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, white 30%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%, white 30%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%, white 30%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  z-index: 0;
+  height: 5rem;
+  bottom: 0;
+}
+
+.services__block--empty:hover {
+  opacity: .5;
+}
+
+.services__block--empty:hover {
+  box-shadow: unset;
+}
+
+.services__block-alone{
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0.3125rem;
+  display: block;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  height: 27.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.services__block-alone::before{
+  background: transparent;
+  background: rgba(0,0,0,0.35);
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.services__block-alone--content {
+  box-sizing: border-box;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+
+.services__block-alone--subtitle {
+  font-weight: 500;
+  margin-bottom: 1.875rem;
+}
+.services__block-alone--title {
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 2.625rem;
+}
+.services__block-alone--date{
+  margin-top: 1.875rem;
+  font-weight: 100;
+  opacity: .5;
+}
+
+.services__block--icon{
+  background-color: #fff;
+  border-bottom: 0.125rem solid #D1D1D1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12.5rem;
+}
+
+.services__block--image{
+  max-height: 15.625rem;
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;*/
+}
+
+.services__block--image img{
+  margin-bottom: -0.25rem; /* What the hack? */
+  width: 100%;
+}
+.services__block--icon img,
+.services__block--icon svg{
+  width: 5.25rem;
+  height: 5.25rem;
+}
+.services__block-content{
+  background-color: #ffffff;
+  padding: 1.25rem 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+  height: 15rem;
+}
+
+
+
+
+
+.services__block-content--title,
+.services__block-content--label{
+  font-size: 1.125rem;
+  max-width: 14.375rem;
+}
+.services__block-content--title{
+  color: #2C77CF;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding-bottom: 1.875rem;
+}
+.services__block-content--label{
+  color: #020202;
+  line-height: 1.5rem;
+}
+.services__block-content--date{
+  bottom: 1.875rem;
+  color: #9F9F9F;
+  left: 2.5rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.services__block-big{
+  box-sizing: border-box;
+  display: table;
+  padding-bottom: 2.5rem;
+  height: 100%;
+  width: 100%;
+}
+.services__block-big-content{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  color: #fff;
+  display: table-cell;
+  padding: 2.5rem;
+  height: 100%;
+  vertical-align: bottom;
+}
+.services__block-big-content--title{
+  font-size: 2.375rem;
+  line-height: 2.8125rem;
+  padding: 0.625rem 0;
+}
+.services__block-big-content--label{
+  font-size: 1.125rem;
+  line-height: 1.3125rem;
+}
+.services__block-big-content--date{
+  font-size: 1rem;
+  line-height: 1.25rem
+}
+
+.service-list-article p{
+  font-size: 1.125rem;
+  color: #656565;
+}
+.service-list-article a{
+  color: #2C77CF;
+}
+.service-list-article--item{
+  display: flex;
+  margin: 0.9375rem 1.25rem 0;
+  position: relative;
+}
+.service-list-article--title:before{
+  display: none;
+}
+ul.service-documents{
+  margin: 0 0 1.875rem;
+}
+ul.service-documents .service-list-article--item:before{
+  display: block;
+  left: -1.25rem;
+}
+.service-documents-group{
+  margin: 1.25rem 0 -1.25rem !important;
+}
+.service-documents-group--title::before{
+  display: none;
+}
+.service-list-article blockquote{
+  border-left: 0.1875rem solid #2C77CF;
+  color: #000;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin-bottom: 1.875rem;
+  padding-left: 2.5rem;
+}
+.service-list-article figcaption{
+  color: #000;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.035em;
+  padding-bottom: 1.875rem;
+}
+
+/* form */
+
+.notary__form{
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.3125rem 0.9375rem 0.3125rem rgba(0,0,0,.15);
+  box-sizing: border-box;
+  color: #2D2D2D;
+  overflow: hidden;
+  max-width: 26.6875rem;
+  padding: 2.5rem;
+  width: 100%;
+}
+.blind-version .notary__form{
+  max-width: 24rem;
+}
+.notary__form-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.notary__form-content.hide{
+  transition: .25s;
+  opacity: 0;
+  pointer-events: none;
+}
+.notary__form-content-before{
+  align-items: center;
+  color: #282828;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.notary__form-content-before.hide{
+  display: none;
+}
+.notary__form-content-before img{
+  display: block;
+  margin: 0 auto 1.625rem;
+}
+.notary__form-content-before--title,
+.notary__form-content-before--label{
+  max-width: 17.5rem;
+}
+.notary__form-content-before--title{
+  margin: auto;
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 2.0625rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.notary__form-content-before--label{
+  margin: 0.9375rem auto 1.5rem;
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.125rem;
+  line-height: 127%;
+  text-align: center;
+  letter-spacing: 0.035em;
+}
+.notary__form-content-before--btn{
+  background: #2C77CF;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: table;
+  font-family: TT Hoves;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.03em;
+  margin: auto;
+  min-width: 7.5rem;
+  text-align: center;
+  padding: 0 1.25rem;
+}
+.notary__form--field.notary__form--datepicker{
+  background-image: url('../svg/calendar.svg');
+  background-repeat: no-repeat;
+  background-position: 94% 1.25rem;
+  background-size: 0.9375rem;
+}
+
+
+
+/* .notary__form--datepicker:focus{
+  border-radius: 5px 5px 0px 0px;
+  border-color: #D1D1D1 !important;
+  border-bottom: 1px solid transparent !important;
+} */
+.notary__form--title{
+  margin-bottom: 2.125rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+.notary__form--field{
+  border: 0.0625rem solid #D1D1D1;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  transition: .5s;
+  height: 3.75rem;
+  width: 100%;
+}
+
+.slot-picker {
+  margin-bottom: 1.25rem;
+}
+.slot-picker_active {
+  z-index: 2;
+}
+
+.slot-picker.error > .label,
+.notary__form--field,
+.notary__form--textarea{
+  background-repeat: no-repeat;
+  background-position: right -1.25rem center;
+  background-image: url(../svg/error.svg);
+}
+
+/* custom select */
+.notary__form .select2-container {
+  margin-bottom: 1.25rem;
+}
+
+/* hide cal icon */
+.slot-picker.error .label__glyph {
+  opacity: 0;
+}
+
+.slot-picker_active.error > .label {
+  background-position: right -1.25rem center;
+}
+
+.notary__form--field.error:focus,
+.notary__form--field:focus,
+.notary__form--textarea.error:focus{
+  border: 0.0625rem solid #656565;
+}
+.slot-picker.error > .label,
+.notary__form--field.error,
+.notary__form--textarea.error{
+  border-color: #F13F3F;
+  background-position: right 1.25rem center;
+}
+
+
+.slot-picker.error .label__span_placeholder,
+.notary__form--field.error::placeholder,
+.notary__form--textarea.error::placeholder {
+  color: #F13F3F;
+}
+.notary__form--field:focus::placeholder {
+  color: transparent;
+}
+.notary__form--field-actions{
+  border: 0.0625rem solid #cccccc;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  height: 3.75rem;
+  width: 100%;
+}
+.notary__form--field-actions.error + span{
+  border-color: #F13F3F;
+}
+.notary__form--btn{
+  margin-top: 2.5rem;
+  width: 100%;
+}
+.notary__form--label{
+  display: inline-flex;
+}
+.notary__form--label-checkbox{
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0.1875rem;
+  float: left;
+}
+
+.notary__form--label-checkbox .checkbox {
+  z-index: unset;
+}
+
+.notary__form--label-checkbox.error .checkbox-icn{
+  border-color: #F13F3F;
+}
+.notary__form--label-txt{
+  line-height: 1.25rem;
+}
+.notary__form--label-txt a{
+  color: #2C77CF;
+}
+.notary__form--textarea{
+  box-sizing: border-box;
+  border: 0.0625rem solid #cccccc;
+  border-radius: 0.3125rem;
+  resize: vertical;
+  margin-bottom: 1.875rem;
+  max-height: 25rem;
+  font-size: 1.125rem;
+  padding: 0.625rem 1.25rem;
+  height: 7.5rem;
+  width: 100%;
+}
+.notary-consultant{
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 2.5rem;
+}
+.notary-consultant--image{
+  border-radius: 50%;
+  max-width: 12.5rem;
+  height: auto;
+}
+.notary-consultant__content{
+  margin-left: 2.5rem;
+}
+.notary-consultant__content--title{
+  color: #020202;
+  font-size: 2.25rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.workers__block{
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  display: block;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 0.625rem;
+  position: relative;
+  height: 20rem;
+  transition: .5s;
+}
+.workers__block:hover{
+  box-shadow: 0 0rem 0.625rem 0.3125rem rgba(0,0,0,.05);
+}
+.workers__block:after {
+  background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,1) 88%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 30%,rgba(255,255,255,1) 88%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 30%,rgba(255,255,255,1) 88%,rgba(255,255,255,1) 100%);
+  content: '';
+  display: block;
+  margin-top: -2.5rem;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  height: 2.5rem;
+  width: 100%;
+}
+.workers__block--hr{
+  padding: 0;
+  border: 0;
+  border-bottom: 0.0625rem solid #D1D1D1;
+  margin: auto;
+  height: 0;
+  width: 3.75rem;
+}
+.workers__block--title{
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+.workers__block--position{
+  color: #9F9F9F;
+  line-height: 1.25rem;
+  margin-bottom: 0.75rem;
+  height: 2.5rem;
+}
+.workers__block--image{
+  border-radius: 50%;
+  display: table;
+  margin: 2.5rem auto 1.375rem;
+  height: 3.75rem;
+  width: 3.75rem;
+}
+.workers__block--image img{
+  border-radius: 50%;
+}
+.workers__block--text{
+  margin-top: 1.25rem;
+  line-height: 1.25rem;
+}
+.main-advantages-slider .owl-dots .owl-dot span{
+  background: #1d1d1d;
+  opacity: .4;
+}
+.main-advantages-slider .owl-dots .owl-dot.active span{
+  /*background: #4184D3;*/
+  background: var(--theme-accent);
+  opacity: 1;
+}
+.main-advantages-slider .advantage__block{
+  width: 100%;
+}
+.main-advantages-slider img.advantage__block--icon{
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: auto !important;
+}
+.main-advantages-slider .advantage__content .advantage__block{
+  border-left: 0.0625rem solid #D1D1D1;
+}
+.main-announcements,.about-workers{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.625rem;
+  align-content: space-between;
+}
+.about-workers{
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.main-announcements .services__block,
+.about-workers .workers__block{
+  margin: 0 0.625rem 2.5rem;
+}
+.main-announcements .services__block{
+  flex: 1;
+}
+.about-workers .workers__block{
+  box-sizing: border-box;
+  width: calc(25% - 1.35rem);
+}
+.services__block--empty{
+  background-color: #FFFFFF;
+  background-image: url(../svg/logo-grey.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.main-carusel .owl-dots{
+  margin: -1.25rem 0 1.25rem !important;
+}
+.modal-carousel .owl-dots{
+  margin-top: -3.125rem !important;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* CMS */
+div.cms div.cms-structure {
+ background-color: white;
+}
+
+div.cms .cms-structure div.cms-draggable {
+  padding-bottom: 0.625rem;
+}
+
+
+div.cms div.cms-toolbar-item-buttons a.cms-btn,
+div.cms div.cms-toolbar-item-buttons a.cms-btn:focus
+{
+    border: 0.0625rem blue solid;
+    color: #000AFF;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Helvetica;
+    height: 1.875rem;
+    width: 100%;
+    white-space: nowrap;
+}
+
+div.cms div.cms-toolbar-item-buttons a.cms-btn-disabled,
+div.cms div.cms-toolbar-item-buttons a.cms-btn-disabled:focus
+{
+    display: none;
+}
+
+div.cms div.cms-toolbar-item-buttons a.cms-btn.cms-btn-publish,
+div.cms div.cms-toolbar-item-buttons a.cms-btn.cms-btn-publish:focus,
+div.cms div.cms-toolbar-item-buttons.cms-toolbar-item-switch-save-edit a.cms-btn.cms-btn-switch-edit,
+div.cms div.cms-toolbar-item-buttons.cms-toolbar-item-switch-save-edit a.cms-btn.cms-btn-switch-edit:focus
+{
+    border: 0.0625rem blue solid;
+    color: white;
+    background: #000AFF;
+}
+
+div.cms div.cms-toolbar-item-buttons.cms-toolbar-item-cms-mode-switcher{
+    width: auto;
+    height: auto;
+    position: static;
+}
+div.cms div.cms-toolbar-item-cms-mode-switcher a.cms-btn ,div.cms div.cms-toolbar-item-cms-mode-switcher a.cms-btn.cms-btn-active{
+    position: static;
+    height: 1.875rem;
+    border: 0.0625rem blue solid!important;
+    background: none;
+}
+
+div.cms .cms-toolbar-customlogo {
+   height: 2.875rem;
+
+}
+
+div.cms .cms-toolbar-customlogo a{
+    font-size: 1.3125rem;
+    line-height: 2.875rem;
+    height: 2.875rem;
+    transition: color .2s;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+}
+
+.cookie-alert{
+  background: #FFFFFF;
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  box-shadow: 0 0.625rem 0.9375rem 0.3125rem rgba(0,0,0,.1);
+  color: #9F9F9F;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  display: flex;
+  line-height: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1.25rem;
+  position: absolute;
+  height: 5rem;
+  width: 23.75rem;
+}
+.cookie-alert a{
+  color: #656565;
+  text-decoration: underline;
+  display: block;
+}
+.cookie-alert img{
+  cursor: pointer;
+  right: 1.25rem;
+  top: 1.25rem;
+  position: absolute;
+}
+.cookie-alert a:hover{
+  text-decoration: none;
+}
+.cookie-alert--container{
+  display: none;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+}
+.contact-emails div{
+  padding-bottom: 10px;
+}
+.contact-phone {
+    color: #020202;
+    padding-bottom: 10px;
+}
+.contact-phone span {
+    color: rgb(101, 101, 101);
+    display: block;
+    white-space: nowrap;
+}
+
+
+.remote-schedule-title {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 41.25rem;
+}
+
+.remote-schedule-title:not(:first-child) {
+    margin-top: 1.5em;
+}
+
+p.notaryio-fio,
+p.vacancy-title {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+p.notaryio-order,
+.vacancy-description p {
+    color: #656565;
+    font-style: italic;
+    padding-bottom: 0;
+}
+
+.vacancies__title {
+    margin-bottom: .5em;
+}
+
+.io-item,
+.vacancy-item {
+    margin-bottom: 2em;
+}
+
+.blind-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.blind-version {
+  font-size: 1.25rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

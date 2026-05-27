@@ -1,0 +1,57 @@
+<div class="contact-section" id="contact-form">
+    <div class="container">
+        <h2 class="contact-section__title">Задать вопрос нотариусу</h2>
+        <p class="contact-section__subtitle">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение</p>
+
+        <form class="contact-form" novalidate>
+            <div class="contact-form__row contact-form__row--split">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-name">Имя</label>
+                    <input class="contact-form__input" type="text" id="cf-name" name="name" required autocomplete="name">
+                </div>
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-phone">Телефон</label>
+                    <input class="contact-form__input" type="tel" id="cf-phone" name="phone" required autocomplete="tel" placeholder="+7 ___ ___ __ __">
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label" for="cf-email">Email <span style="color:#888;font-weight:400;">(необязательно)</span></label>
+                    <input class="contact-form__input" type="email" id="cf-email" name="email" autocomplete="email">
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-purpose">Цель обращения</label>
+                    <select class="contact-form__select" id="cf-purpose" name="purpose" required>
+                        <option value="">— Выберите —</option>
+                        <option value="Сделки с недвижимостью">Сделки с недвижимостью</option>
+                        <option value="Наследство">Наследство</option>
+                        <option value="Завещание">Завещание</option>
+                        <option value="Уведомление о залоге движимого имущества">Уведомление о залоге движимого имущества</option>
+                        <option value="Доверенность">Доверенность</option>
+                        <option value="Свидетельствование верности копий">Свидетельствование верности копий</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-message">Опишите вопрос</label>
+                    <textarea class="contact-form__textarea" id="cf-message" name="message" rows="4" required></textarea>
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <button class="contact-form__submit" type="submit">Отправить</button>
+            </div>
+
+            <div class="contact-form__status"></div>
+
+            <p class="contact-form__hint">Отправляя форму, вы соглашаетесь с <a href="fnc/personalnye-dannye/index.html">обработкой персональных данных</a></p>
+        </form>
+    </div>
+</div>

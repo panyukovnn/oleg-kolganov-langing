@@ -1,0 +1,431 @@
+@media (max-width: 86.25rem) {
+  .notary-wellcome-bottom{
+    padding: 2.5rem 0;
+  }
+}
+
+@media (max-width: 77.5rem) {
+  .notary-header-top__block--days{
+    display: none;
+  }
+  .notary-header-top__block--tel{
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 67.5rem) {
+  .workers{
+    overflow: hidden;
+  }
+  .workers .owl-stage-outer {
+    overflow: visible;
+  }
+  .workers-carusel{
+    max-width: 15rem;
+  }
+  .contact-row{
+    flex-direction: column;
+    padding: 0;
+  }
+  .contact-image{
+    max-width: 50px;
+    min-width: 50px;
+    text-align: left;
+  }
+  .contact-row-col{
+    border-left: 0 solid #D1D1D1;
+    width: 100%;
+  }
+  .contact-row-col:first-child{
+    padding-right: 0;
+    width: 100%;
+  }
+  .contact-row-col:nth-child(2){
+    padding: 2.5rem 0 0;
+  }
+  .contact-row-col:nth-child(3){
+    padding-top: 0.625rem;
+    padding-left: 0;
+  }
+  .about-workers .workers__block{
+    width: calc(33.33333333% - 1.35rem);
+  }
+}
+
+@media (max-width: 62.5rem) {
+  body{
+    margin-top: 4.625rem;
+  }
+  .advantage__block{
+    width: 33.33333333333%;
+  }
+  .about-top__left img{
+    max-height: 23.4375rem;
+  }
+  .notary-content-about .advantage__block:nth-child(4n+1){
+    border-left: 0.0625rem solid #D1D1D1;
+  }
+  .notary-content-about .advantage__block:nth-child(3n+1){
+    border-left: 0rem solid #D1D1D1;
+  }
+  .container-form{
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .container-form.mob-hide{
+    display: none;
+  }
+  .advantage--container,
+  .notary-wellcome__content{
+    min-width: 100%;
+  }
+  .main-top-section{
+    display: flex;
+    flex-direction: column;
+  }
+  .main-top-section .notary-wellcome{
+    order: 1;
+  }
+  .main-top-section .notary-wellcome-bottom{
+    order: 2;
+  }
+  .main-top-section .container-form{
+    order: 3;
+  }
+  .main-top-section .notary-wellcome__form{
+    box-shadow: 0 0rem 2.5rem 0 rgba(0,0,0,.05);
+    margin-bottom: 1.875rem;
+  }
+  .notary-footer-left-hide--btn,
+  .notary-footer__form--close{
+    display: none;
+  }
+  .notary-header-top__block--logo{
+    opacity: 0;
+  }
+  .notary-header{
+    display: none;
+  }
+  .notary__form{
+    border-radius: 0;
+    max-width: 100%;
+  }
+  .notary__form--left,
+  .notary__form--right{
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    width: 50%;
+  }
+  .notary__form--textarea{
+    margin-bottom: 1.25rem;
+    height: 8.875rem;
+  }
+  .notary__form--left{
+    padding-right: 1rem;
+  }
+  .notary__form--right{
+    padding-left: 1rem;
+  }
+  .notary-wellcome__form,
+  .notary-footer__form{
+    position: relative;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-bottom: 2.8125rem;
+  }
+  .notary-footer__form.main-page{
+    display: none;
+  }
+  .notary-footer{
+    padding: 2.8125rem 0;
+  }
+  .notary-header-mob{
+    display: block;
+  }
+  .notary-wellcome__content--title, .notary-wellcome__content--subtitle{
+    font-size: 1.5rem;
+    line-height: 1.75rem;    
+  }
+  .notary-wellcome__content--title{
+    padding-bottom: 0;
+  }
+  .notary-wellcome__content--subtitle{
+    padding-bottom: 1.25rem;
+  }
+  .notary-wellcome__content-btns{
+    display: block;
+  }
+  .notary-wellcome__content--btn{
+    margin: 2.5rem auto;
+    line-height: 3.125rem;
+    max-width: 20.3125rem;
+    width: 100%;
+  }
+  .notary-wellcome{
+    min-height: initial;
+  }
+  .notary-content-about{
+    text-align: left;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+  .notary-footer-left{
+    margin: 3.75rem auto 2.5rem;
+    right: initial;
+    position: relative;
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  h1.title, .h1.title, .blue--title{
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+  .advantage__block{
+    width: 50%;
+  }
+  .advantage__block--txt, 
+    .notary-help__home-slider--content,
+    .notary-content-about p,
+    .services__block-alone--title{
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+  }
+  .about-top__left img{
+    max-height: 20rem;
+  }
+  .cookie-alert{
+    bottom: 0;
+    border-radius: 0;
+    left: 0;
+    width: 100%;
+  }
+  .notary-content-about .advantage__block:nth-child(odd){
+    border-left: 0rem solid #D1D1D1;
+  }
+  .notary-content-about .advantage__block:nth-child(even){
+    border-left: 0.0625rem solid #D1D1D1;
+  }
+  .about-workers .workers__block{
+    width: 100%;
+  }
+  .advantage__content{
+    position: relative;
+  }
+  .advantage__content .owl-item.active .advantage__block{
+    border-left: 0.0625rem solid #D1D1D1;
+  }
+  .advantage__content .owl-item.active .advantage__block{
+    border-left: 0.0625rem solid #D1D1D1;
+  }
+
+  .container--mob-noactive{
+    padding: 0;
+    margin: 0;
+  }
+  .container--mob-noactive .row{
+    padding: 0;
+    margin: 0;
+  }
+  .contact-form{
+    margin: 2rem 0 1rem;
+  }
+  .contact-form--title{
+    font-size: 1.5rem;
+  }
+  .contact-image--email,
+  .contact-emails{
+    margin-top: 20px;
+  }
+  .contact-image--bottom-txt{
+    margin: 0 0 1.875rem;
+  }
+  .about-top__right--title{
+    margin: 1.25rem auto 1.875rem;
+    font-size: 1.875rem;
+  }
+  .breadcrumbs{
+    display: none;
+  }
+  .main-announcements{
+    margin: 0;
+  }
+  .main-announcements .services__block{
+    margin: 0 0 2.5rem;
+  }
+  .notary-article{
+    padding: 3.125rem 1.5625rem;
+  }
+  .notary-article--content{
+    border-radius: 0;
+  }
+  .notary-article__description{
+    border-radius: 0; 
+    min-height: 23.4375rem;
+    height: auto;
+  }
+  .notary-article__description--bottom{
+    padding: 1.5625rem;
+  }
+  .notary-article__description--title{
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.01em;
+  }
+  .notary-article__description--subtitle{
+    margin-bottom: 0.875rem;
+  }
+  .notary-article__description--date{
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .notary-content{
+    border-radius: 0; 
+    margin-bottom: 0;
+    padding: 1.5625rem;
+  }
+  .notary-content--last{
+    margin-bottom: 2.5rem;
+    padding: 0 1.5625rem 1.5625rem;
+  }
+  .notary-content-download__block{
+    margin-bottom: 3.75rem;
+  }
+  .notary-content-download__block:last-child{
+    margin-bottom: 0rem;
+  }
+  .notary-service__description{
+    min-height: 23.4375rem;
+    height: auto;
+  }
+  .notary-service__description--image{
+    margin: 0 auto 1.5rem;
+  }
+  .notary-service__description--content{
+    max-width: 23.4375rem;
+    padding: 1.25rem;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  .notary-service__description--content-article{
+    padding-left: 0;
+  }
+  .notary-service__description--subtitle{
+    margin-bottom: 1.25rem;
+  }
+  .notary-help__home-slider--content{
+    padding: 0;
+    margin: 0 auto 2.5rem;
+  }
+  .notary-sections{
+    padding-top: 2.8125rem;
+  }
+  .notary-sections__block{
+    margin: 0;
+  }
+  .notary-sections__block--image{
+    padding: 0 0 1.875rem;
+  }
+  .notary-sections__block--center{
+    border-right: 0rem solid #D1D1D1;
+    border-left: 0rem solid #D1D1D1;
+  }
+  .notary-sharing{
+    display: table;
+  }
+  .notary-sharing__block--txt{
+    padding: 1.875rem 2rem;
+    margin: auto;
+    text-align: center;
+  }
+  .notary-sharing__block--btn{
+    margin-top: 1.875rem;
+    max-width: 100%;
+  }
+  .notary-sharing,
+  .notary-sharing__block{
+    width: 100%;
+  }
+  .notary-footer{
+    display: table;
+    width: 100%;
+  }
+  .notary-footer-right{
+    display: block;
+  }
+  .notary-footer-right__block{
+    margin: 0 0 6.25rem;
+    width: 100%;
+  }
+  .notary-footer-left{
+    margin: -2.5rem auto 0;
+  }
+  .notary-wellcome-bottom{
+    padding: 2.5rem 0 3.75rem;
+  }
+  .notary-wellcome__form{
+    bottom: 0;
+    box-shadow: none;
+    margin-top: 0;
+    right: 0;
+    position: relative;
+  }
+  .notary__form{
+    border-radius: 0;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .notary__form--left,
+  .notary__form--right{
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+  .notary__form--textarea{
+    margin-bottom: 1.25rem;
+    height: 6.25rem;
+  }
+  .services__block-alone{
+    height: 15rem;
+  }
+  /* .owl-nav{
+    display: none;
+  } */
+}
+
+@media (max-width: 40rem) {
+  .contact-form--btn{
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .notary-modal__content{
+    border-radius: 0;
+    margin: auto;
+    min-height: 100vh;
+    padding: 6.25rem 1.25rem 2.5rem;
+  }
+  .notary-modal__content-top{
+    box-sizing: border-box;
+    background-color: #fff;
+    position: fixed;
+    padding: 2.5rem 1.25rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .notary-content__search--btn{
+    display: none;
+  }
+  .about-top__left img{
+    max-height: 15.625rem;
+  }
+  .advantage__block--txt{
+    font-size: 3.6vw;
+    line-height: inherit;
+  }
+}

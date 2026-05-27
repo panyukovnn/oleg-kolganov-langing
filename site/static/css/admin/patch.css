@@ -1,0 +1,198 @@
+@import url('patch__dashboard.css');
+@import url('patch__h2-icons.css');
+
+/* fix admin fields */
+:root,
+.ui-widget,
+body,
+p {
+	font-family: 'TT Hoves', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+input[type="color"] {
+    width: 12.5rem;
+}
+
+body.djangocms-admin-style #container #content #content-main .form-row input[type="text"] {
+    font-family: 'TT Hoves', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+}
+
+form input,
+form select,
+form textarea {
+    font-size: 1.125rem;
+}
+
+th.action-checkbox-column {
+    width: 40px !important;
+}
+
+/* login */
+body.login div#container {
+    max-width: 440px;
+}
+
+body.login .logo {
+    text-align: center;
+    color: #020202;
+
+}
+
+body.login .logo p {
+    margin-top: 60px;
+    font-size: 20px!important;
+    font-family: 'TT Hoves', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #020202!important;
+}
+
+body.login input[type="submit"] {
+    min-width: 100%;
+}
+
+
+ul.notary-model-list li.model-list-item a.model-title {
+    color: black;
+}
+
+
+/* advantagepluginmodel_form */
+
+form#advantagepluginmodel_form label.advantage-icon-picker,
+form#advantagepluginmodel_form label.advantage-option-picker {
+
+}
+
+form#advantagepluginmodel_form ul#id_advantage li,
+form#advantagepluginmodel_form ul#id_icon li {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+form#advantagepluginmodel_form ul#id_icon li {
+    width: 120px;
+    height: 120px;
+}
+
+form#advantagepluginmodel_form input[type="radio"] + label img {
+
+}
+
+form#advantagepluginmodel_form input[type="radio"] + label {
+    width: 100%;
+    height:100%;
+    display: block;
+    border: solid 1px grey;
+    border-radius:5px;
+}
+
+form#advantagepluginmodel_form input:checked + label {
+    background-color:#E5E5E5;
+}
+
+form#advantagepluginmodel_form ul#id_advantage li input,
+form#advantagepluginmodel_form ul#id_icon li input {
+    display: none;
+}
+
+form#advantagepluginmodel_form ul#id_advantage li label img,
+form#advantagepluginmodel_form ul#id_icon li label img {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+form#advantagepluginmodel_form ul#id_icon li label img {
+    margin-top: 10px;
+}
+
+div.cms .cms-toolbar-customlogo {
+   height: 46px;
+
+}
+
+div.cms .cms-toolbar-customlogo a{
+    font-size: 21px;
+    line-height: 46px;
+    height: 46px;
+    transition: color .2s;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+h1 {
+    font-size: 2.25rem !important;
+    font-weight: 100;
+}
+
+p {
+    font-size: inherit !important;
+}
+/* tariff table */
+.dashboard table.tariff-table td, .dashboard table.tariff-table th{
+  font-size: 18px;
+}
+.dashboard table.tariff-table tr th {
+  text-transform: none;
+}
+.dashboard table.tariff-table tr td.check svg{
+  margin-left: 2em;
+}
+.dashboard table.tariff-table thead tr th .tariff-name {
+  font-weight: bold;
+  margin-top: .5em;
+}
+.dashboard table.tariff-table thead tr th div.tariff-price span{
+  font-weight: bold;
+  font-size: 30px !important;
+  color: #000AFF !important;
+}
+.dashboard table.tariff-table thead tr th div.tariff-price span.year{
+  font-size: 18px !important;
+}
+.dashboard table.tariff-table thead tr th div.tariff-price {
+  margin-top: 1em;
+}
+.dashboard table.tariff-table thead tr th div.tariff-select {
+  height 40px;
+  margin-top: .8em;
+  margin-bottom: .5em;
+}
+.dashboard table.tariff-table thead tr th div.tariff-select a{
+  font-weight: bold;
+  color: white!important;
+  background-color: #000AFF;
+  padding: 5px 40px 5px 40px!important;
+}
+.dashboard table.tariff-table tbody tr td.row-title{
+  width: 35%;
+  white-space: normal;
+}
+/* fix hidden panels */
+#dashboard-panel {
+  position: relative;
+}
+#dashboard-panel ul li{
+  border: none;
+  background: none;
+}
+#dashboard-panel ul {
+    top: auto;
+    left: 0;
+    right: auto;
+    margin-top: -1px;
+    white-space: nowrap;
+}
+/* reset readonly fields style */
+form .aligned label+div.readonly {
+    margin-top: 0;
+}
+.aligned label + p, .aligned label + div.help, .aligned label + div.readonly {
+    margin-top: 0;
+    margin-left: 0;
+}

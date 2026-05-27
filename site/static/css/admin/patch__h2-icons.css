@@ -1,0 +1,49 @@
+.dashboard-module h2 a.toggle-icon,
+.dashboard-module h2 a.close-icon {
+    float: none;
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0 10px;
+    height: auto;
+    width: 40px;
+    background: none;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.dashboard-module h2 a.toggle-icon::after,
+.dashboard-module h2 a.close-icon::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: calc((100% - 20px) / 2);
+    left: calc((100% - 20px) / 2);
+    height: 20px;
+    width: 20px;
+    background-image: url(../../admin_tools/images/admin-tools.png);
+    background-repeat: no-repeat;
+}
+
+.dashboard-module h2 a.toggle-icon.collapsed:hover::after {
+    background-position: 0 -105px;
+}
+
+.dashboard-module h2 a.toggle-icon.collapsed::after {
+    background-position: 0 -85px;
+}
+
+.dashboard-module h2 a.toggle-icon:hover::after {
+    background-position: 0 -65px;
+}
+
+.dashboard-module h2 a.toggle-icon::after {
+    background-position: 0 -45px;
+}
+
+.dashboard-module h2 a.close-icon:hover::after {
+    background-position: 0 -145px;
+}
+
+.dashboard-module h2 a.close-icon::after {
+    background-position: 0 -125px;
+}

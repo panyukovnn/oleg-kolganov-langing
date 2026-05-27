@@ -1,0 +1,61 @@
+:root {
+    --background-header: #1f2933;
+    --theme-accent: #2c77cf;
+
+    --background-icon-accent: var(--theme-accent);
+    --background-card-header: var(--theme-accent);
+    --text-heading: var(--theme-accent);
+    --background-badge: var(--theme-accent);
+    --background-button-primary: var(--theme-accent);
+    --background-map-popup-header: var(--theme-accent);
+}
+
+.theme {
+    --background-icon-accent: var(--theme-accent);
+    --background-card-header: var(--theme-accent);
+    --text-heading: var(--theme-accent);
+    --background-badge: var(--theme-accent);
+    --background-button-primary: var(--theme-accent);
+    --background-map-popup-header: var(--theme-accent);
+}
+
+
+.theme-blue {
+    --background-header: #142C47;
+    --theme-accent: #2C77CF;
+}
+
+.theme-dark-blue {
+    --background-header: #122039;
+    --theme-accent: #254276;
+}
+
+.theme-violet {
+    --background-header: #3B2F4A;
+    --theme-accent: #604B7A;
+}
+
+.theme-turquoise {
+    --background-header: #1F2B30;
+    --theme-accent: #3A5C6B;
+}
+
+.theme-burgundy {
+    --background-header: #4F031E;
+    --theme-accent: #9C1B38;
+}
+
+.theme-bright-red {
+    --background-header: #212121;
+    --theme-accent: #FF1232;
+}
+
+.theme-bright-orange {
+    --background-header: #212121;
+    --theme-accent: #FF9400;
+}
+
+.theme-bright-green {
+    --background-header: #212121;
+    --theme-accent: #08C5A4;
+}
