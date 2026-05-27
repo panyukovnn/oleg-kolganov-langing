@@ -29,6 +29,19 @@ CONSTRUCTOR_PATTERNS = [
     r'<script src="https://cdn\.jsdelivr\.net/npm/vue@2\.7"[^>]*></script>\s*',
     # Контейнер формы записи (пустой div)
     r'<div class="container container-form">\s*</div>\s*',
+    # Родная форма обратной связи от конструктора (POST на okolganov.ru/feedback —
+    # не работает с GitHub Pages, плюс класс .contact-form конфликтует с нашей формой)
+    r'<form action="https://okolganov\.ru/feedback/[^"]*"[^>]*>[\s\S]*?</form>\s*',
+    # Сопутствующий комментарий-скрипт от старой формы
+    r'<script type="text/javascript">\s*//\s*no \$ here[\s\S]*?</script>\s*',
+]
+
+# Кастомные инъекции — удаляются в начале процессинга, чтобы потом гарантированно
+# добавиться один раз (true idempotent).
+CUSTOM_INJECTION_PATTERNS = [
+    r'<link href="[^"]*static/css/custom/contact-form\.css"[^>]*/?>\s*',
+    r'<script src="[^"]*static/js/custom/contact-form\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/custom/carousel-fallback\.js"[^>]*></script>\s*',
 ]
 
 # Cookie-баннер — был на оригинале, восстанавливаем после очередного зеркалирования
@@ -74,13 +87,18 @@ def strip_constructor(html: str) -> str:
     return html
 
 
+def strip_custom_injections(html: str) -> str:
+    """Удаляем наши прошлые инъекции, чтобы потом добавить ровно по одной."""
+    for pattern in CUSTOM_INJECTION_PATTERNS:
+        html = re.sub(pattern, '', html)
+    return html
+
+
 def inject_assets(html: str) -> str:
     # Инжектим с абсолютными путями; функция relativize_paths ниже превратит их в
     # относительные с учётом глубины страницы.
-    if 'contact-form.css' not in html:
-        html = html.replace('</head>', f'{HEAD_INJECTION}</head>', 1)
-    if 'carousel-fallback.js' not in html:
-        html = html.replace('</body>', f'{BODY_INJECTION}</body>', 1)
+    html = html.replace('</head>', f'{HEAD_INJECTION}</head>', 1)
+    html = html.replace('</body>', f'{BODY_INJECTION}</body>', 1)
     return html
 
 
@@ -183,6 +201,7 @@ def process_file(path: Path, snippet: str, inject_form: bool) -> None:
     depth = len(rel.parts) - 1
 
     html = strip_constructor(html)
+    html = strip_custom_injections(html)
     html = replace_help_carousel(html)
     html = inject_assets(html)
     html = inject_header_cta(html)
@@ -202,7 +221,11 @@ def main() -> int:
     # Исключаем сам сниппет
     html_files = [p for p in html_files if 'html-snippets' not in p.parts]
 
-    form_pages = {ROOT / 'index.html', ROOT / 'kontakty' / 'index.html'}
+    form_pages = {
+        ROOT / 'index.html',
+        ROOT / 'kontakty' / 'index.html',
+        ROOT / 'notarialnaya-kontora' / 'index.html',
+    }
 
     for path in html_files:
         process_file(path, snippet, inject_form=(path in form_pages))

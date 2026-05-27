@@ -376,90 +376,7 @@
 
 
     
-<form action="https://okolganov.ru/feedback/message/" method="post" class="container feedback-form" enctype="multipart/form-data">
-    <input type="hidden" name="csrfmiddlewaretoken" value="sVSmGL0oWINSsCTCkdj9FXLOJr2ue9W35RcSJZPgosusjJYS6drLZgj5Dkdyroit">
-    <div class="contact-form">
-        <div class="contact-form--title">Форма обратной связи</div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 name-field">
-                <input name="name" type="text" class="contact-field" placeholder="ФИО"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <input name="fio" type="text" class="contact-field" placeholder="Имя"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <input name="email" type="email" class="contact-field" placeholder="Эл. почта"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <input name="phone" type="tel" class="contact-field" placeholder="Телефон"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="contact-field--textarea-file">
-                    <textarea name="text" class="contact-field contact-field--textarea" placeholder="Сообщение"></textarea>
-                    <div class="contact-field--textarea-file--input">
-                        <p><img src="../static/svg/file.svg" alt="" /><span>Загрузить файл</span></p>
-                        <input id="attachment-files" name="files" type="file" multiple />
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label class="notary__form--label">
-                    <span class="notary__form--label-checkbox">
-                        <input class="checkbox" type="checkbox" name="terms_agreement"/>
-                        <span class="checkbox-icn"></span>
-                    </span>
-                    <span class="notary__form--label-txt"><!--noindex-->Соглашаюсь на <a href="../fnc/personalnye-dannye/index.html">обработку и хранение своих персональных данных<!--/noindex--></a></span>
-                </label>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <input type="submit" class="contact-form--btn btn-blue" value="Отправить"/>
-            </div>
-        </div>
-    </div>
-    <!--noindex-->
-    <div class="notary__form-content-before hide notary__form-content-error">
-        <div>
-            <img src="../static/svg/form-error.svg" alt=""/>
-            <div class="notary__form-content-before--title">
-                Что-то пошло не так
-            </div>
-            <div class="notary__form-content-before--label">
-                Попробуйте отправить заявку ещё раз
-            </div>
-            <div class="notary__form-content-before--btn">
-                Вернуться назад
-            </div>
-        </div>
-    </div>
-    <div class="notary__form-content-before hide notary__form-content-success">
-        <div>
-            <img src="../static/svg/form-success.svg" alt=""/>
-            <div class="notary__form-content-before--title">
-                Заявка успешно отправлена
-            </div>
-            <div class="notary__form-content-before--label">
-                Нотариус свяжется с вами в ближайшее время для подтверждения записи
-            </div>
-            <div class="notary__form-content-before--btn">
-                Ок
-            </div>
-        </div>
-    </div>
-    <!--/noindex-->
-</form>
-
-
-<script type="text/javascript">
-// no $ here. this code runs in `static/js/form.js`
-// $('form.feedback-form').submit(function (e) {
-//   e.preventDefault();
-//   var formData = $(this).serializeFiles();
-//   feedbackValidation(formData);
-// });
-</script>
-
-
-    <div class="container">
+<div class="container">
         <div class="notary-sharing">
     <div class="notary-sharing__block"><b class="notary-sharing__block--txt">Поделитесь ссылкой</b></div>
     <div class="notary-sharing__block">
@@ -483,6 +400,64 @@
 	
 	
 		
+
+<div class="contact-section" id="contact-form">
+    <div class="container">
+        <h2 class="contact-section__title">Задать вопрос нотариусу</h2>
+        <p class="contact-section__subtitle">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение</p>
+
+        <form class="contact-form" novalidate>
+            <div class="contact-form__row contact-form__row--split">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-name">Имя</label>
+                    <input class="contact-form__input" type="text" id="cf-name" name="name" required autocomplete="name">
+                </div>
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-phone">Телефон</label>
+                    <input class="contact-form__input" type="tel" id="cf-phone" name="phone" required autocomplete="tel" placeholder="+7 ___ ___ __ __">
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label" for="cf-email">Email <span style="color:#888;font-weight:400;">(необязательно)</span></label>
+                    <input class="contact-form__input" type="email" id="cf-email" name="email" autocomplete="email">
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-purpose">Цель обращения</label>
+                    <select class="contact-form__select" id="cf-purpose" name="purpose" required>
+                        <option value="">— Выберите —</option>
+                        <option value="Сделки с недвижимостью">Сделки с недвижимостью</option>
+                        <option value="Наследство">Наследство</option>
+                        <option value="Завещание">Завещание</option>
+                        <option value="Уведомление о залоге движимого имущества">Уведомление о залоге движимого имущества</option>
+                        <option value="Доверенность">Доверенность</option>
+                        <option value="Свидетельствование верности копий">Свидетельствование верности копий</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <div class="contact-form__field">
+                    <label class="contact-form__label contact-form__label--required" for="cf-message">Опишите вопрос</label>
+                    <textarea class="contact-form__textarea" id="cf-message" name="message" rows="4" required></textarea>
+                </div>
+            </div>
+
+            <div class="contact-form__row">
+                <button class="contact-form__submit" type="submit">Отправить</button>
+            </div>
+
+            <div class="contact-form__status"></div>
+
+            <p class="contact-form__hint">Отправляя форму, вы соглашаетесь с <a href="../fnc/personalnye-dannye/index.html">обработкой персональных данных</a></p>
+        </form>
+    </div>
+</div>
 
 <footer class="notary-footer">
     
@@ -581,7 +556,6 @@
 	
 	
 
-<script src="../static/js/custom/contact-form.js" defer></script>
 <script src="../static/js/custom/carousel-fallback.js" defer></script>
 <script src="../static/js/custom/contact-form.js" defer></script>
 </body>
