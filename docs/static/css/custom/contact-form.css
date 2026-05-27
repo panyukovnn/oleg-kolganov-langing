@@ -1,7 +1,7 @@
 /* Hero-фон. !important нужен потому что main.min.js при отсутствии .background-url
    placeholder-элемента ставит inline style="background-image: url(undefined)" */
 .notary-wellcome.background-display {
-    background-image: url(/static/image/Wallpaper.png) !important;
+    background-image: url(../../image/Wallpaper.png) !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;

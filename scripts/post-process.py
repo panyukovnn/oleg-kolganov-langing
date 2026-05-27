@@ -75,25 +75,12 @@ def strip_constructor(html: str) -> str:
 
 
 def inject_assets(html: str) -> str:
-    # Поскольку в HTML много страниц лежат на разной глубине, ссылки на ассеты
-    # делаем абсолютными от корня сайта (/static/...). При локальном просмотре
-    # через python http.server и на GitHub Pages это работает одинаково.
+    # Инжектим с абсолютными путями; функция relativize_paths ниже превратит их в
+    # относительные с учётом глубины страницы.
     if 'contact-form.css' not in html:
         html = html.replace('</head>', f'{HEAD_INJECTION}</head>', 1)
     if 'carousel-fallback.js' not in html:
         html = html.replace('</body>', f'{BODY_INJECTION}</body>', 1)
-    return html
-
-
-def fix_asset_paths_for_subpages(html: str, depth: int) -> str:
-    """
-    На страницах в подпапках (depth>0) wget оставил относительные пути типа
-    'static/...' и 'media/...', которые ломаются. Превращаем их в абсолютные.
-    """
-    if depth == 0:
-        return html
-    # href="static/..." / src="static/..." / src="media/..." / href="media/..."
-    html = re.sub(r'(href|src)="(static|media)/', r'\1="/\2/', html)
     return html
 
 
@@ -109,15 +96,34 @@ def replace_help_carousel(html: str) -> str:
     )
 
 
-def fix_inline_bg_urls(html: str) -> str:
+# Корневые директории/файлы сайта, на которые могут ссылаться абсолютные пути в HTML.
+SITE_ROOTS = (
+    'static', 'media', 'index.html',
+    'articles', 'celi-obrashhenija', 'deystviya-i-tarify',
+    'fnc', 'kontakty', 'notarialnaya-kontora', 'pravovaya-informaciya',
+)
+
+
+def relativize_paths(html: str, depth: int) -> str:
     """
-    Inline-стили вида style="background-image: url(media/...)" Owl плохо переваривает
-    при cloned-элементах. Делаем URL абсолютными от корня сайта.
+    Превращает абсолютные пути от корня сайта (например /static/..., /media/...,
+    /index.html#xxx) в относительные пути нужной глубины.
+
+    depth=0 (docs/index.html):     /static/x → static/x
+    depth=1 (docs/articles/y.html): /static/x → ../static/x
+    depth=2 (docs/fnc/tarify/...): /static/x → ../../static/x
+
+    Сразу работает и в HTML-атрибутах (href, src), и в inline-стилях (url(...)).
+    Не трогает протокольные URL (http://, https://, //example.com) и анкоры (#xxx).
     """
-    # url(media/...) → url(/media/...)
-    html = re.sub(r'url\((media|static)/', r'url(/\1/', html)
-    # url("media/...") → url("/media/...")
-    html = re.sub(r'url\((["\'])(media|static)/', r'url(\1/\2/', html)
+    prefix = '../' * depth
+    for root in SITE_ROOTS:
+        # href="/static/..." → href="{prefix}static/..."
+        html = html.replace(f'="/{root}', f'="{prefix}{root}')
+        # url(/static/...) и url("/static/..."), url('/static/...')
+        html = html.replace(f'url(/{root}', f'url({prefix}{root}')
+        html = html.replace(f'url("/{root}', f'url("{prefix}{root}')
+        html = html.replace(f"url('/{root}", f"url('{prefix}{root}")
     return html
 
 
@@ -177,14 +183,14 @@ def process_file(path: Path, snippet: str, inject_form: bool) -> None:
     depth = len(rel.parts) - 1
 
     html = strip_constructor(html)
-    html = fix_asset_paths_for_subpages(html, depth)
-    html = fix_inline_bg_urls(html)
     html = replace_help_carousel(html)
     html = inject_assets(html)
     html = inject_header_cta(html)
     html = restore_cookie_banner(html)
     if inject_form:
         html = inject_contact_form(html, snippet)
+    # Финальный шаг: все абсолютные пути → относительные нужной глубины
+    html = relativize_paths(html, depth)
 
     if html != original:
         path.write_text(html, encoding='utf-8')
