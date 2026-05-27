@@ -29,8 +29,6 @@ CONSTRUCTOR_PATTERNS = [
     r'<script src="https://cdn\.jsdelivr\.net/npm/vue@2\.7"[^>]*></script>\s*',
     # Контейнер формы записи (пустой div)
     r'<div class="container container-form">\s*</div>\s*',
-    # Фоновое изображение (data-атрибут, незаметный div)
-    r'<div display="none" class="background-url"[^>]*></div>\s*',
 ]
 
 # Cookie-баннер — был на оригинале, восстанавливаем после очередного зеркалирования
