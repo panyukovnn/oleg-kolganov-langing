@@ -6,7 +6,7 @@
 
 ```
 .
-├── site/                       # это и есть сайт — деплоится на GitHub Pages
+├── docs/                       # это и есть сайт — деплоится на GitHub Pages
 │   ├── index.html              # главная (с формой обратной связи)
 │   ├── articles/               # 24 статьи
 │   ├── celi-obrashhenija/      # 22 цели обращения (услуги)
@@ -27,7 +27,7 @@
 ## Локальная разработка
 
 ```bash
-cd site
+cd docs
 python3 -m http.server 8000
 # открыть http://localhost:8000/
 ```
@@ -43,7 +43,7 @@ python3 -m http.server 8000
    - **Имя** (короткий ответ)
    - **Телефон** (короткий ответ)
    - **Email** (короткий ответ)
-   - **Цель обращения** (короткий ответ или раскрывающийся список с теми же значениями, что в `site/static/html-snippets/contact-form.html`)
+   - **Цель обращения** (короткий ответ или раскрывающийся список с теми же значениями, что в `docs/static/html-snippets/contact-form.html`)
    - **Сообщение** (абзац)
 3. Открыть **«Ответы» → таблица Google Sheets** — туда будут падать заявки.
 
@@ -55,7 +55,7 @@ python3 -m http.server 8000
    - **ID формы** (между `/d/e/` и `/viewform`): `https://docs.google.com/forms/d/e/`**`1FAIpQLSe...`**`/viewform`
    - **ID каждого поля**: параметры `entry.123456789=значение`
 
-### 3. Подставить значения в `site/static/js/custom/contact-form.js`
+### 3. Подставить значения в `docs/static/js/custom/contact-form.js`
 
 ```js
 var GOOGLE_FORM_ID = '1FAIpQLSe...';
@@ -79,18 +79,18 @@ var FIELDS = {
 Если на `okolganov.ru` изменился контент:
 
 ```bash
-rm -rf site/articles site/celi-obrashhenija site/deystviya-i-tarify \
-       site/notarialnaya-kontora site/pravovaya-informaciya site/fnc \
-       site/media site/index.html site/kontakty
+rm -rf docs/articles docs/celi-obrashhenija docs/deystviya-i-tarify \
+       docs/notarialnaya-kontora docs/pravovaya-informaciya docs/fnc \
+       docs/media docs/index.html docs/kontakty
 # скачать заново
 wget --mirror --convert-links --adjust-extension --page-requisites \
      --no-parent -e robots=off --restrict-file-names=unix \
      --user-agent="Mozilla/5.0" --wait=0.3 --random-wait \
      --no-host-directories --domains=okolganov.ru \
-     -P site/ https://okolganov.ru/
+     -P docs/ https://okolganov.ru/
 # переименовать проблемный файл пагинации
-mv 'site/celi-obrashhenija/index.html?page=2.html' site/celi-obrashhenija/page-2.html
-grep -rl 'index.html%3Fpage=2.html' --include="*.html" site/ \
+mv 'docs/celi-obrashhenija/index.html?page=2.html' docs/celi-obrashhenija/page-2.html
+grep -rl 'index.html%3Fpage=2.html' --include="*.html" docs/ \
   | xargs sed -i '' 's|index.html%3Fpage=2.html|page-2.html|g'
 # применить пост-обработку (удалить блоки конструктора, вставить форму)
 python3 scripts/post-process.py
@@ -99,7 +99,7 @@ python3 scripts/post-process.py
 ## Деплой на GitHub Pages
 
 1. Создать репозиторий на GitHub.
-2. Залить `site/` как корень:
+2. Запушить репозиторий:
 
 ```bash
 git init
@@ -110,7 +110,7 @@ git remote add origin https://github.com/USER/REPO.git
 git push -u origin main
 ```
 
-3. **Settings → Pages → Source: `main` / folder: `/site`** → Save.
+3. **Settings → Pages → Source: `main` / folder: `/docs`** → Save.
 4. Через 1–2 минуты сайт будет доступен по `https://USER.github.io/REPO/`.
 
 ### Кастомный домен
@@ -125,7 +125,8 @@ git push -u origin main
 ## Что отличается от оригинала
 
 - Удалена кнопка «Версия для слабовидящих» (специфика конструктора).
-- Удалён cookie-баннер.
 - Удалена встроенная Vue-форма записи на приём (заменена нашей формой → Google Form).
 - Все ссылки на ассеты сделаны абсолютными от корня (`/static/...`, `/media/...`), чтобы одинаково работать на всех уровнях вложенности.
-- Добавлена кнопка «Задать вопрос» в шапке (якорь на форму).
+- Добавлена кнопка «Задать вопрос» в навигации (якорь на форму).
+- Owl-карусель в блоке «Нотариус поможет» заменена на CSS-сетку (стабильнее, без зависимостей).
+- Hero-фон главной задаётся напрямую через CSS (раньше — через JS-плейсхолдер).

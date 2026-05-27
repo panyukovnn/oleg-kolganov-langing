@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / 'site'
+ROOT = Path(__file__).resolve().parent.parent / 'docs'
 SNIPPET_PATH = ROOT / 'static' / 'html-snippets' / 'contact-form.html'
 
 # Регулярки для блоков-конструктора, которые удаляем целиком
@@ -172,7 +172,7 @@ def process_file(path: Path, snippet: str, inject_form: bool) -> None:
     html = path.read_text(encoding='utf-8')
     original = html
 
-    # глубина: site/index.html → 0, site/articles/foo.html → 1, site/fnc/tarify/index.html → 2
+    # глубина: docs/index.html → 0, docs/articles/foo.html → 1, docs/fnc/tarify/index.html → 2
     rel = path.relative_to(ROOT)
     depth = len(rel.parts) - 1
 
