@@ -1,37 +1,57 @@
 /* =============================================================
-   Редизайн (Фаза 1): дизайн-токены + хедер + hero + футер.
-   Подключается ПОСЛЕ оригинального main.css → перебивает по специфичности.
+   Редизайн. Направление: классический премиум-нотариальный.
+   Подключается ПОСЛЕ оригинального main.css.
    ============================================================= */
 
-:root {
-    /* Цвета */
-    --c-bg: #ffffff;
-    --c-surface: #f6f7fa;
-    --c-surface-2: #eceff5;
-    --c-text: #14181f;
-    --c-text-muted: #5a6478;
-    --c-text-soft: #8892a3;
-    --c-accent: #2c5aa0;
-    --c-accent-hover: #234680;
-    --c-accent-soft: rgba(44, 90, 160, 0.08);
-    --c-border: #e3e7ee;
-    --c-footer-bg: #1a1f2e;
-    --c-footer-text: #c7cdda;
-    --c-footer-border: #2b3145;
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-    /* Типографика */
-    --fs-h1: 52px;
-    --fs-h2: 32px;
+:root {
+    /* Палитра — глубокий навигационно-морской синий вместо яркого */
+    --c-bg: #ffffff;
+    --c-surface: #f7f8fa;
+    --c-surface-2: #eef0f4;
+    --c-text: #1f2530;
+    --c-text-muted: #4d5868;
+    --c-text-soft: #8893a4;
+    --c-accent: #1f3d5c;
+    --c-accent-hover: #15293f;
+    --c-accent-soft: rgba(31, 61, 92, 0.08);
+    --c-border: #e1e5ec;
+    --c-border-strong: #c8cfdb;
+    --c-footer-bg: #1f2530;
+    --c-footer-text: #b9c0ce;
+    --c-footer-border: #2d3543;
+
+    /* Типографика: гуманистический sans-serif */
+    --font-body: 'PT Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+    --fs-h1: 44px;
+    --fs-h2: 30px;
     --fs-h3: 22px;
     --fs-body: 16px;
     --fs-small: 14px;
     --fs-micro: 12px;
 
-    /* Радиусы и тени */
-    --r-sm: 6px;
-    --r-md: 10px;
-    --shadow-sm: 0 1px 2px rgba(20, 24, 31, 0.05);
-    --shadow-md: 0 4px 20px rgba(20, 24, 31, 0.06);
+    /* Острее углы — более классический вид */
+    --r-sm: 3px;
+    --r-md: 4px;
+
+    /* Контейнер чуть уже */
+    --container: 1140px;
+}
+
+/* Глобальный шрифт. !important потому что оригинал явно ставит TT Hoves
+   на body и многие узлы. */
+html,
+body,
+body.theme.theme-blue,
+body.theme.theme-blue *,
+input, textarea, select, button {
+    font-family: var(--font-body) !important;
+}
+
+body.theme.theme-blue {
+    font-size: var(--fs-body);
+    line-height: 1.6;
 }
 
 /* ============================================================
@@ -163,12 +183,13 @@ body.theme.theme-blue {
 .notary-wellcome,
 .notary-wellcome.background-display {
     background-image: none !important;
-    background-color: var(--c-surface) !important;
-    padding: 72px 0 64px !important;
+    background-color: var(--c-bg) !important;
+    padding: 80px 0 88px !important;
+    border-bottom: 1px solid var(--c-border);
 }
 
 .notary-wellcome > .container {
-    max-width: 1200px;
+    max-width: var(--container);
 }
 
 /* Двухколоночная сетка: текст слева, портрет справа.
@@ -189,17 +210,19 @@ body.theme.theme-blue {
     color: var(--c-text);
     font-size: var(--fs-h1);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -1.2px;
-    margin: 0 0 12px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0 0 14px;
 }
 
 .notary-wellcome__content--subtitle h5 {
     color: var(--c-text-muted);
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 1.4;
-    margin: 0 0 28px;
+    margin: 0 0 32px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .notary-wellcome__content--txt {
@@ -232,12 +255,13 @@ body.theme.theme-blue {
     color: #fff !important;
     padding: 14px 28px;
     border-radius: var(--r-sm);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
     text-decoration: none;
     line-height: 1;
     transition: background 0.15s ease;
     border: none;
+    letter-spacing: 0.3px;
 }
 
 .notary-wellcome__content--btn:hover {
@@ -253,10 +277,10 @@ body.theme.theme-blue {
     align-self: center;
     justify-self: end;
     width: 100%;
-    max-width: 380px;
+    max-width: 320px;
     aspect-ratio: 3 / 4;
-    background: var(--c-surface-2);
-    border: 1px dashed var(--c-border);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
     border-radius: var(--r-md);
     display: flex;
     align-items: center;
@@ -301,51 +325,67 @@ body.theme.theme-blue {
 
 .notary-wellcome-bottom {
     background: var(--c-bg);
-    padding: 32px 0;
+    padding: 64px 0;
     border-bottom: 1px solid var(--c-border);
+}
+
+.advantage--container {
+    max-width: var(--container);
+    margin: 0 auto;
 }
 
 .advantage__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 32px;
+    counter-reset: adv-counter;
+    padding: 0 16px;
 }
 
 @media (max-width: 768px) {
     .advantage__content {
         grid-template-columns: 1fr;
+        gap: 24px;
     }
 }
 
 .advantage__block {
-    background: var(--c-bg);
-    border: 1px solid var(--c-border);
-    border-radius: var(--r-sm);
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: border-color 0.15s ease, background 0.15s ease;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 20px;
+    row-gap: 0;
+    position: relative;
+    counter-increment: adv-counter;
 }
 
-.advantage__block:hover {
-    border-color: var(--c-accent);
-    background: var(--c-accent-soft);
+.advantage__block::before {
+    content: counter(adv-counter, decimal-leading-zero);
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1;
+    align-self: start;
+    padding-top: 2px;
+    letter-spacing: -1px;
 }
 
 .advantage__block--icon {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
+    display: none;
 }
 
 .advantage__block--txt {
     color: var(--c-text);
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    padding-top: 6px;
 }
 
 /* ============================================================
@@ -360,7 +400,7 @@ body.theme.theme-blue {
 }
 
 .notary-footer--container {
-    max-width: 1200px;
+    max-width: var(--container);
 }
 
 .notary-footer-right {
@@ -508,13 +548,14 @@ h1.title,
 
 .services.bkg-grey,
 .services {
-    background: var(--c-surface);
-    padding: 0 0 64px;
+    background: var(--c-bg);
+    padding: 0 0 80px;
+    border-bottom: 1px solid var(--c-border);
 }
 
 .services .container,
 .services > .container {
-    max-width: 1200px;
+    max-width: var(--container);
 }
 
 .services__block--section {
@@ -528,18 +569,17 @@ h1.title,
     background: var(--c-bg);
     border: 1px solid var(--c-border);
     border-radius: var(--r-md);
-    padding: 28px 24px;
+    padding: 32px 28px;
     height: 100%;
     box-shadow: none;
-    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, background 0.15s ease;
     display: flex;
     flex-direction: column;
 }
 
 .services__block:hover {
     border-color: var(--c-accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    background: var(--c-surface);
 }
 
 .services__block--icon {
@@ -664,12 +704,12 @@ h1.title,
 
 .notary-sections.bkg-white {
     background: var(--c-bg);
-    padding: 64px 0;
-    border-top: 1px solid var(--c-border);
+    padding: 72px 0;
+    border-top: none;
 }
 
 .notary-sections .container {
-    max-width: 1200px;
+    max-width: var(--container);
 }
 
 .notary-sections .row {
@@ -694,26 +734,25 @@ h1.title,
 
 .notary-sections__block,
 .notary-sections__block--center {
-    background: var(--c-surface);
+    background: var(--c-bg);
     border: 1px solid var(--c-border);
     border-radius: var(--r-md);
-    padding: 32px 24px;
+    padding: 36px 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     text-decoration: none;
     color: var(--c-text);
-    gap: 16px;
+    gap: 18px;
     margin: 0;
-    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .notary-sections__block:hover,
 .notary-sections__block--center:hover {
     border-color: var(--c-accent);
-    background: var(--c-bg);
-    transform: translateY(-2px);
+    background: var(--c-surface);
 }
 
 .notary-sections__block--image {
@@ -929,7 +968,8 @@ h1.title,
 
 .contact-section {
     background: var(--c-surface) !important;
-    padding: 72px 16px !important;
+    padding: 80px 16px !important;
+    border-top: 1px solid var(--c-border);
 }
 
 .contact-section__title {
@@ -1181,7 +1221,7 @@ h1.title,
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    /* Если файла нет, останется dashed border + текст из content */
+    /* Если файла нет, останется placeholder-текст */
 }
 
 /* Когда фото будет — раскомментируй блок ниже, чтобы убрать placeholder-текст и пунктир:
