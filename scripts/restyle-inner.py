@@ -45,8 +45,26 @@ def extract_description(html: str) -> str:
     return re.sub(r"\s+", " ", m.group(1)).strip() if m else ""
 
 
-def extract_breadcrumbs(html: str):
-    """Возвращает список (label, href|None)."""
+def extract_breadcrumbs(html):
+    """Возвращает список (label, href|None). Поддерживает оба формата."""
+    # 1) Новый формат — уже сконвертированная страница
+    m_new = re.search(r'<ul class="lx-breadcrumbs">(.*?)</ul>', html, re.DOTALL)
+    if m_new:
+        items = []
+        for li in re.findall(r"<li[^>]*>(.*?)</li>", m_new.group(1), re.DOTALL):
+            a = re.search(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', li, re.DOTALL)
+            if a:
+                label = re.sub(r"<[^>]+>", " ", a.group(2)).strip()
+                label = re.sub(r"\s+", " ", label)
+                items.append((label, a.group(1)))
+            else:
+                label = re.sub(r"<[^>]+>", " ", li).strip()
+                label = re.sub(r"\s+", " ", label)
+                if label:
+                    items.append((label, None))
+        return items
+
+    # 2) Старый формат
     m = re.search(r'<ul class="breadcrumbs">(.*?)</ul>', html, re.DOTALL)
     if not m:
         return []
@@ -69,7 +87,14 @@ def extract_breadcrumbs(html: str):
 
 
 def extract_h1(html):
-    # First try the title block after breadcrumbs
+    # Сначала пробуем новый шаблон
+    m = re.search(r'<h1[^>]*class="lx-page-title"[^>]*>(.*?)</h1>', html, re.DOTALL)
+    if m:
+        text = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
+        text = re.sub(r"\s+", " ", text)
+        if text:
+            return text
+    # Старый шаблон
     m = re.search(r'<h1[^>]*class="title[^"]*"[^>]*>(.*?)</h1>', html, re.DOTALL)
     if m:
         text = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
@@ -79,8 +104,38 @@ def extract_h1(html):
     return None
 
 
-def extract_main_content(html: str) -> str:
-    """Контент между </ul> крошек и блоком sharing/cookie/footer."""
+def _strip_template_wrappers(content):
+    """Удаляет любые вложенные блоки шаблона (на случай повторной конвертации)."""
+    patterns = [
+        r'<div class="lx-topbar">.*?</div>\s*</div>\s*</div>',  # topbar (3 уровня div)
+        r'<div class="lx-topbar">.*?(?=<header|<section|<footer|$)',
+        r'<header class="lx-header">.*?</header>',
+        r'<section class="lx-page-head"[^>]*>.*?</section>',
+        r'<section class="lx-section"[^>]*id="contact-form"[^>]*>.*?</section>',
+        r'<footer class="lx-footer">.*?</footer>',
+        r'<script src="[^"]*contact-form\.js"[^>]*>\s*</script>',
+        r'</body>\s*</html>',
+    ]
+    for pat in patterns:
+        content = re.sub(pat, '', content, flags=re.DOTALL)
+    return content.strip()
+
+
+def extract_main_content(html):
+    """Контент между </ul> крошек и блоком sharing/cookie/footer.
+    Идемпотентно: на уже сконвертированной странице возвращает содержимое .lx-page."""
+
+    # Уже новый шаблон — берём только содержимое последнего (внутреннего) .lx-page
+    matches = list(re.finditer(
+        r'<section class="lx-page"[^>]*>\s*<div class="lx-container">\s*(.*?)\s*</div>\s*</section>',
+        html, re.DOTALL,
+    ))
+    if matches:
+        # Берём последний (самый вложенный) и дополнительно чистим
+        body = matches[-1].group(1).strip()
+        body = _strip_template_wrappers(body)
+        return body
+
     after_bc = re.split(r'<ul class="breadcrumbs">.*?</ul>', html, maxsplit=1, flags=re.DOTALL)
     body = after_bc[-1] if len(after_bc) > 1 else html
 
