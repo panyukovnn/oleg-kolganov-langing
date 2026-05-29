@@ -439,3 +439,571 @@ body.theme.theme-blue {
 .notary-footer-left .notary-header-top__block--tel .txt-opacity {
     color: #fff;
 }
+
+/* =============================================================
+   ФАЗА 2: услуги, статьи, тарифы, форма (стрoгая), внутренние стр.
+   ============================================================= */
+
+/* ============================================================
+   Заголовки секций
+   ============================================================ */
+
+.blue--title,
+.blue--title-center {
+    text-align: center;
+    background: none;
+    color: var(--c-text);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 40px;
+    padding: 64px 16px 0;
+}
+
+.blue--title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--c-accent);
+    margin: 16px auto 0;
+    border-radius: 2px;
+}
+
+.blue--title a {
+    color: var(--c-text);
+    text-decoration: none;
+}
+
+h1.title,
+.h1.title {
+    color: var(--c-text);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+    margin: 0 0 24px;
+}
+
+.breadcrumbs {
+    font-size: 13px;
+    color: var(--c-text-soft);
+    padding: 24px 0 0;
+}
+
+.breadcrumbs a {
+    color: var(--c-text-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--c-accent);
+}
+
+/* ============================================================
+   Блок услуг / целей обращения (главная)
+   ============================================================ */
+
+.services.bkg-grey,
+.services {
+    background: var(--c-surface);
+    padding: 0 0 64px;
+}
+
+.services .container,
+.services > .container {
+    max-width: 1200px;
+}
+
+.services__block--section {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.services__block {
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 28px 24px;
+    height: 100%;
+    box-shadow: none;
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.services__block:hover {
+    border-color: var(--c-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.services__block--icon {
+    margin-bottom: 16px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.services__block--icon img,
+.services__block--icon .svg {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.services__block-content--title {
+    color: var(--c-text) !important;
+    font-size: 17px !important;
+    font-weight: 700;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+.services__block-content--label {
+    color: var(--c-text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* «Все цели обращения / Все статьи» */
+.btn-all,
+.btn-w-bottom {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--c-bg);
+    border: 1.5px solid var(--c-border);
+    color: var(--c-text);
+    padding: 12px 24px;
+    border-radius: var(--r-sm);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 32px auto 0;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-all:hover,
+.btn-w-bottom:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+}
+
+.btn-all--count {
+    color: var(--c-text-soft);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* ============================================================
+   Блок «Нотариус поможет» — refine grid
+   ============================================================ */
+
+.notary-help.bkg-white {
+    background: var(--c-bg);
+    padding-bottom: 56px;
+}
+
+.notary-help .container {
+    max-width: 1200px;
+}
+
+/* Подменяем стандартную сетку из contact-form.css на ту, что в духе остального дизайна */
+.notary-help-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    padding: 0 16px !important;
+}
+
+.notary-help-grid .notary-help__home-slider {
+    height: 200px !important;
+    border-radius: var(--r-md) !important;
+    padding: 24px !important;
+}
+
+.notary-help-grid .notary-help__home-slider::before {
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%) !important;
+}
+
+.notary-help-grid .notary-help__home-slider--content {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+}
+
+@media (max-width: 1024px) {
+    .notary-help-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .notary-help-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .notary-help-grid .notary-help__home-slider {
+        height: 180px !important;
+    }
+}
+
+.notary-help__main--btn {
+    text-align: center;
+    margin-top: 32px;
+}
+
+/* ============================================================
+   Секции «Тарифы / Реестры / Льготы»
+   ============================================================ */
+
+.notary-sections.bkg-white {
+    background: var(--c-bg);
+    padding: 64px 0;
+    border-top: 1px solid var(--c-border);
+}
+
+.notary-sections .container {
+    max-width: 1200px;
+}
+
+.notary-sections .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .notary-sections .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.notary-sections .col-xs-12.col-md-4 {
+    width: 100%;
+    padding: 0;
+    max-width: none;
+    flex: none;
+}
+
+.notary-sections__block,
+.notary-sections__block--center {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--c-text);
+    gap: 16px;
+    margin: 0;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.notary-sections__block:hover,
+.notary-sections__block--center:hover {
+    border-color: var(--c-accent);
+    background: var(--c-bg);
+    transform: translateY(-2px);
+}
+
+.notary-sections__block--image {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.notary-sections__block--txt {
+    color: var(--c-text);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ============================================================
+   Внутренние страницы — статья
+   ============================================================ */
+
+.notary-article {
+    background: var(--c-bg);
+}
+
+.notary-article__description {
+    background-color: var(--c-surface) !important;
+    background-image: none !important;
+    padding: 48px 0 56px !important;
+    margin-bottom: 0;
+}
+
+.notary-article__description .container {
+    max-width: 900px;
+}
+
+.notary-article__description--title {
+    color: var(--c-text);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+}
+
+.notary-article__description--subtitle,
+.notary-article__description--bottom {
+    color: var(--c-text-muted);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+.notary-article__description--date {
+    color: var(--c-text-soft);
+    font-size: 13px;
+    margin-top: 16px;
+}
+
+.notary-article--content {
+    padding: 48px 0;
+    background: var(--c-bg);
+}
+
+.notary-article--content .container {
+    max-width: 760px;
+}
+
+.notary-article--content p {
+    color: var(--c-text);
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+}
+
+.notary-article--content h2,
+.notary-article--content h3 {
+    color: var(--c-text);
+    margin: 36px 0 16px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+}
+
+.notary-article--content h2 {
+    font-size: 26px;
+}
+
+.notary-article--content h3 {
+    font-size: 20px;
+}
+
+.notary-article--content a {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.notary-article--content ul,
+.notary-article--content ol {
+    color: var(--c-text);
+    font-size: 17px;
+    line-height: 1.7;
+    padding-left: 22px;
+}
+
+.notary-article--content li {
+    margin-bottom: 8px;
+}
+
+.notary-article--content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--r-md);
+    margin: 24px 0;
+}
+
+/* ============================================================
+   Внутренние страницы — общий контент
+   ============================================================ */
+
+.notary-content {
+    padding: 32px 0 64px;
+    background: var(--c-bg);
+}
+
+.notary-content .container {
+    max-width: 980px;
+}
+
+.notary-content p {
+    color: var(--c-text);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+.notary-content h2,
+.notary-content h3 {
+    color: var(--c-text);
+    line-height: 1.25;
+}
+
+.notary-content h2 {
+    font-size: 24px;
+    margin: 32px 0 14px;
+}
+
+.notary-content h3 {
+    font-size: 19px;
+    margin: 24px 0 10px;
+}
+
+.notary-content a {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.notary-content ul,
+.notary-content ol {
+    color: var(--c-text);
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.notary-content li {
+    margin-bottom: 6px;
+}
+
+/* Внутренний блок about-top на странице «Нотариальная контора» */
+.about-top {
+    padding: 48px 0;
+}
+
+.about-top__right--title {
+    color: var(--c-text);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    margin: 0 0 12px;
+}
+
+.about-top__right--logo-txt {
+    color: var(--c-text-muted);
+    font-size: 17px;
+    margin: 0 0 24px;
+}
+
+.about-top__right--txt-bottom {
+    color: var(--c-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 8px;
+}
+
+.about-top__right--txt-bottom.order-number {
+    color: var(--c-text-soft);
+    font-size: 13px;
+}
+
+.about-top__right--image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--r-md);
+}
+
+.bkg-blue {
+    background: var(--c-bg) !important;
+}
+
+/* ============================================================
+   Форма обратной связи — стрoгая, без градиентов
+   ============================================================ */
+
+.contact-section {
+    background: var(--c-surface) !important;
+    padding: 72px 16px !important;
+}
+
+.contact-section__title {
+    color: var(--c-text) !important;
+    font-size: 32px !important;
+    letter-spacing: -0.5px !important;
+    font-weight: 700 !important;
+}
+
+.contact-section__title::after {
+    background: var(--c-accent) !important;
+    width: 48px !important;
+}
+
+.contact-section__subtitle {
+    color: var(--c-text-muted) !important;
+}
+
+.contact-form {
+    background: var(--c-bg) !important;
+    border: 1px solid var(--c-border) !important;
+    box-shadow: none !important;
+    border-radius: var(--r-md) !important;
+}
+
+.contact-form__label {
+    color: var(--c-text-muted) !important;
+    font-weight: 600 !important;
+}
+
+.contact-form__input,
+.contact-form__select,
+.contact-form__textarea {
+    border: 1.5px solid var(--c-border) !important;
+    border-radius: var(--r-sm) !important;
+    background: var(--c-bg) !important;
+    color: var(--c-text) !important;
+}
+
+.contact-form__input:hover,
+.contact-form__select:hover,
+.contact-form__textarea:hover {
+    border-color: var(--c-text-soft) !important;
+}
+
+.contact-form__input:focus,
+.contact-form__select:focus,
+.contact-form__textarea:focus {
+    border-color: var(--c-accent) !important;
+    box-shadow: 0 0 0 3px var(--c-accent-soft) !important;
+    background: var(--c-bg) !important;
+}
+
+/* Плоская кнопка */
+.contact-form__submit {
+    background: var(--c-accent) !important;
+    border-radius: var(--r-sm) !important;
+    box-shadow: none !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+.contact-form__submit:hover:not(:disabled) {
+    background: var(--c-accent-hover) !important;
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+.contact-form__submit:active:not(:disabled) {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+.contact-form__hint a {
+    color: var(--c-accent) !important;
+}
