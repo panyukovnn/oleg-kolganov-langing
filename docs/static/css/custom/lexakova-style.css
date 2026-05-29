@@ -1226,6 +1226,149 @@ img, svg { max-width: 100%; display: block; }
 /* notary-service__description */
 .lx-page .notary-service__description--content-article { margin: 24px 0; }
 
+/* Тарифная страница — карточки категорий */
+.lx-tariff-cats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 32px 0 0;
+}
+.lx-tariff-cat {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+}
+.lx-tariff-cat:hover {
+    border-color: var(--c-primary);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+.lx-tariff-cat__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--c-text);
+    margin: 0 0 10px;
+}
+.lx-tariff-cat__text {
+    color: var(--c-text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 14px;
+    flex: 1;
+}
+.lx-tariff-cat__cta {
+    color: var(--c-primary) !important;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    align-self: flex-start;
+}
+.lx-tariff-cat__cta:hover { color: var(--c-primary-dark) !important; }
+
+@media (max-width: 720px) {
+    .lx-tariff-cats { grid-template-columns: 1fr; }
+}
+
+/* (старый код accordion ниже больше не используется, но оставлен на случай) */
+.lx-tariff-group {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    background: #fff;
+    margin: 0 0 12px;
+    overflow: hidden;
+}
+.lx-tariff-group summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--c-text);
+    background: var(--c-bg-soft);
+    list-style: none;
+    user-select: none;
+}
+.lx-tariff-group summary::-webkit-details-marker { display: none; }
+.lx-tariff-group__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--c-primary);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    line-height: 1;
+    border: 1px solid var(--c-border);
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.lx-tariff-group[open] .lx-tariff-group__icon { transform: rotate(45deg); background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+.lx-tariff-group[open] summary { border-bottom: 1px solid var(--c-border); }
+.lx-tariff-group__body { padding: 0; overflow-x: auto; }
+
+.lx-tariff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.45;
+}
+.lx-tariff-table thead th {
+    background: #fff;
+    color: var(--c-text-muted);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--c-border);
+    white-space: nowrap;
+}
+.lx-tariff-table tbody td {
+    padding: 14px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--c-border);
+    color: var(--c-text);
+}
+.lx-tariff-table tbody tr:last-child td { border-bottom: none; }
+.lx-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
+.lx-tariff-num { width: 48px; color: var(--c-text-muted); }
+.lx-tariff-fed { width: 220px; color: var(--c-text-muted); font-size: 13px; }
+.lx-tariff-reg { width: 200px; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
+
+.lx-tariff-note {
+    background: var(--c-bg-soft);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: var(--c-text-muted);
+}
+.lx-tariff-note p { margin: 0 0 8px; }
+.lx-tariff-note p:last-child { margin-bottom: 0; }
+
+@media (max-width: 720px) {
+    .lx-tariff-table { font-size: 13px; }
+    .lx-tariff-table thead { display: none; }
+    .lx-tariff-table, .lx-tariff-table tbody, .lx-tariff-table tr, .lx-tariff-table td { display: block; width: auto; }
+    .lx-tariff-table tr { padding: 14px 16px; border-bottom: 1px solid var(--c-border); }
+    .lx-tariff-table td { padding: 4px 0; border-bottom: none; white-space: normal; }
+    .lx-tariff-num { display: inline-block; font-weight: 600; }
+    .lx-tariff-num::after { content: ' '; }
+    .lx-tariff-fed::before { content: 'Федеральный: '; color: var(--c-text-muted); font-weight: 500; }
+    .lx-tariff-reg::before { content: 'УПТХ: '; color: var(--c-text-muted); font-weight: 500; }
+    .lx-tariff-reg { color: var(--c-primary); }
+}
+
 /* Скрытие любых случайно оставшихся декоративных пустот */
 .lx-page .advantage--container:empty,
 .lx-page .advantage__content:empty { display: none; }

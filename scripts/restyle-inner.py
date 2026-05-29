@@ -213,7 +213,7 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
                 <a href="{base}index.html" class="lx-nav__link">Главная</a>
                 <a href="{base}notarialnaya-kontora/index.html" class="lx-nav__link">О нотариусе</a>
                 <a href="{base}celi-obrashhenija/index.html" class="lx-nav__link">Нотариальные действия</a>
-                <a href="{base}deystviya-i-tarify/index.html" class="lx-nav__link">Тарифы</a>
+                <a href="{base}fnc/tarify/index.html" class="lx-nav__link">Тарифы</a>
                 <a href="{base}articles/index.html" class="lx-nav__link">Статьи</a>
                 <a href="{base}pravovaya-informaciya/index.html" class="lx-nav__link">Правовая информация</a>
                 <a href="{base}kontakty/index.html" class="lx-nav__link">Контакты</a>
@@ -307,7 +307,7 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
                 <nav class="lx-footer__nav">
                     <a href="{base}notarialnaya-kontora/index.html">О нотариусе</a>
                     <a href="{base}celi-obrashhenija/index.html">Нотариальные действия</a>
-                    <a href="{base}deystviya-i-tarify/index.html">Тарифы</a>
+                    <a href="{base}fnc/tarify/index.html">Тарифы</a>
                     <a href="{base}articles/index.html">Статьи</a>
                     <a href="{base}kontakty/index.html">Контакты</a>
                 </nav>
