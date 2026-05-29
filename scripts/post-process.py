@@ -39,6 +39,7 @@ CONSTRUCTOR_PATTERNS = [
 # Кастомные инъекции — удаляются в начале процессинга, чтобы потом гарантированно
 # добавиться один раз (true idempotent).
 CUSTOM_INJECTION_PATTERNS = [
+    r'<link href="[^"]*static/css/custom/redesign\.css"[^>]*/?>\s*',
     r'<link href="[^"]*static/css/custom/contact-form\.css"[^>]*/?>\s*',
     r'<script src="[^"]*static/js/custom/contact-form\.js"[^>]*></script>\s*',
     r'<script src="[^"]*static/js/custom/carousel-fallback\.js"[^>]*></script>\s*',
@@ -57,8 +58,13 @@ COOKIE_BANNER = '''
 </div>
 '''
 
-# Что инжектим в <head> на всех страницах
-HEAD_INJECTION = '<link href="/static/css/custom/contact-form.css" rel="stylesheet" type="text/css" />\n'
+# Что инжектим в <head> на всех страницах.
+# redesign.css подключаем ПЕРВЫМ — это база с токенами и общими стилями.
+# contact-form.css — поверх, со стилями только для формы.
+HEAD_INJECTION = (
+    '<link href="/static/css/custom/redesign.css" rel="stylesheet" type="text/css" />\n'
+    '<link href="/static/css/custom/contact-form.css" rel="stylesheet" type="text/css" />\n'
+)
 
 # Что инжектим перед </body> на всех страницах
 BODY_INJECTION = (
