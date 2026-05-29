@@ -703,6 +703,462 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* ============================================================
+   Внутренние страницы — breadcrumbs, заголовок, контент
+   ============================================================ */
+
+.lx-page-head {
+    background: linear-gradient(135deg, #f5f7fb 0%, #e8eef7 100%);
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--c-border);
+}
+.lx-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    list-style: none;
+    font-size: 13px;
+    color: var(--c-text-muted);
+    margin-bottom: 14px;
+}
+.lx-breadcrumbs li { display: inline-flex; align-items: center; gap: 10px; }
+.lx-breadcrumbs li:not(:last-child)::after {
+    content: '/';
+    color: var(--c-text-muted);
+    opacity: 0.5;
+}
+.lx-breadcrumbs a { color: var(--c-primary); }
+.lx-breadcrumbs a:hover { text-decoration: underline; }
+.lx-breadcrumbs li:last-child { color: var(--c-text); font-weight: 500; }
+
+.lx-page-title {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--c-text);
+    margin: 0;
+}
+
+.lx-page {
+    padding: 48px 0 64px;
+}
+.lx-content {
+    max-width: 880px;
+    font-size: 16px;
+    color: var(--c-text);
+    line-height: 1.65;
+}
+.lx-content.lx-content--wide { max-width: 1100px; }
+.lx-content h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 36px 0 14px;
+    color: var(--c-text);
+    letter-spacing: -0.01em;
+}
+.lx-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: var(--c-text);
+}
+.lx-content h4 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 22px 0 10px;
+    color: var(--c-text);
+}
+.lx-content h5, .lx-content h6 { font-size: 16px; font-weight: 600; margin: 18px 0 8px; }
+.lx-content p { margin: 0 0 14px; }
+.lx-content > p:first-child { font-size: 17px; color: var(--c-text-muted); }
+.lx-content ul, .lx-content ol { margin: 0 0 16px 0; padding-left: 22px; }
+.lx-content li { margin-bottom: 6px; }
+.lx-content a { color: var(--c-primary); border-bottom: 1px solid rgba(30, 77, 139, 0.25); transition: border-color 0.2s; }
+.lx-content a:hover { border-bottom-color: var(--c-primary); }
+.lx-content blockquote {
+    border-left: 3px solid var(--c-primary);
+    padding: 4px 0 4px 18px;
+    margin: 18px 0;
+    color: var(--c-text-muted);
+    font-style: italic;
+}
+.lx-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 18px 0;
+    font-size: 15px;
+}
+.lx-content th, .lx-content td {
+    border: 1px solid var(--c-border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+}
+.lx-content th { background: var(--c-bg-soft); font-weight: 600; }
+.lx-content img { border-radius: var(--radius-sm); margin: 16px 0; }
+.lx-content hr { border: none; border-top: 1px solid var(--c-border); margin: 28px 0; }
+
+/* ============================================================
+   Совместимость со старой разметкой okolganov.ru
+   ============================================================ */
+
+.lx-page .breadcrumbs { display: none; }
+.lx-page .notary-content--square,
+.lx-page .container--mob-noactive {
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+.lx-page .container { padding: 0 !important; max-width: none !important; }
+.lx-page section.container { padding: 0 !important; }
+
+/* Заголовки */
+.lx-page .title,
+.lx-page h1.title {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--c-text);
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+}
+
+/* "Карточка о нотариусе" — синий блок на странице О нотариусе */
+.lx-page .about-top { margin: 0 0 32px; }
+.lx-page .about-top .bkg-blue {
+    background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light)) !important;
+    border-radius: var(--radius-lg);
+    color: #fff !important;
+    padding: 40px 32px;
+    text-align: center;
+}
+.lx-page .about-top__right { text-align: center; }
+.lx-page .about-top__right--image { width: 64px; margin: 0 auto 16px; filter: brightness(0) invert(1); opacity: 0.9; }
+.lx-page .about-top__right--logo-txt h5 {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 8px;
+}
+.lx-page .about-top__right--title {
+    color: #fff !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    margin: 0 0 18px !important;
+    letter-spacing: -0.01em;
+}
+.lx-page .about-top__right--txt-bottom {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 14px !important;
+    margin: 6px 0 !important;
+}
+.lx-page .about-top__right--txt-bottom b { color: #fff; font-weight: 700; }
+
+/* Контент-области старого шаблона */
+.lx-page .notary-content,
+.lx-page .notary-content-about {
+    max-width: 880px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--c-text);
+}
+.lx-page .notary-content h2 { font-size: 26px; font-weight: 700; margin: 32px 0 14px; }
+.lx-page .notary-content h3 { font-size: 20px; font-weight: 700; margin: 26px 0 12px; }
+.lx-page .notary-content h4 { font-size: 17px; font-weight: 600; margin: 22px 0 10px; }
+.lx-page .notary-content p { margin: 0 0 14px; }
+.lx-page .notary-content a { color: var(--c-primary); border-bottom: 1px solid rgba(30, 77, 139, 0.25); }
+.lx-page .notary-content ul, .lx-page .notary-content ol { padding-left: 22px; margin: 0 0 16px; }
+.lx-page .notary-content li { margin-bottom: 6px; }
+.lx-page .notary-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+.lx-page .notary-content th, .lx-page .notary-content td { border: 1px solid var(--c-border); padding: 10px 14px; text-align: left; vertical-align: top; }
+.lx-page .notary-content th { background: var(--c-bg-soft); font-weight: 600; }
+
+/* Статьи */
+.lx-page .notary-article { display: block; }
+.lx-page .notary-article--content { display: block; max-width: 880px; }
+.lx-page .notary-article__description--title {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    line-height: 1.18 !important;
+    margin: 0 0 14px !important;
+    color: var(--c-text) !important;
+    letter-spacing: -0.02em;
+}
+.lx-page .notary-article__description--subtitle {
+    font-size: 17px !important;
+    color: var(--c-text-muted) !important;
+    margin: 0 0 28px !important;
+}
+.lx-page .notary-article__description--date {
+    font-size: 13px !important;
+    color: var(--c-text-muted) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 14px !important;
+}
+.lx-page .notary-article__description,
+.lx-page .notary-article__description--bottom {
+    font-size: 16px;
+    line-height: 1.7;
+}
+.lx-page .notary-article__description p,
+.lx-page .notary-article__description--bottom p { margin: 0 0 14px; }
+
+/* Списки услуг / тарифов */
+.lx-page .service-list-article {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+    display: grid;
+    gap: 10px;
+}
+.lx-page .service-list-article--item {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    transition: all 0.2s;
+}
+.lx-page .service-list-article--item:hover {
+    border-color: var(--c-primary);
+    box-shadow: var(--shadow-sm);
+}
+.lx-page .service-list-article--title {
+    color: var(--c-text) !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    border-bottom: none !important;
+}
+.lx-page .service-list-article--item:hover .service-list-article--title { color: var(--c-primary) !important; }
+
+/* Сетка услуг на /celi-obrashhenija/ */
+.lx-page .services { background: transparent !important; padding: 0 !important; }
+.lx-page .main-carusel,
+.lx-page .owl-carousel {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+    width: auto !important;
+}
+.lx-page .services__block--section {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all 0.25s;
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-border) !important;
+}
+.lx-page .services__block--section:hover {
+    border-color: var(--c-primary);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+.lx-page .services__block { display: block; }
+.lx-page .services__block--icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--c-bg-soft);
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+}
+.lx-page .services__block--icon img { width: 26px; height: 26px; }
+.lx-page .services__block-content--title {
+    color: var(--c-text) !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin: 0 0 8px !important;
+}
+.lx-page .services__block-content--label {
+    color: var(--c-text-muted) !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* Список статей */
+.lx-page .notary-content__list--help {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+}
+.lx-page .notary-content__list--help li {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 22px;
+    transition: all 0.25s;
+}
+.lx-page .notary-content__list--help li:hover {
+    border-color: var(--c-primary);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+.lx-page .articles--link,
+.lx-page .notary-content__list--help a {
+    color: var(--c-text) !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    border-bottom: none !important;
+}
+.lx-page .articles--link:hover,
+.lx-page .notary-content__list--help a:hover { color: var(--c-primary) !important; }
+
+/* Поиск по статьям */
+.lx-page .notary-content__search {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 20px;
+    max-width: 520px;
+}
+.lx-page .notary-content__search--field {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 15px;
+}
+.lx-page .notary-content__search--field:focus { outline: none; border-color: var(--c-primary); }
+.lx-page .notary-content__search--btn {
+    padding: 12px 24px;
+    background: var(--c-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+}
+.lx-page .notary-content__search--btn:hover { background: var(--c-primary-dark); }
+
+/* Контакты */
+.lx-page .contact-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+}
+.lx-page .contact-row-col {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+.lx-page .contact-row-col-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+.lx-page .contact-row-col-row:last-child { margin-bottom: 0; }
+.lx-page .contact-image {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--c-bg-soft);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+.lx-page .contact-image img { width: 18px; height: 18px; }
+.lx-page .contact-image--bottom-txt { font-size: 14px; color: var(--c-text); }
+.lx-page .contact-phones,
+.lx-page .contact-emails { display: flex; flex-direction: column; gap: 6px; }
+.lx-page .contact-phone { font-size: 14px; color: var(--c-text-muted); }
+.lx-page .contact-phone span { color: var(--c-text); font-weight: 500; margin-left: 6px; }
+
+/* Кнопки внутри страниц */
+.lx-page .btn-all,
+.lx-page .btn-w-bottom {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px !important;
+    background: var(--c-primary) !important;
+    color: #fff !important;
+    border-radius: var(--radius-sm) !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+    border: none !important;
+    margin-top: 24px;
+}
+.lx-page .btn-all:hover, .lx-page .btn-w-bottom:hover { background: var(--c-primary-dark) !important; color: #fff !important; }
+.lx-page .btn-all--count {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 13px;
+    margin-left: 4px;
+}
+
+/* Sharing / sections — скрываем декоративные блоки старого шаблона */
+.lx-page .notary-sharing,
+.lx-page .notary-sections,
+.lx-page .notary-modal,
+.lx-page .notary-modal--window,
+.lx-page .notary-content-download__block--size,
+.lx-page .announcements_null { display: none !important; }
+
+/* Документы для скачивания */
+.lx-page .notary-content-download__block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--c-bg-soft);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 12px 0;
+    border: 1px solid var(--c-border);
+}
+.lx-page .notary-content-download__block--title {
+    flex: 1;
+    color: var(--c-text);
+    font-weight: 500;
+}
+.lx-page .notary-content-download__block--btn {
+    background: var(--c-primary);
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    border-bottom: none !important;
+}
+
+/* Аккордеон тарифов */
+.lx-page .accordion-tariffs {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    margin: 16px 0;
+    background: #fff;
+    overflow: hidden;
+}
+.lx-page .accordion-tariffs + .accordion-tariffs { margin-top: 8px; }
+.lx-page .tariffs-title {
+    padding: 16px 20px;
+    background: var(--c-bg-soft);
+    font-weight: 600;
+    color: var(--c-text);
+    border-bottom: 1px solid var(--c-border);
+}
+
+/* notary-service__description */
+.lx-page .notary-service__description--content-article { margin: 24px 0; }
+
+/* Скрытие любых случайно оставшихся декоративных пустот */
+.lx-page .advantage--container:empty,
+.lx-page .advantage__content:empty { display: none; }
+
+/* ============================================================
    Mobile
    ============================================================ */
 
@@ -716,6 +1172,11 @@ img, svg { max-width: 100%; display: block; }
     .lx-footer__grid { grid-template-columns: 1fr 1fr; }
     .lx-loc { grid-template-columns: 1fr; }
     .lx-header__meta { display: none; }
+    .lx-page .main-carusel,
+    .lx-page .owl-carousel { grid-template-columns: repeat(2, 1fr) !important; }
+    .lx-page .notary-content__list--help { grid-template-columns: repeat(2, 1fr); }
+    .lx-page .contact-row { grid-template-columns: 1fr; }
+    .lx-page-title { font-size: 30px; }
 }
 
 @media (max-width: 720px) {
