@@ -1,464 +1,193 @@
 /* =============================================================
-   Редизайн (Фаза 1): дизайн-токены + хедер + hero + футер.
-   Подключается ПОСЛЕ оригинального main.css → перебивает по специфичности.
+   Skin-редизайн: только цвета, типографика и декорация.
+   НЕ переопределяем layout (display/grid/flex) оригинальных блоков
+   — это нужно чтобы не драться с main.css и Owl-каруселью.
    ============================================================= */
 
 :root {
-    /* Цвета */
     --c-bg: #ffffff;
     --c-surface: #f6f7fa;
-    --c-surface-2: #eceff5;
-    --c-text: #14181f;
+    --c-text: #1a1f2e;
     --c-text-muted: #5a6478;
-    --c-text-soft: #8892a3;
+    --c-text-soft: #98a0ae;
     --c-accent: #2c5aa0;
     --c-accent-hover: #234680;
     --c-accent-soft: rgba(44, 90, 160, 0.08);
     --c-border: #e3e7ee;
     --c-footer-bg: #1a1f2e;
     --c-footer-text: #c7cdda;
-    --c-footer-border: #2b3145;
-
-    /* Типографика */
-    --fs-h1: 52px;
-    --fs-h2: 32px;
-    --fs-h3: 22px;
-    --fs-body: 16px;
-    --fs-small: 14px;
-    --fs-micro: 12px;
-
-    /* Радиусы и тени */
-    --r-sm: 6px;
-    --r-md: 10px;
-    --shadow-sm: 0 1px 2px rgba(20, 24, 31, 0.05);
-    --shadow-md: 0 4px 20px rgba(20, 24, 31, 0.06);
+    --r-sm: 4px;
+    --r-md: 8px;
 }
 
-/* ============================================================
-   Глобальная база
-   ============================================================ */
+/* ===== Глобал ===== */
 
 body.theme.theme-blue {
     color: var(--c-text);
     background: var(--c-bg);
 }
 
-/* ============================================================
-   Шапка
-   ============================================================ */
+/* Внутренние ссылки в основном тексте */
+.notary-content a,
+.notary-article--content a {
+    color: var(--c-accent);
+}
+
+.notary-content a:hover,
+.notary-article--content a:hover {
+    color: var(--c-accent-hover);
+}
+
+/* ===== Шапка (десктоп) ===== */
 
 .notary-header {
-    background: var(--c-bg);
-    border-bottom: 1px solid var(--c-border);
-    box-shadow: none;
+    background: var(--c-bg) !important;
+    border-bottom: 1px solid var(--c-border) !important;
+    box-shadow: none !important;
 }
 
 .notary-header-top {
-    background: var(--c-bg);
-    padding: 18px 0;
-}
-
-.notary-header-top--container {
-    align-items: center;
-}
-
-.notary-header-top__block--logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-}
-
-.notary-header-top__block--logo img {
-    height: 40px;
-    width: auto;
+    background: var(--c-bg) !important;
 }
 
 .notary-header-top__block--logo-txt {
-    color: var(--c-text);
-    font-weight: 700;
-    font-size: 18px;
-    letter-spacing: -0.2px;
+    color: var(--c-text) !important;
+    font-weight: 700 !important;
 }
 
 .notary-header-top__block--txt-top {
-    color: var(--c-text);
-    font-size: 13px;
-    line-height: 1.4;
+    color: var(--c-text) !important;
 }
 
 .notary-header-top__block--txt-top.txt-opacity {
-    color: var(--c-text-soft);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-}
-
-.notary-header-top__block--txt-top strong {
-    color: var(--c-text);
-    font-weight: 600;
+    color: var(--c-text-soft) !important;
 }
 
 .notary-header-top__block--tel {
-    color: var(--c-accent);
-    font-weight: 700;
-    font-size: 20px;
-    text-decoration: none;
-    letter-spacing: -0.2px;
-    white-space: nowrap;
+    color: var(--c-accent) !important;
+    font-weight: 700 !important;
 }
 
 .notary-header-top__block--tel span,
 .notary-header-top__block--tel .txt-opacity {
-    color: var(--c-accent);
+    color: var(--c-accent) !important;
 }
 
-/* Нижняя навигация */
 .notary-header-menu {
-    background: var(--c-bg);
-    border-top: 1px solid var(--c-border);
-}
-
-.notary-header-menu--container {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    padding: 0;
+    background: var(--c-bg) !important;
+    border-top: 1px solid var(--c-border) !important;
 }
 
 .notary-header-menu--link {
-    color: var(--c-text);
-    padding: 18px 22px;
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    color: var(--c-text) !important;
+    font-weight: 500 !important;
+    transition: color 0.15s ease;
 }
 
 .notary-header-menu--link:hover {
-    color: var(--c-accent);
-    border-bottom-color: var(--c-accent);
+    color: var(--c-accent) !important;
 }
 
 .notary-header-menu--link.cta-link {
-    color: var(--c-accent);
-    font-weight: 600;
+    color: var(--c-accent) !important;
+    font-weight: 600 !important;
 }
 
-.notary-header-menu--link.cta-link:hover {
-    color: var(--c-accent-hover);
+/* ===== Шапка (мобильная) ===== */
+
+.notary-header-mob {
+    background: var(--c-bg) !important;
+    border-bottom: 1px solid var(--c-border) !important;
+    box-shadow: none !important;
 }
 
-/* ============================================================
-   Hero
-   ============================================================ */
-
-.main-top-section {
-    background: var(--c-surface);
+.notary-header-mob__menu {
+    background: var(--c-bg) !important;
 }
 
-/* Перебиваем фон-картинку и плейсхолдер-логику */
+.notary-header-mob__menu--link {
+    color: var(--c-text) !important;
+}
+
+.notary-header-mob__menu--link.cta-link {
+    color: var(--c-accent) !important;
+    font-weight: 600 !important;
+}
+
+.blue-tel-txt,
+.notary-header-top__block--logo-tel,
+.notary-header-top__block--logo-tel a {
+    color: var(--c-accent) !important;
+}
+
+/* ===== Hero ===== */
+
+/* Светло-серый фон вместо Wallpaper.png, никаких layout-перебивок. */
 .notary-wellcome,
 .notary-wellcome.background-display {
     background-image: none !important;
     background-color: var(--c-surface) !important;
-    padding: 72px 0 64px !important;
-}
-
-.notary-wellcome > .container {
-    max-width: 1200px;
-}
-
-/* Двухколоночная сетка: текст слева, портрет справа.
-   Все имеющиеся дети попадают в первую колонку, ::after — портрет во вторую. */
-.notary-wellcome__content.auto {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: 64px;
-    align-items: start;
-}
-
-.notary-wellcome__content.auto > * {
-    grid-column: 1;
-    max-width: 600px;
 }
 
 .notary-wellcome__content--title {
-    color: var(--c-text);
-    font-size: var(--fs-h1);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -1.2px;
-    margin: 0 0 12px;
+    color: var(--c-text) !important;
+    font-weight: 700 !important;
 }
 
 .notary-wellcome__content--subtitle h5 {
-    color: var(--c-text-muted);
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0 0 28px;
+    color: var(--c-text-muted) !important;
+    font-weight: 400 !important;
 }
 
 .notary-wellcome__content--txt {
-    color: var(--c-text-muted);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 16px 0 0;
+    color: var(--c-text-muted) !important;
 }
 
 .notary-wellcome__content--txt b {
-    color: var(--c-text);
-    font-weight: 600;
+    color: var(--c-text) !important;
 }
 
 .notary-wellcome__content--txt.order-number {
-    color: var(--c-text-soft);
-    font-size: 13px;
-}
-
-.notary-wellcome__content-btns {
-    display: flex;
-    gap: 12px;
-    margin: 32px 0 8px;
-    flex-wrap: wrap;
+    color: var(--c-text-soft) !important;
 }
 
 .notary-wellcome__content--btn {
-    display: inline-block;
-    background: var(--c-accent);
+    background: var(--c-accent) !important;
     color: #fff !important;
-    padding: 14px 28px;
-    border-radius: var(--r-sm);
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    line-height: 1;
+    border-radius: var(--r-sm) !important;
+    font-weight: 600 !important;
+    border: none !important;
     transition: background 0.15s ease;
-    border: none;
 }
 
 .notary-wellcome__content--btn:hover {
-    background: var(--c-accent-hover);
+    background: var(--c-accent-hover) !important;
     color: #fff !important;
 }
 
-/* Портрет-плейсхолдер (правая колонка) */
-.notary-wellcome__content.auto::after {
-    content: 'Фото нотариуса';
-    grid-column: 2;
-    grid-row: 1 / -1;
-    align-self: center;
-    justify-self: end;
-    width: 100%;
-    max-width: 380px;
-    aspect-ratio: 3 / 4;
-    background: var(--c-surface-2);
-    border: 1px dashed var(--c-border);
-    border-radius: var(--r-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--c-text-soft);
-    font-size: 14px;
-    letter-spacing: 0.3px;
-}
-
-@media (max-width: 900px) {
-    .notary-wellcome,
-    .notary-wellcome.background-display {
-        padding: 48px 0 40px !important;
-    }
-    .notary-wellcome__content.auto {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    .notary-wellcome__content.auto > * {
-        max-width: 100%;
-        grid-column: 1;
-    }
-    .notary-wellcome__content.auto::after {
-        grid-column: 1;
-        grid-row: auto;
-        justify-self: center;
-        max-width: 280px;
-        order: 99;
-    }
-    .notary-wellcome__content--title {
-        font-size: 36px;
-        letter-spacing: -0.5px;
-    }
-    .notary-wellcome__content--subtitle h5 {
-        font-size: 17px;
-    }
-}
-
-/* ============================================================
-   Преимущества (3 блока: метро/email/сейф)
-   ============================================================ */
+/* ===== Преимущества (3 иконки внизу hero) — не трогаем layout (Owl) ===== */
 
 .notary-wellcome-bottom {
-    background: var(--c-bg);
-    padding: 32px 0;
-    border-bottom: 1px solid var(--c-border);
-}
-
-.advantage__content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .advantage__content {
-        grid-template-columns: 1fr;
-    }
-}
-
-.advantage__block {
-    background: var(--c-bg);
-    border: 1px solid var(--c-border);
-    border-radius: var(--r-sm);
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.advantage__block:hover {
-    border-color: var(--c-accent);
-    background: var(--c-accent-soft);
-}
-
-.advantage__block--icon {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
+    background: var(--c-bg) !important;
 }
 
 .advantage__block--txt {
-    color: var(--c-text);
-    font-size: 14px;
-    line-height: 1.4;
+    color: var(--c-text) !important;
     font-weight: 500;
 }
 
-/* ============================================================
-   Футер
-   ============================================================ */
-
-.notary-footer {
-    background: var(--c-footer-bg);
-    color: var(--c-footer-text);
-    padding: 56px 0 32px;
-    border-top: none;
-}
-
-.notary-footer--container {
-    max-width: 1200px;
-}
-
-.notary-footer-right {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-@media (max-width: 900px) {
-    .notary-footer-right {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-}
-
-.notary-footer-right__block nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.notary-footer a {
-    color: var(--c-footer-text);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.15s ease;
-}
-
-.notary-footer a:hover {
-    color: #fff;
-}
-
-.notary-footer--title {
-    color: #fff;
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.notary-footer--logotip a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 6px 0;
-}
-
-.notary-footer--logotip img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-    filter: brightness(0) invert(1) opacity(0.6);
-    transition: opacity 0.15s ease;
-}
-
-.notary-footer--logotip a:hover img {
-    filter: brightness(0) invert(1) opacity(1);
-}
-
-/* Левый блок футера (запись по телефону) */
-.notary-footer-left {
-    margin-top: 40px;
-    padding-top: 32px;
-    border-top: 1px solid var(--c-footer-border);
-}
-
-.notary-footer-left-hide p {
-    color: var(--c-footer-text);
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.notary-footer-left .notary-header-top__block--tel,
-.notary-footer-left .notary-header-top__block--tel span,
-.notary-footer-left .notary-header-top__block--tel .txt-opacity {
-    color: #fff;
-}
-
-/* =============================================================
-   ФАЗА 2: услуги, статьи, тарифы, форма (стрoгая), внутренние стр.
-   ============================================================= */
-
-/* ============================================================
-   Заголовки секций
-   ============================================================ */
+/* ===== Заголовки секций (.blue--title) ===== */
 
 .blue--title,
 .blue--title-center {
-    text-align: center;
-    background: none;
-    color: var(--c-text);
-    font-size: var(--fs-h2);
+    background: none !important;
+    color: var(--c-text) !important;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    margin: 0 0 40px;
-    padding: 64px 16px 0;
+    text-align: center;
+}
+
+.blue--title a {
+    color: var(--c-text) !important;
 }
 
 .blue--title::after {
@@ -471,477 +200,188 @@ body.theme.theme-blue {
     border-radius: 2px;
 }
 
-.blue--title a {
-    color: var(--c-text);
-    text-decoration: none;
-}
+/* ===== «Нотариус поможет» (главная) — оставляем сетку из contact-form.css ===== */
+/* (никаких новых правил — то что было раньше работает) */
 
-h1.title,
-.h1.title {
-    color: var(--c-text);
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.6px;
-    margin: 0 0 24px;
-}
-
-.breadcrumbs {
-    font-size: 13px;
-    color: var(--c-text-soft);
-    padding: 24px 0 0;
-}
-
-.breadcrumbs a {
-    color: var(--c-text-soft);
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.breadcrumbs a:hover {
-    color: var(--c-accent);
-}
-
-/* ============================================================
-   Блок услуг / целей обращения (главная)
-   ============================================================ */
+/* ===== Карточки услуг ===== */
 
 .services.bkg-grey,
 .services {
-    background: var(--c-surface);
-    padding: 0 0 64px;
-}
-
-.services .container,
-.services > .container {
-    max-width: 1200px;
+    background: var(--c-surface) !important;
 }
 
 .services__block--section {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 .services__block {
-    background: var(--c-bg);
-    border: 1px solid var(--c-border);
-    border-radius: var(--r-md);
-    padding: 28px 24px;
-    height: 100%;
-    box-shadow: none;
-    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-    display: flex;
-    flex-direction: column;
+    background: var(--c-bg) !important;
+    border: 1px solid var(--c-border) !important;
+    border-radius: var(--r-md) !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease;
 }
 
 .services__block:hover {
-    border-color: var(--c-accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.services__block--icon {
-    margin-bottom: 16px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-}
-
-.services__block--icon img,
-.services__block--icon .svg {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+    border-color: var(--c-accent) !important;
 }
 
 .services__block-content--title {
     color: var(--c-text) !important;
-    font-size: 17px !important;
-    font-weight: 700;
-    margin: 0 0 12px;
-    line-height: 1.3;
+    font-weight: 700 !important;
 }
 
 .services__block-content--label {
-    color: var(--c-text-muted);
-    font-size: 14px;
-    line-height: 1.55;
-    margin: 0;
+    color: var(--c-text-muted) !important;
 }
 
-/* «Все цели обращения / Все статьи» */
+/* «Все статьи / Все цели» */
 .btn-all,
 .btn-w-bottom {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--c-bg);
-    border: 1.5px solid var(--c-border);
-    color: var(--c-text);
-    padding: 12px 24px;
-    border-radius: var(--r-sm);
-    text-decoration: none;
+    background: var(--c-bg) !important;
+    border: 1.5px solid var(--c-border) !important;
+    color: var(--c-text) !important;
+    border-radius: var(--r-sm) !important;
     font-weight: 500;
-    font-size: 14px;
-    margin: 32px auto 0;
     transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .btn-all:hover,
 .btn-w-bottom:hover {
-    border-color: var(--c-accent);
-    color: var(--c-accent);
+    border-color: var(--c-accent) !important;
+    color: var(--c-accent) !important;
 }
 
 .btn-all--count {
-    color: var(--c-text-soft);
-    font-size: 13px;
-    font-weight: 400;
+    color: var(--c-text-soft) !important;
 }
 
-/* ============================================================
-   Блок «Нотариус поможет» — refine grid
-   ============================================================ */
-
-.notary-help.bkg-white {
-    background: var(--c-bg);
-    padding-bottom: 56px;
-}
-
-.notary-help .container {
-    max-width: 1200px;
-}
-
-/* Подменяем стандартную сетку из contact-form.css на ту, что в духе остального дизайна */
-.notary-help-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px !important;
-    padding: 0 16px !important;
-}
-
-.notary-help-grid .notary-help__home-slider {
-    height: 200px !important;
-    border-radius: var(--r-md) !important;
-    padding: 24px !important;
-}
-
-.notary-help-grid .notary-help__home-slider::before {
-    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%) !important;
-}
-
-.notary-help-grid .notary-help__home-slider--content {
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    line-height: 1.35 !important;
-}
-
-@media (max-width: 1024px) {
-    .notary-help-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-@media (max-width: 600px) {
-    .notary-help-grid {
-        grid-template-columns: 1fr !important;
-    }
-    .notary-help-grid .notary-help__home-slider {
-        height: 180px !important;
-    }
-}
-
-.notary-help__main--btn {
-    text-align: center;
-    margin-top: 32px;
-}
-
-/* ============================================================
-   Секции «Тарифы / Реестры / Льготы»
-   ============================================================ */
+/* ===== Тарифы / Реестры / Льготы ===== */
 
 .notary-sections.bkg-white {
-    background: var(--c-bg);
-    padding: 64px 0;
-    border-top: 1px solid var(--c-border);
-}
-
-.notary-sections .container {
-    max-width: 1200px;
-}
-
-.notary-sections .row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .notary-sections .row {
-        grid-template-columns: 1fr;
-    }
-}
-
-.notary-sections .col-xs-12.col-md-4 {
-    width: 100%;
-    padding: 0;
-    max-width: none;
-    flex: none;
+    background: var(--c-bg) !important;
+    border-top: 1px solid var(--c-border) !important;
 }
 
 .notary-sections__block,
 .notary-sections__block--center {
-    background: var(--c-surface);
-    border: 1px solid var(--c-border);
-    border-radius: var(--r-md);
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    color: var(--c-text);
-    gap: 16px;
-    margin: 0;
-    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    background: var(--c-surface) !important;
+    border: 1px solid var(--c-border) !important;
+    border-radius: var(--r-md) !important;
+    color: var(--c-text) !important;
+    text-decoration: none !important;
+    transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .notary-sections__block:hover,
 .notary-sections__block--center:hover {
-    border-color: var(--c-accent);
-    background: var(--c-bg);
-    transform: translateY(-2px);
-}
-
-.notary-sections__block--image {
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
+    border-color: var(--c-accent) !important;
+    background: var(--c-bg) !important;
 }
 
 .notary-sections__block--txt {
-    color: var(--c-text);
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.3;
+    color: var(--c-text) !important;
+    font-weight: 600 !important;
 }
 
-/* ============================================================
-   Внутренние страницы — статья
-   ============================================================ */
+/* ===== Внутренние страницы — статья ===== */
 
 .notary-article {
-    background: var(--c-bg);
+    background: var(--c-bg) !important;
 }
 
 .notary-article__description {
     background-color: var(--c-surface) !important;
     background-image: none !important;
-    padding: 48px 0 56px !important;
-    margin-bottom: 0;
-}
-
-.notary-article__description .container {
-    max-width: 900px;
 }
 
 .notary-article__description--title {
-    color: var(--c-text);
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-    margin: 0 0 16px;
+    color: var(--c-text) !important;
+    font-weight: 700 !important;
 }
 
 .notary-article__description--subtitle,
 .notary-article__description--bottom {
-    color: var(--c-text-muted);
-    font-size: 16px;
-    line-height: 1.55;
+    color: var(--c-text-muted) !important;
 }
 
 .notary-article__description--date {
-    color: var(--c-text-soft);
-    font-size: 13px;
-    margin-top: 16px;
+    color: var(--c-text-soft) !important;
 }
 
-.notary-article--content {
-    padding: 48px 0;
-    background: var(--c-bg);
-}
-
-.notary-article--content .container {
-    max-width: 760px;
-}
-
-.notary-article--content p {
+.notary-article--content p,
+.notary-article--content li {
     color: var(--c-text);
-    font-size: 17px;
-    line-height: 1.7;
-    margin: 0 0 18px;
 }
 
 .notary-article--content h2,
 .notary-article--content h3 {
     color: var(--c-text);
-    margin: 36px 0 16px;
-    line-height: 1.25;
-    letter-spacing: -0.3px;
+    font-weight: 700;
 }
 
-.notary-article--content h2 {
-    font-size: 26px;
+/* ===== Универсальный контент (about-top, kontakty и т.д.) ===== */
+
+.about-top__right--title,
+h1.title,
+.h1.title {
+    color: var(--c-text) !important;
+    font-weight: 700 !important;
 }
 
-.notary-article--content h3 {
-    font-size: 20px;
+.about-top__right--logo-txt {
+    color: var(--c-text-muted) !important;
 }
 
-.notary-article--content a {
-    color: var(--c-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+.about-top__right--txt-bottom {
+    color: var(--c-text-muted) !important;
 }
 
-.notary-article--content ul,
-.notary-article--content ol {
+.about-top__right--txt-bottom.order-number {
+    color: var(--c-text-soft) !important;
+}
+
+/* Убираем синюю плашку bkg-blue */
+.bkg-blue {
+    background: var(--c-bg) !important;
+}
+
+.notary-content p,
+.notary-content li {
     color: var(--c-text);
-    font-size: 17px;
-    line-height: 1.7;
-    padding-left: 22px;
-}
-
-.notary-article--content li {
-    margin-bottom: 8px;
-}
-
-.notary-article--content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--r-md);
-    margin: 24px 0;
-}
-
-/* ============================================================
-   Внутренние страницы — общий контент
-   ============================================================ */
-
-.notary-content {
-    padding: 32px 0 64px;
-    background: var(--c-bg);
-}
-
-.notary-content .container {
-    max-width: 980px;
-}
-
-.notary-content p {
-    color: var(--c-text);
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 0 16px;
 }
 
 .notary-content h2,
 .notary-content h3 {
     color: var(--c-text);
-    line-height: 1.25;
 }
 
-.notary-content h2 {
-    font-size: 24px;
-    margin: 32px 0 14px;
+.breadcrumbs {
+    color: var(--c-text-soft) !important;
 }
 
-.notary-content h3 {
-    font-size: 19px;
-    margin: 24px 0 10px;
+.breadcrumbs a {
+    color: var(--c-text-soft) !important;
 }
 
-.notary-content a {
-    color: var(--c-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+.breadcrumbs a:hover {
+    color: var(--c-accent) !important;
 }
 
-.notary-content ul,
-.notary-content ol {
-    color: var(--c-text);
-    padding-left: 20px;
-    line-height: 1.6;
-}
-
-.notary-content li {
-    margin-bottom: 6px;
-}
-
-/* Внутренний блок about-top на странице «Нотариальная контора» */
-.about-top {
-    padding: 48px 0;
-}
-
-.about-top__right--title {
-    color: var(--c-text);
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.4px;
-    margin: 0 0 12px;
-}
-
-.about-top__right--logo-txt {
-    color: var(--c-text-muted);
-    font-size: 17px;
-    margin: 0 0 24px;
-}
-
-.about-top__right--txt-bottom {
-    color: var(--c-text-muted);
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 8px;
-}
-
-.about-top__right--txt-bottom.order-number {
-    color: var(--c-text-soft);
-    font-size: 13px;
-}
-
-.about-top__right--image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--r-md);
-}
-
-.bkg-blue {
-    background: var(--c-bg) !important;
-}
-
-/* ============================================================
-   Форма обратной связи — стрoгая, без градиентов
-   ============================================================ */
+/* ===== Форма обратной связи — плоская, без градиентов ===== */
 
 .contact-section {
     background: var(--c-surface) !important;
-    padding: 72px 16px !important;
 }
 
 .contact-section__title {
     color: var(--c-text) !important;
-    font-size: 32px !important;
-    letter-spacing: -0.5px !important;
     font-weight: 700 !important;
 }
 
 .contact-section__title::after {
     background: var(--c-accent) !important;
-    width: 48px !important;
 }
 
 .contact-section__subtitle {
@@ -969,28 +409,18 @@ h1.title,
     color: var(--c-text) !important;
 }
 
-.contact-form__input:hover,
-.contact-form__select:hover,
-.contact-form__textarea:hover {
-    border-color: var(--c-text-soft) !important;
-}
-
 .contact-form__input:focus,
 .contact-form__select:focus,
 .contact-form__textarea:focus {
     border-color: var(--c-accent) !important;
     box-shadow: 0 0 0 3px var(--c-accent-soft) !important;
-    background: var(--c-bg) !important;
 }
 
-/* Плоская кнопка */
 .contact-form__submit {
     background: var(--c-accent) !important;
     border-radius: var(--r-sm) !important;
     box-shadow: none !important;
     font-weight: 600 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
 }
 
 .contact-form__submit:hover:not(:disabled) {
@@ -999,236 +429,86 @@ h1.title,
     box-shadow: none !important;
 }
 
-.contact-form__submit:active:not(:disabled) {
-    transform: translateY(0) !important;
-    box-shadow: none !important;
-}
-
 .contact-form__hint a {
     color: var(--c-accent) !important;
 }
 
-/* =============================================================
-   ФАЗА 3: мобильный хедер, cookie-баннер, портрет, мелочи
-   ============================================================= */
-
-/* ============================================================
-   Мобильный хедер
-   ============================================================ */
-
-.notary-header-mob {
-    background: var(--c-bg);
-    border-bottom: 1px solid var(--c-border);
-    box-shadow: none;
-    padding: 14px 0;
-}
-
-.notary-header-mob__logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.notary-header-mob__logo .notary-header-top__block--logo {
-    flex: 1;
-}
-
-.notary-header-mob__logo .notary-header-top__block--logo-txt {
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.notary-header-top__block--logo-tel,
-.blue-tel-txt {
-    color: var(--c-accent) !important;
-}
-
-.notary-header-mob__buter {
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    background: transparent;
-    border-radius: 4px;
-    position: relative;
-}
-
-.notary-header-mob__buter::before,
-.notary-header-mob__buter::after,
-.notary-header-mob__buter > span {
-    content: '';
-    position: absolute;
-    left: 4px;
-    right: 4px;
-    height: 2px;
-    background: var(--c-text);
-    border-radius: 1px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.notary-header-mob__buter::before { top: 8px; }
-.notary-header-mob__buter::after { bottom: 8px; }
-.notary-header-mob__buter > span { top: 50%; transform: translateY(-50%); }
-
-.notary-header-mob__menu {
-    background: var(--c-bg);
-    border-top: 1px solid var(--c-border);
-}
-
-.notary-header-mob__menu--nav {
-    display: flex;
-    flex-direction: column;
-    padding: 8px 0;
-}
-
-.notary-header-mob__menu--link {
-    color: var(--c-text);
-    padding: 14px 20px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    border-bottom: 1px solid var(--c-border);
-}
-
-.notary-header-mob__menu--link:last-of-type {
-    border-bottom: none;
-}
-
-.notary-header-mob__menu--link.cta-link {
-    color: var(--c-accent);
-    font-weight: 600;
-}
-
-.notary-header-mob--bottom {
-    background: var(--c-surface);
-    padding: 16px 20px;
-}
-
-.notary-header-mob--tel {
-    background: var(--c-bg);
-    border-top: 1px solid var(--c-border);
-    padding: 12px 20px;
-}
-
-/* ============================================================
-   Cookie-баннер
-   ============================================================ */
+/* ===== Cookie-баннер ===== */
 
 .cookie-alert--container {
-    background: var(--c-text);
-    color: #fff;
-    border-top: none;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
-    padding: 16px 0;
+    background: var(--c-text) !important;
+    color: #fff !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08) !important;
 }
 
-.cookie-alert--container .container {
-    max-width: 1200px;
-}
-
-.cookie-alert {
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
+.cookie-alert,
 .cookie-alert span {
-    flex: 1;
+    color: #fff !important;
 }
 
 .cookie-alert a {
-    color: #fff;
+    color: #fff !important;
     text-decoration: underline;
-    text-underline-offset: 2px;
-    white-space: nowrap;
 }
 
 .cookie-alert--close {
-    cursor: pointer;
     filter: brightness(0) invert(1) opacity(0.7);
-    transition: opacity 0.15s ease;
-    flex-shrink: 0;
 }
 
 .cookie-alert--close:hover {
     filter: brightness(0) invert(1) opacity(1);
 }
 
-@media (max-width: 600px) {
-    .cookie-alert {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .cookie-alert--close {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-    }
+/* ===== Футер ===== */
+
+.notary-footer {
+    background: var(--c-footer-bg) !important;
+    color: var(--c-footer-text) !important;
+    border-top: none !important;
 }
 
-/* ============================================================
-   Портрет: когда будет реальное фото — положить в
-   docs/static/image/oleg-portrait.jpg (3:4, желательно >=500×667).
-   Браузер автоматически переключится с placeholder на фото.
-   ============================================================ */
-
-.notary-wellcome__content.auto::after {
-    background-image: url(../../image/oleg-portrait.jpg);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    /* Если файла нет, останется dashed border + текст из content */
+.notary-footer--title {
+    color: #fff !important;
+    font-weight: 600;
 }
 
-/* Когда фото будет — раскомментируй блок ниже, чтобы убрать placeholder-текст и пунктир:
-.notary-wellcome__content.auto::after {
-    content: '';
-    border: none;
-}
-*/
-
-/* ============================================================
-   Мелочи / общая отбивка
-   ============================================================ */
-
-/* Внутренний контент пагинации/пустых блоков не должен ломать ритм */
-.announcements_null {
-    display: none;
+.notary-footer a {
+    color: var(--c-footer-text) !important;
+    text-decoration: none;
+    transition: color 0.15s ease;
 }
 
-/* Социальные плейсхолдеры в футере (закомментированы в HTML) не должны мешать */
+.notary-footer a:hover {
+    color: #fff !important;
+}
+
+.notary-footer-left-hide p {
+    color: var(--c-footer-text) !important;
+}
+
+.notary-footer-left .notary-header-top__block--tel,
+.notary-footer-left .notary-header-top__block--tel span,
+.notary-footer-left .notary-header-top__block--tel .txt-opacity {
+    color: #fff !important;
+}
+
 .notary-footer__sharing {
     display: none;
 }
 
-/* Главная: «Цели обращения» нужен padding-top, иначе слипается с предыдущей секцией */
-.services .blue--title {
-    padding-top: 56px;
+/* Скрываем пустые шумные блоки */
+.announcements_null {
+    display: none;
 }
 
-.notary-help .blue--title {
-    padding-top: 56px;
+.notary__form-content-before {
+    display: none !important;
 }
 
-/* Линия-разделитель между секциями вместо box-shadow */
-.notary-help-carousel,
-.notary-help-grid {
-    margin-bottom: 0;
-}
-
-/* Тёплый фокус для интерактивных элементов (а11y) */
+/* Доступность */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--c-accent);
     outline-offset: 3px;
     border-radius: 4px;
-}
-
-/* Скрываем мелкие шумные элементы конструктора, если где-то остались */
-.notary__form-content-before {
-    display: none !important;
 }
