@@ -1343,7 +1343,8 @@ img, svg { max-width: 100%; display: block; }
 .lx-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
 .lx-tariff-num { width: 48px; color: var(--c-text-muted); }
 .lx-tariff-fed { width: 220px; color: var(--c-text-muted); font-size: 13px; }
-.lx-tariff-reg { width: 200px; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
+.lx-tariff-reg { width: 160px; font-weight: 600; color: var(--c-primary); }
+.lx-tariff-note-col { width: 240px; color: var(--c-text-muted); font-size: 13px; }
 
 .lx-tariff-note {
     background: var(--c-bg-soft);
@@ -1366,7 +1367,9 @@ img, svg { max-width: 100%; display: block; }
     .lx-tariff-num::after { content: ' '; }
     .lx-tariff-fed::before { content: 'Федеральный: '; color: var(--c-text-muted); font-weight: 500; }
     .lx-tariff-reg::before { content: 'УПТХ: '; color: var(--c-text-muted); font-weight: 500; }
+    .lx-tariff-note-col::before { content: 'Примечание: '; color: var(--c-text-muted); font-weight: 500; }
     .lx-tariff-reg { color: var(--c-primary); }
+    .lx-tariff-note-col, .lx-tariff-num, .lx-tariff-fed, .lx-tariff-reg { width: auto; }
 }
 
 /* Скрытие любых случайно оставшихся декоративных пустот */
