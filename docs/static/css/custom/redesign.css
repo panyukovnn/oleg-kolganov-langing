@@ -1007,3 +1007,228 @@ h1.title,
 .contact-form__hint a {
     color: var(--c-accent) !important;
 }
+
+/* =============================================================
+   ФАЗА 3: мобильный хедер, cookie-баннер, портрет, мелочи
+   ============================================================= */
+
+/* ============================================================
+   Мобильный хедер
+   ============================================================ */
+
+.notary-header-mob {
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: none;
+    padding: 14px 0;
+}
+
+.notary-header-mob__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notary-header-mob__logo .notary-header-top__block--logo {
+    flex: 1;
+}
+
+.notary-header-mob__logo .notary-header-top__block--logo-txt {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.notary-header-top__block--logo-tel,
+.blue-tel-txt {
+    color: var(--c-accent) !important;
+}
+
+.notary-header-mob__buter {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 4px;
+    position: relative;
+}
+
+.notary-header-mob__buter::before,
+.notary-header-mob__buter::after,
+.notary-header-mob__buter > span {
+    content: '';
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: var(--c-text);
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.notary-header-mob__buter::before { top: 8px; }
+.notary-header-mob__buter::after { bottom: 8px; }
+.notary-header-mob__buter > span { top: 50%; transform: translateY(-50%); }
+
+.notary-header-mob__menu {
+    background: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+}
+
+.notary-header-mob__menu--nav {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.notary-header-mob__menu--link {
+    color: var(--c-text);
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border-bottom: 1px solid var(--c-border);
+}
+
+.notary-header-mob__menu--link:last-of-type {
+    border-bottom: none;
+}
+
+.notary-header-mob__menu--link.cta-link {
+    color: var(--c-accent);
+    font-weight: 600;
+}
+
+.notary-header-mob--bottom {
+    background: var(--c-surface);
+    padding: 16px 20px;
+}
+
+.notary-header-mob--tel {
+    background: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+    padding: 12px 20px;
+}
+
+/* ============================================================
+   Cookie-баннер
+   ============================================================ */
+
+.cookie-alert--container {
+    background: var(--c-text);
+    color: #fff;
+    border-top: none;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    padding: 16px 0;
+}
+
+.cookie-alert--container .container {
+    max-width: 1200px;
+}
+
+.cookie-alert {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cookie-alert span {
+    flex: 1;
+}
+
+.cookie-alert a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+}
+
+.cookie-alert--close {
+    cursor: pointer;
+    filter: brightness(0) invert(1) opacity(0.7);
+    transition: opacity 0.15s ease;
+    flex-shrink: 0;
+}
+
+.cookie-alert--close:hover {
+    filter: brightness(0) invert(1) opacity(1);
+}
+
+@media (max-width: 600px) {
+    .cookie-alert {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .cookie-alert--close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+}
+
+/* ============================================================
+   Портрет: когда будет реальное фото — положить в
+   docs/static/image/oleg-portrait.jpg (3:4, желательно >=500×667).
+   Браузер автоматически переключится с placeholder на фото.
+   ============================================================ */
+
+.notary-wellcome__content.auto::after {
+    background-image: url(../../image/oleg-portrait.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    /* Если файла нет, останется dashed border + текст из content */
+}
+
+/* Когда фото будет — раскомментируй блок ниже, чтобы убрать placeholder-текст и пунктир:
+.notary-wellcome__content.auto::after {
+    content: '';
+    border: none;
+}
+*/
+
+/* ============================================================
+   Мелочи / общая отбивка
+   ============================================================ */
+
+/* Внутренний контент пагинации/пустых блоков не должен ломать ритм */
+.announcements_null {
+    display: none;
+}
+
+/* Социальные плейсхолдеры в футере (закомментированы в HTML) не должны мешать */
+.notary-footer__sharing {
+    display: none;
+}
+
+/* Главная: «Цели обращения» нужен padding-top, иначе слипается с предыдущей секцией */
+.services .blue--title {
+    padding-top: 56px;
+}
+
+.notary-help .blue--title {
+    padding-top: 56px;
+}
+
+/* Линия-разделитель между секциями вместо box-shadow */
+.notary-help-carousel,
+.notary-help-grid {
+    margin-bottom: 0;
+}
+
+/* Тёплый фокус для интерактивных элементов (а11y) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Скрываем мелкие шумные элементы конструктора, если где-то остались */
+.notary__form-content-before {
+    display: none !important;
+}

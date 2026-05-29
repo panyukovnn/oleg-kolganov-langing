@@ -34,7 +34,26 @@ CONSTRUCTOR_PATTERNS = [
     r'<form action="https://okolganov\.ru/feedback/[^"]*"[^>]*>[\s\S]*?</form>\s*',
     # Сопутствующий комментарий-скрипт от старой формы
     r'<script type="text/javascript">\s*//\s*no \$ here[\s\S]*?</script>\s*',
+    # Неиспользуемые JS-зависимости (после удаления родной формы и Vue-аппоинтмента)
+    r'<script src="[^"]*static/js/form\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/tel\.min\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/select2\.min\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/ru\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/datepicker\.ru\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/jquery\.inputmask\.bundle\.min\.js"[^>]*></script>\s*',
+    r'<script src="[^"]*static/js/jquery\.inputmask-multi\.min\.js"[^>]*></script>\s*',
+    # Неиспользуемые CSS
+    r'<link[^>]*href="[^"]*static/css/select2[^"]*\.css"[^>]*/?>\s*',
+    r'<link[^>]*href="[^"]*static/css/admin/patch__h2-icons\.css"[^>]*/?>\s*',
 ]
+
+# 1×1 прозрачный GIF как data-URI — подменяет битый /undefined в main.min.js
+# (showBackgroundFromPlaceholder требует наличие .background-url элемента)
+BG_PLACEHOLDER = (
+    '<div class="background-url" '
+    'data-background-url="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" '
+    'style="display:none"></div>'
+)
 
 # Кастомные инъекции — удаляются в начале процессинга, чтобы потом гарантированно
 # добавиться один раз (true idempotent).
@@ -198,6 +217,17 @@ def inject_contact_form(html: str, snippet: str) -> str:
     return re.sub(r'(<footer\b)', snippet + r'\n\1', html, count=1)
 
 
+def inject_bg_placeholder(html: str) -> str:
+    """
+    main.min.js делает $('.background-url').data('background-url') и ставит как inline
+    background-image на .background-display. Без элемента получается url(undefined) → 404.
+    Подсовываем элемент с 1×1 прозрачным data-URI.
+    """
+    if 'class="background-url"' in html:
+        return html
+    return re.sub(r'(<body[^>]*>)', r'\1\n' + BG_PLACEHOLDER, html, count=1)
+
+
 def process_file(path: Path, snippet: str, inject_form: bool) -> None:
     html = path.read_text(encoding='utf-8')
     original = html
@@ -210,6 +240,7 @@ def process_file(path: Path, snippet: str, inject_form: bool) -> None:
     html = strip_custom_injections(html)
     html = replace_help_carousel(html)
     html = inject_assets(html)
+    html = inject_bg_placeholder(html)
     html = inject_header_cta(html)
     html = restore_cookie_banner(html)
     if inject_form:
