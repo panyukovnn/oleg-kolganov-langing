@@ -126,13 +126,6 @@
 /* Якоря на группах — учёт sticky-шапки сайта */
 .lx-tariff-group { scroll-margin-top: var(--tariff-head-offset); }
 
-/* Прилипающая шапка таблицы внутри секции */
-.lx-tariff-table thead th {
-    position: sticky;
-    top: var(--tariff-head-offset);
-    z-index: 2;
-}
-
 /* Колоночные ширины из переменных */
 .lx-tariff-table .lx-tariff-num { width: var(--tariff-col-num); }
 .lx-tariff-table .lx-tariff-fed { width: var(--tariff-col-fed); }

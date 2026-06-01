@@ -1271,19 +1271,33 @@ img, svg { max-width: 100%; display: block; }
 .lx-tariff-group summary::-webkit-details-marker { display: none; }
 .lx-tariff-group__icon {
     flex-shrink: 0;
+    position: relative;
     width: 28px;
     height: 28px;
     border-radius: 50%;
     background: #fff;
     color: var(--c-primary);
-    display: grid;
-    place-items: center;
-    font-size: 18px;
-    line-height: 1;
     border: 1px solid var(--c-border);
-    transition: transform 0.2s, background 0.2s, color 0.2s;
+    font-size: 0; /* прячем текстовый "+" из разметки, рисуем знак псевдоэлементами */
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.lx-tariff-group[open] .lx-tariff-group__icon { transform: rotate(45deg); background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+/* Знак «+»/«−», нарисованный двумя полосками строго по центру */
+.lx-tariff-group__icon::before,
+.lx-tariff-group__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+}
+.lx-tariff-group__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.lx-tariff-group[open] .lx-tariff-group__icon { background: var(--c-bg-soft); border-color: var(--c-primary); }
+.lx-tariff-group[open] .lx-tariff-group__icon::after { opacity: 0; } /* убираем вертикаль → остаётся «−» по центру */
 .lx-tariff-group[open] summary { border-bottom: 1px solid var(--c-border); }
 .lx-tariff-group__body { padding: 0; overflow-x: auto; }
 
