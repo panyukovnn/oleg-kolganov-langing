@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+COMPOSE_FILE="$SCRIPT_DIR/.devcontainer/docker-compose.yml"
+
+if [ ! -d "$HOME/.claude" ]; then
+  echo "ERROR: ~/.claude not found. Install and authenticate Claude Code on the host: 'npm i -g @anthropic-ai/claude-code && claude'." >&2
+  exit 1
+fi
+if [ ! -f "$HOME/.claude.json" ]; then
+  echo "ERROR: ~/.claude.json not found. Run claude on the host at least once so this file is created." >&2
+  exit 1
+fi
+if [ ! -d "$HOME/.config/gh" ]; then
+  echo "ERROR: ~/.config/gh not found. Authenticate: 'gh auth login'." >&2
+  exit 1
+fi
+
+# Staging copy of ~/.claude.json for the container. Two reasons for not mounting the host file directly:
+#   1) Docker Desktop on macOS loses the inode on atomic rewrites on the host — the container then sees a truncated JSON.
+#   2) After /login the containerized Claude writes its own tokens directly into .claude.json; the host on macOS
+#      doesn't use them (Keychain), so the container needs its OWN persistent file that the host won't overwrite.
+# Logic: create the staging copy ONCE (init-only); the container then owns it and its /login survives restarts.
+# Force re-sync via './claude-task --reset-credentials'.
+stage_claude_json() {
+  local src="$HOME/.claude.json"
+  local dst="$HOME/.claude/container-claude.json"
+  if [ ! -f "$dst" ]; then
+    cp "$src" "$dst"
+  fi
+}
+
+# Pull the gh CLI token from the host Keychain and put it into GH_TOKEN so compose forwards it into the container.
+# Without this, gh inside the Linux container gets a 401 on PR creation — the macOS Keychain isn't reachable.
+# Also: GH_TOKEN is what 'gh auth git-credential' uses inside the container, so this token also enables
+# 'git push' over HTTPS (see GIT_CONFIG_* env vars in docker-compose.yml).
+# Done on every run so a rotated host token is picked up immediately.
+# Fails loudly when no token is available — otherwise the containerized Claude would only discover the
+# missing auth deep into a task and bail out at push/PR-creation time.
+export_gh_token() {
+  if ! command -v gh >/dev/null 2>&1; then
+    echo "ERROR: 'gh' CLI not found on the host. Install it ('brew install gh') and run 'gh auth login' so the container can authenticate to GitHub." >&2
+    exit 1
+  fi
+
+  local token
+  if ! token=$(gh auth token 2>/dev/null) || [ -z "$token" ]; then
+    cat >&2 <<'MSG'
+ERROR: 'gh auth token' returned nothing on the host.
+Without it the container can't push or create PRs (the macOS Keychain isn't reachable from Linux).
+Fix: run 'gh auth login' on the host and grant at least 'repo' and 'workflow' scopes, then retry.
+MSG
+    exit 1
+  fi
+
+  export GH_TOKEN="$token"
+}
+
+usage() {
+  cat <<EOF
+Usage:
+  ./claude-task <plan-path>          # implement a task by its plan via the implement-plan skill
+                                      # example: ./claude-task docs/tasks/TASK-22.md
+  ./claude-task --continue           # continue the LAST Claude session in the container (claude --continue)
+  ./claude-task --resume             # pick a session from the list (claude --resume)
+  ./claude-task --shell              # bash inside the container (also used for the one-time 'claude /login')
+  ./claude-task --stop               # stop the container
+  ./claude-task --rebuild            # rebuild the image
+  ./claude-task --reset-credentials  # recreate the staging copy of ~/.claude.json (will require /login again)
+EOF
+}
+
+case "${1:-}" in
+  ""|-h|--help) usage; exit 0 ;;
+  --stop)       docker compose -f "$COMPOSE_FILE" down; exit 0 ;;
+  --rebuild)    docker compose -f "$COMPOSE_FILE" build --no-cache; exit 0 ;;
+  --reset-credentials)
+    rm -f "$HOME/.claude/container-claude.json"
+    stage_claude_json
+    echo "staging copy recreated. Run './claude-task --shell' and 'claude /login' again."
+    exit 0 ;;
+  --shell)
+    stage_claude_json
+    export_gh_token
+    docker compose -f "$COMPOSE_FILE" up -d
+    docker compose -f "$COMPOSE_FILE" exec dev bash
+    exit 0 ;;
+  --continue|--resume)
+    flag="$1"
+    stage_claude_json
+    export_gh_token
+    docker compose -f "$COMPOSE_FILE" up -d
+    docker compose -f "$COMPOSE_FILE" exec dev \
+      claude --permission-mode auto \
+             --settings .devcontainer/claude-policy.json \
+             "$flag"
+    exit 0 ;;
+esac
+
+# The checks below apply only to running a task (--shell/--stop/--rebuild/etc. already handled above).
+
+if [ ! -f "$HOME/.claude/.credentials.json" ]; then
+  cat >&2 <<'MSG'
+ERROR: ~/.claude/.credentials.json not found.
+
+On macOS the host Claude stores tokens in the Keychain, while the Linux Claude in the container reads them from a file. So you need to log in once inside the container:
+
+  ./claude-task --shell
+  claude /login        # complete the OAuth flow, then exit:
+  exit
+
+The .credentials.json file will appear in ~/.claude (via the bind-mount) and persist between container restarts. The macOS Claude doesn't use this file, so the host setup is unaffected.
+MSG
+  exit 1
+fi
+
+PLAN_REF="$1"
+if [ ! -e "$SCRIPT_DIR/$PLAN_REF" ] && [ ! -e "$PLAN_REF" ]; then
+  echo "ERROR: task plan not found at '$PLAN_REF'. Put a plan/spec into the project (e.g. docs/tasks/<TASK-ID>.md) and run claude-task against it." >&2
+  exit 1
+fi
+
+stage_claude_json
+export_gh_token
+
+CONTAINER_RULES='## Working rules for Claude
+
+1. Task execution always goes through the implement-plan skill against the plan/spec stored in the project (default location docs/tasks/<TASK-ID>.md). If no plan exists — stop and request/prepare one in the project; do not start implementation from a verbal description.
+2. Do not ask clarifying questions. Make decisions yourself. When ambiguous — record the choice in the plan and in the commit/PR description.
+3. Git operations go through skills. Before any git work, check the skills in ~/.claude/skills/ and use the relevant ones. Same for other tasks: if a relevant skill exists, use it.
+4. When in doubt — act, do not ask. Document the decisions in the PR.'
+
+docker compose -f "$COMPOSE_FILE" up -d
+docker compose -f "$COMPOSE_FILE" exec dev \
+  claude --permission-mode auto \
+         --settings .devcontainer/claude-policy.json \
+         --append-system-prompt "$CONTAINER_RULES" \
+         "/implement-plan $PLAN_REF"

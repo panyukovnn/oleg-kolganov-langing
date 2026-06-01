@@ -1,0 +1,8 @@
+ {
+  "name": "Claude Code Sandbox",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "dev",
+  "shutdownAction": "stopCompose"
+}

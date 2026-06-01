@@ -12,3 +12,4 @@ node_modules/
 *.xlsx
 *.doc
 *.xls
+/tasks/

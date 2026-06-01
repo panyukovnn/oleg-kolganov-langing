@@ -1,0 +1,41 @@
+services:
+  dev:
+    container_name: claude-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      # Host environment variables that must be available inside the container (Gradle, build tooling, etc.).
+      # Values are pulled from the shell that runs `docker compose` / `claude-task`,
+      # so they must be exported in the user's shell (~/.zshrc, ~/.zshenv, ...).
+      # The ${VAR:-} syntax: take the value from the env; if missing, default to empty string (compose won't fail).
+      # Add more variables here as needed.
+      GITHUB_PACKAGES_READ_TOKEN: ${GITHUB_PACKAGES_READ_TOKEN:-}
+      CLAUDE_NOTIFIER_TELEGRAM_BOT_TOKEN: ${CLAUDE_NOTIFIER_TELEGRAM_BOT_TOKEN:-}
+      CLAUDE_NOTIFIER_TELEGRAM_CHAT_ID: ${CLAUDE_NOTIFIER_TELEGRAM_CHAT_ID:-}
+      # gh CLI token: on macOS it lives in the Keychain (a Linux container can't reach it),
+      # so claude-task pulls it on the host via 'gh auth token' and exports it as GH_TOKEN.
+      GH_TOKEN: ${GH_TOKEN:-}
+      # Inject git's credential helper for github.com via GIT_CONFIG_* env vars
+      # (the mounted ~/.gitconfig is read-only, so 'gh auth setup-git' can't write to it).
+      # `gh auth git-credential` uses GH_TOKEN above, so 'git push'/'git fetch' over HTTPS
+      # to github.com authenticate without any filesystem changes.
+      GIT_CONFIG_COUNT: "2"
+      GIT_CONFIG_KEY_0: "credential.https://github.com.helper"
+      GIT_CONFIG_VALUE_0: "!gh auth git-credential"
+      GIT_CONFIG_KEY_1: "credential.https://gist.github.com.helper"
+      GIT_CONFIG_VALUE_1: "!gh auth git-credential"
+    volumes:
+      - ../:/workspace:cached
+      - ${HOME}/.claude:/home/dev/.claude
+      # Staging copy of .claude.json (see claude-task) — the real ~/.claude.json is NOT mounted directly,
+      # because Docker Desktop on macOS loses the inode on atomic rewrites on the host
+      # and the container starts seeing a truncated JSON file.
+      - ${HOME}/.claude/container-claude.json:/home/dev/.claude.json
+      - ${HOME}/.config/gh:/home/dev/.config/gh
+      - ${HOME}/.gitconfig:/home/dev/.gitconfig:ro
+      - gradle-cache:/home/dev/.gradle
+    command: sleep infinity
+
+volumes:
+  gradle-cache:
