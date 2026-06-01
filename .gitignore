@@ -13,3 +13,6 @@ node_modules/
 *.doc
 *.xls
 /tasks/
+
+# Исходники фото — оптимизированные версии лежат в docs/static/image/
+/photo/
