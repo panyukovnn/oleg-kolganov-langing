@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="static/css/custom/lexakova-style.css">
     <link rel="stylesheet" href="static/css/custom/contact-form.css">
     <link rel="stylesheet" href="static/css/custom/yclients-widget.css">
+    <script src="static/js/reviews.js" defer></script>
 </head>
 <body class="lx">
 
@@ -289,12 +290,50 @@
 <section class="lx-section" id="reviews">
     <div class="lx-container">
         <h2 class="lx-h2">Отзывы клиентов</h2>
-        <p class="lx-lead">Реальные отзывы посетителей нотариальной конторы из карточки организации в Яндекс.Картах.</p>
+        <p class="lx-lead">Что пишут о работе нотариальной конторы клиенты в Яндекс.Картах. Показаны отзывы с оценкой 5 из 5.</p>
 
         <div class="lx-reviews">
-            <iframe src="https://yandex.ru/maps-reviews-widget/164041573820?comments" loading="lazy" title="Отзывы клиентов в Яндекс.Картах" frameborder="0" referrerpolicy="no-referrer"></iframe>
-            <a class="lx-reviews__link" href="https://yandex.ru/maps/org/notarius_kolganov_o_i_/164041573820/reviews/" target="_blank" rel="noopener nofollow">Оставить отзыв в Яндекс.Картах</a>
+            <button type="button" class="lx-reviews__nav lx-reviews__nav--prev" aria-label="Предыдущие отзывы">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="lx-reviews__track" role="region" aria-label="Отзывы клиентов" tabindex="0" data-src="static/data/reviews.json"></div>
+            <button type="button" class="lx-reviews__nav lx-reviews__nav--next" aria-label="Следующие отзывы">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
         </div>
+
+        <div class="lx-reviews__footer">
+            <a class="lx-reviews__link" href="https://yandex.ru/maps/org/notarius_kolganov_o_i_/164041573820/reviews/" target="_blank" rel="noopener nofollow">Все отзывы в Яндекс.Картах</a>
+        </div>
+
+        <noscript>
+            <p style="text-align:center;"><a href="https://yandex.ru/maps/org/notarius_kolganov_o_i_/164041573820/reviews/" target="_blank" rel="noopener nofollow">Читать отзывы клиентов в Яндекс.Картах</a></p>
+        </noscript>
+
+        <template id="lx-review-tpl">
+            <article class="lx-review">
+                <div class="lx-review__head">
+                    <div class="lx-review__avatar" aria-hidden="true"></div>
+                    <div class="lx-review__ident">
+                        <div class="lx-review__name"></div>
+                        <div class="lx-review__meta"></div>
+                    </div>
+                </div>
+                <div class="lx-review__stars" role="img" aria-label="Оценка 5 из 5">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77 4.8 17.5l.99-5.78L1.58 7.62l5.82-.85z"/></svg>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77 4.8 17.5l.99-5.78L1.58 7.62l5.82-.85z"/></svg>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77 4.8 17.5l.99-5.78L1.58 7.62l5.82-.85z"/></svg>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77 4.8 17.5l.99-5.78L1.58 7.62l5.82-.85z"/></svg>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.78L10 14.77 4.8 17.5l.99-5.78L1.58 7.62l5.82-.85z"/></svg>
+                </div>
+                <p class="lx-review__text"></p>
+                <button type="button" class="lx-review__more" aria-expanded="false" hidden>ещё</button>
+            </article>
+        </template>
+
+        <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"LegalService","name":"Нотариус Колганов О. И.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","bestRating":"5","reviewCount":"9"}}
+        </script>
     </div>
 </section>
 

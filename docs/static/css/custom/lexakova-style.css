@@ -1429,30 +1429,117 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   Отзывы (виджет Яндекс.Карт)
+   Отзывы — кастомная карусель (только 5★)
    ============================================================ */
 
-.lx-reviews {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+.lx-reviews { position: relative; }
+.lx-reviews__track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    scrollbar-width: none;
+    min-height: 280px;
+    padding: 4px;
 }
-.lx-reviews iframe {
-    width: 100%;
-    height: 600px;
-    border: 0;
-    border-radius: var(--radius-lg);
-    background: var(--c-bg-soft);
+.lx-reviews__track::-webkit-scrollbar { display: none; }
+.lx-reviews__track:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 4px; border-radius: var(--radius); }
+
+.lx-review {
+    flex: 0 0 calc((100% - 48px) / 3);
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--c-border);
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+}
+.lx-review__head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.lx-review__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: var(--avatar-bg, var(--c-primary));
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+}
+.lx-review__name { font-size: 16px; font-weight: 700; color: var(--c-text); }
+.lx-review__meta { font-size: 12.5px; color: var(--c-text-muted); margin-top: 2px; }
+.lx-review__stars { display: flex; gap: 2px; color: var(--c-accent); margin-bottom: 12px; }
+.lx-review__stars svg { width: 18px; height: 18px; }
+.lx-review__text {
+    color: var(--c-text);
+    font-size: 14.5px;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.lx-review__text--expanded {
     display: block;
+    -webkit-line-clamp: none;
+    overflow: visible;
 }
+.lx-review__more {
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--c-primary);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.lx-review__more:hover { color: var(--c-primary-dark); }
+
+.lx-reviews__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--c-border);
+    background: #fff;
+    color: var(--c-primary);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.lx-reviews__nav svg { width: 22px; height: 22px; }
+.lx-reviews__nav:hover { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+.lx-reviews__nav--prev { left: -22px; }
+.lx-reviews__nav--next { right: -22px; }
+
+.lx-reviews__footer { text-align: center; margin-top: 28px; }
 .lx-reviews__link {
     display: inline-block;
-    margin-top: 16px;
     color: var(--c-primary);
     font-weight: 600;
     font-size: 15px;
 }
 .lx-reviews__link:hover { color: var(--c-primary-dark); }
+
+@media (max-width: 1024px) {
+    .lx-review { flex-basis: calc((100% - 24px) / 2); }
+    .lx-reviews__nav { display: none; }
+}
+@media (max-width: 640px) {
+    .lx-review { flex-basis: 88%; }
+}
 
 /* ============================================================
    Mobile
@@ -1509,9 +1596,7 @@ img, svg { max-width: 100%; display: block; }
     .lx-page .lx-container .row { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
     .lx-page .notary-content-download__block { flex-direction: column; align-items: stretch; gap: 10px; }
     .lx-page-title { font-size: 24px; }
-    .lx-reviews iframe { height: 520px; }
 }
 @media (max-width: 480px) {
     .lx-page .lx-container .row { grid-template-columns: 1fr !important; }
-    .lx-reviews iframe { height: 480px; }
 }
