@@ -170,13 +170,15 @@ img, svg { max-width: 100%; display: block; }
 
 .lx-header__meta {
     display: flex;
-    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
     flex: 1;
     flex-wrap: wrap;
 }
 .lx-meta-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     font-size: 13px;
     line-height: 1.35;
@@ -186,7 +188,6 @@ img, svg { max-width: 100%; display: block; }
     width: 18px;
     height: 18px;
     color: var(--c-primary);
-    margin-top: 2px;
 }
 .lx-meta-item__label { color: var(--c-text-muted); font-size: 12px; }
 .lx-meta-item__value { color: var(--c-text); font-weight: 500; }
@@ -241,7 +242,8 @@ img, svg { max-width: 100%; display: block; }
 .lx-nav__row {
     display: flex;
     align-items: center;
-    gap: 28px;
+    justify-content: space-between;
+    gap: 16px 28px;
     padding: 12px 0;
     flex-wrap: wrap;
 }
@@ -1446,6 +1448,8 @@ img, svg { max-width: 100%; display: block; }
     .lx-footer__grid { grid-template-columns: 1fr 1fr; }
     .lx-loc { grid-template-columns: 1fr; }
     .lx-header__meta { display: none; }
+    /* На планшете меню переносится на 2 строки — выравниваем по левому краю, без растягивания */
+    .lx-nav__row { justify-content: flex-start; }
     .lx-page .main-carusel,
     .lx-page .owl-carousel { grid-template-columns: repeat(2, 1fr) !important; }
     .lx-page .contact-row { grid-template-columns: 1fr; }
