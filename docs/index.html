@@ -76,62 +76,58 @@
 
 <!-- ========== Hero ========== -->
 <section class="lx-hero">
+    <div class="lx-hero__bg" aria-hidden="true">
+        <div class="lx-hero__bg-gradient"></div>
+        <div class="lx-hero__bg-noise"></div>
+        <div class="lx-hero__bg-seal">
+            <svg viewBox="0 0 640 640" role="presentation" focusable="false">
+                <defs>
+                    <path id="lx-seal-arc" d="M320 320 m-248 0 a248 248 0 1 1 496 0 a248 248 0 1 1 -496 0"></path>
+                </defs>
+                <circle cx="320" cy="320" r="304" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                <circle cx="320" cy="320" r="276" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <circle cx="320" cy="320" r="152" fill="none" stroke="currentColor" stroke-width="3"></circle>
+                <g fill="currentColor">
+                    <circle cx="320" cy="30" r="4"></circle>
+                    <circle cx="610" cy="320" r="4"></circle>
+                    <circle cx="320" cy="610" r="4"></circle>
+                    <circle cx="30" cy="320" r="4"></circle>
+                </g>
+                <text font-size="30" font-weight="600" letter-spacing="8" fill="currentColor">
+                    <textPath href="#lx-seal-arc" startOffset="0">НОТАРИУС ГОРОДА МОСКВЫ · КОЛГАНОВ О. И. · НОТАРИУС ГОРОДА МОСКВЫ · КОЛГАНОВ О. И. · </textPath>
+                </text>
+                <text x="320" y="322" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, 'Times New Roman', serif" font-size="170" font-weight="700" fill="currentColor">КО</text>
+            </svg>
+        </div>
+    </div>
     <div class="lx-container">
-        <div class="lx-hero__grid">
-            <div>
-                <div class="lx-hero__eyebrow">Нотариус города Москвы</div>
-                <h1 class="lx-hero__title">Колганов Олег Игоревич</h1>
-                <p class="lx-hero__subtitle">Полный спектр нотариальных действий для физических и юридических лиц. Квалифицированная правовая помощь, удобное расположение в шаговой доступности от метро.</p>
+        <div class="lx-hero__content">
+            <div class="lx-hero__eyebrow">Нотариус города Москвы</div>
+            <h1 class="lx-hero__title">Колганов Олег Игоревич</h1>
+            <p class="lx-hero__subtitle">Полный спектр нотариальных действий для физических и юридических лиц. Квалифицированная правовая помощь, удобное расположение в шаговой доступности от метро.</p>
 
-                <div class="lx-hero__facts">
-                    <div>
-                        <div class="lx-hero__fact-label">Реестр Минюста</div>
-                        <div class="lx-hero__fact-value">№ 77/2542-н/77</div>
-                    </div>
-                    <div>
-                        <div class="lx-hero__fact-label">Приказ о наделении полномочиями</div>
-                        <div class="lx-hero__fact-value">№ 126 от 03.03.2026</div>
-                    </div>
-                    <div>
-                        <div class="lx-hero__fact-label">Режим работы</div>
-                        <div class="lx-hero__fact-value">Пн–Пт, 10:00–19:00</div>
-                    </div>
-                    <div>
-                        <div class="lx-hero__fact-label">Метро</div>
-                        <div class="lx-hero__fact-value">Речной вокзал, 3 мин</div>
-                    </div>
-                </div>
-
-                <div class="lx-hero__actions">
-                    <a href="https://n2097567.yclients.com" class="lx-btn lx-btn--primary lx-btn--lg ms-button" data-url="https://n2097567.yclients.com" target="_blank" rel="noopener">Записаться на приём</a>
-                    <a href="#location" class="lx-btn lx-btn--ghost lx-btn--lg">Смотреть на карте</a>
-                </div>
+            <div class="lx-hero__pills">
+                <span class="lx-hero__pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    Реестр Минюста № 77/2542-н/77
+                </span>
+                <span class="lx-hero__pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+                    Приказ № 126 от 03.03.2026
+                </span>
+                <span class="lx-hero__pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Пн–Пт, 10:00–19:00
+                </span>
+                <span class="lx-hero__pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Речной вокзал, 3 мин
+                </span>
             </div>
 
-            <div class="lx-hero__card">
-                <div class="lx-hero__card-header">
-                    <div class="lx-hero__avatar">КО</div>
-                    <div>
-                        <div class="lx-hero__card-title">Колганов О. И.</div>
-                        <div class="lx-hero__card-role">Нотариус г. Москвы</div>
-                    </div>
-                </div>
-                <div class="lx-hero__card-row">
-                    <span>Адрес</span>
-                    <span>ул. Фестивальная, 13к3</span>
-                </div>
-                <div class="lx-hero__card-row">
-                    <span>Телефон</span>
-                    <span><a href="tel:+79956564404">+7 (995) 656-44-04</a></span>
-                </div>
-                <div class="lx-hero__card-row">
-                    <span>Email</span>
-                    <span><a href="mailto:Notarius@okolganov.ru">Notarius@okolganov.ru</a></span>
-                </div>
-                <div class="lx-hero__card-row">
-                    <span>Max / Telegram</span>
-                    <span>+7 (995) 656-44-04</span>
-                </div>
+            <div class="lx-hero__actions">
+                <a href="https://n2097567.yclients.com" class="lx-btn lx-btn--primary lx-btn--lg ms-button" data-url="https://n2097567.yclients.com" target="_blank" rel="noopener">Записаться на приём</a>
+                <a href="#location" class="lx-btn lx-btn--ghost lx-btn--lg">Смотреть на карте</a>
             </div>
         </div>
     </div>
