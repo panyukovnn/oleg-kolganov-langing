@@ -164,7 +164,7 @@ img, svg { max-width: 100%; display: block; }
     font-size: 18px;
     letter-spacing: 0.5px;
 }
-.lx-logo__text { line-height: 1.2; }
+.lx-logo__text { display: flex; flex-direction: column; gap: 4px; line-height: 1.15; }
 .lx-logo__name { font-weight: 700; font-size: 16px; color: var(--c-text); }
 .lx-logo__role { font-size: 12px; color: var(--c-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
