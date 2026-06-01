@@ -9,6 +9,7 @@
     <link rel="icon" href="static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="static/css/custom/lexakova-style.css">
     <link rel="stylesheet" href="static/css/custom/contact-form.css">
+    <link rel="stylesheet" href="static/css/custom/yclients-widget.css">
 </head>
 <body class="lx">
 
@@ -76,7 +77,7 @@
                 <a href="articles/index.html" class="lx-nav__link">Статьи</a>
                 <a href="pravovaya-informaciya/index.html" class="lx-nav__link">Правовая информация</a>
                 <a href="kontakty/index.html" class="lx-nav__link">Контакты</a>
-                <a href="#contact-form" class="lx-nav__link lx-nav__link--cta">Онлайн-запись</a>
+                <a href="https://n2097567.yclients.com" class="lx-nav__link lx-nav__link--cta ms-button" data-url="https://n2097567.yclients.com" target="_blank" rel="noopener">Онлайн-запись</a>
             </div>
         </nav>
     </div>
@@ -111,7 +112,7 @@
                 </div>
 
                 <div class="lx-hero__actions">
-                    <a href="#contact-form" class="lx-btn lx-btn--primary lx-btn--lg">Записаться на приём</a>
+                    <a href="https://n2097567.yclients.com" class="lx-btn lx-btn--primary lx-btn--lg ms-button" data-url="https://n2097567.yclients.com" target="_blank" rel="noopener">Записаться на приём</a>
                     <a href="#location" class="lx-btn lx-btn--ghost lx-btn--lg">Смотреть на карте</a>
                 </div>
             </div>
@@ -515,6 +516,25 @@
     </div>
 </section>
 
+<!-- ========== Online booking (YClients) ========== -->
+<section class="lx-section lx-section--soft" id="online-booking">
+    <div class="lx-container">
+        <h2 class="lx-h2" style="text-align:center;">Онлайн-запись к нотариусу</h2>
+        <p class="lx-lead" style="margin: 0 auto 32px; text-align:center;">Выберите услугу и удобное время приёма — запись подтвердится автоматически.</p>
+        <div id="yclients-widget" class="yclients-widget">
+            <iframe class="yclients-widget__frame"
+                    src="https://n2097567.yclients.com/company/2097567/"
+                    title="Онлайн-запись YClients"
+                    loading="lazy"
+                    allow="payment"></iframe>
+        </div>
+        <p class="yclients-widget__fallback">
+            Если форма не загрузилась —
+            <a href="https://n2097567.yclients.com" target="_blank" rel="noopener">откройте онлайн-запись в новой вкладке</a>.
+        </p>
+    </div>
+</section>
+
 <!-- ========== Contact form ========== -->
 <section class="lx-section" id="contact-form" style="background: #fff;">
     <div class="lx-container">
@@ -632,5 +652,7 @@
 </footer>
 
 <script src="static/js/custom/contact-form.js"></script>
+<!-- YClients online booking widget (филиал 2097567) -->
+<script type="text/javascript" charset="UTF-8" src="https://w2097567.yclients.com/widgetJS" async></script>
 </body>
 </html>
