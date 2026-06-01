@@ -1436,6 +1436,32 @@ img, svg { max-width: 100%; display: block; }
 }
 
 /* ============================================================
+   Отзывы (виджет Яндекс.Карт)
+   ============================================================ */
+
+.lx-reviews {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+.lx-reviews iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: var(--c-bg-soft);
+    display: block;
+}
+.lx-reviews__link {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--c-primary);
+    font-weight: 600;
+    font-size: 15px;
+}
+.lx-reviews__link:hover { color: var(--c-primary-dark); }
+
+/* ============================================================
    Mobile
    ============================================================ */
 
@@ -1481,7 +1507,9 @@ img, svg { max-width: 100%; display: block; }
     .lx-page .lx-container .row { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
     .lx-page .notary-content-download__block { flex-direction: column; align-items: stretch; gap: 10px; }
     .lx-page-title { font-size: 24px; }
+    .lx-reviews iframe { height: 520px; }
 }
 @media (max-width: 480px) {
     .lx-page .lx-container .row { grid-template-columns: 1fr !important; }
+    .lx-reviews iframe { height: 480px; }
 }
