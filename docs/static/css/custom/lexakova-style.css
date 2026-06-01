@@ -254,6 +254,20 @@ img, svg { max-width: 100%; display: block; }
     transition: color 0.2s;
 }
 .lx-nav__link:hover { color: var(--c-primary); }
+.lx-nav__link--active {
+    color: var(--c-primary);
+    font-weight: 600;
+}
+.lx-nav__link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--c-primary);
+    border-radius: 2px;
+}
 .lx-nav__link--cta {
     color: var(--c-primary);
     font-weight: 600;
