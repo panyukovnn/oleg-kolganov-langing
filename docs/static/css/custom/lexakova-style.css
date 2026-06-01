@@ -164,7 +164,7 @@ img, svg { max-width: 100%; display: block; }
     font-size: 18px;
     letter-spacing: 0.5px;
 }
-.lx-logo__text { line-height: 1.2; }
+.lx-logo__text { display: flex; flex-direction: column; gap: 4px; line-height: 1.15; }
 .lx-logo__name { font-weight: 700; font-size: 16px; color: var(--c-text); }
 .lx-logo__role { font-size: 12px; color: var(--c-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
@@ -375,48 +375,6 @@ img, svg { max-width: 100%; display: block; }
 }
 .lx-hero__card-row span:first-child { color: var(--c-text-muted); }
 .lx-hero__card-row span:last-child { color: var(--c-text); font-weight: 500; text-align: right; }
-
-/* ============================================================
-   Welcome cards (3-card row)
-   ============================================================ */
-
-.lx-welcome-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-.lx-wcard {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid var(--c-border);
-}
-.lx-wcard:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.lx-wcard__title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--c-primary); }
-.lx-wcard__text { color: var(--c-text-muted); font-size: 15px; flex: 1; margin-bottom: 18px; }
-.lx-wcard__link {
-    color: var(--c-primary);
-    font-weight: 600;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.lx-wcard__link::after { content: '→'; transition: transform 0.2s; }
-.lx-wcard__link:hover::after { transform: translateX(4px); }
-.lx-wcard__news-item {
-    padding: 12px 0;
-    border-top: 1px solid var(--c-border);
-    font-size: 14px;
-}
-.lx-wcard__news-item:first-of-type { border-top: none; padding-top: 0; }
-.lx-wcard__news-date { color: var(--c-text-muted); font-size: 12px; margin-bottom: 4px; }
-.lx-wcard__news-title { color: var(--c-text); line-height: 1.4; }
-.lx-wcard__news-title:hover { color: var(--c-primary); }
 
 /* ============================================================
    Services grid
@@ -1468,7 +1426,6 @@ img, svg { max-width: 100%; display: block; }
 @media (max-width: 1024px) {
     .lx-hero__title { font-size: 40px; }
     .lx-services { grid-template-columns: repeat(2, 1fr); }
-    .lx-welcome-cards { grid-template-columns: 1fr; }
     .lx-resources { grid-template-columns: repeat(2, 1fr); }
     .lx-articles { grid-template-columns: 1fr; }
     .lx-adv-grid { grid-template-columns: repeat(2, 1fr); }

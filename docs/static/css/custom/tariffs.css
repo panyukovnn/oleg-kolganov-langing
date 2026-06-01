@@ -34,6 +34,7 @@
     flex-direction: column;
     gap: 2px;
 }
+.lx-tariff-summary__lead { font-size: 16px; font-weight: 600; max-width: 560px; line-height: 1.4; }
 .lx-tariff-summary__label {
     font-size: 12px;
     letter-spacing: 0.04em;
