@@ -1609,8 +1609,8 @@ img, svg { max-width: 100%; display: block; }
 .kn-prose p { color: var(--c-text); line-height: 1.7; margin: 0 0 16px; }
 .kn-prose ul { margin: 0 0 18px; padding-left: 22px; }
 .kn-prose li { color: var(--c-text); line-height: 1.7; margin-bottom: 8px; }
-.kn-prose a { color: var(--c-primary); text-decoration: underline; }
-.kn-prose a:hover { color: var(--c-primary-dark); }
+.kn-prose p a, .kn-prose li a { color: var(--c-primary); text-decoration: underline; }
+.kn-prose p a:hover, .kn-prose li a:hover { color: var(--c-primary-dark); }
 .kn-prose__cta {
     display: flex;
     gap: 12px;
