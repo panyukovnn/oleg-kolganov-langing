@@ -768,6 +768,7 @@ img, svg { max-width: 100%; display: block; }
 }
 .lx-content th { background: var(--c-bg-soft); font-weight: 600; }
 .lx-content img { border-radius: var(--radius-sm); margin: 16px 0; }
+.lx-content .lx-article-lead { width: 100%; margin: 0 0 28px; border-radius: var(--radius); }
 .lx-content hr { border: none; border-top: 1px solid var(--c-border); margin: 28px 0; }
 
 /* ============================================================
