@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Переоборачивает все внутренние страницы в новый шаблон lexakova-style.
+Переоборачивает все внутренние страницы в новый шаблон main-style.
 Извлекает из исходного HTML title/description/breadcrumbs/main content
 и оборачивает в новую шапку/футер/контакт-форму. Контент содержимого
 сохраняется почти как есть — старые классы (.notary-article, .services
-и т.д.) переопределены в lexakova-style.css.
+и т.д.) переопределены в main-style.css.
 """
 import os
 import re
@@ -48,7 +48,7 @@ def extract_description(html: str) -> str:
 def extract_breadcrumbs(html):
     """Возвращает список (label, href|None). Поддерживает оба формата."""
     # 1) Новый формат — уже сконвертированная страница
-    m_new = re.search(r'<ul class="lx-breadcrumbs">(.*?)</ul>', html, re.DOTALL)
+    m_new = re.search(r'<ul class="kn-breadcrumbs">(.*?)</ul>', html, re.DOTALL)
     if m_new:
         items = []
         for li in re.findall(r"<li[^>]*>(.*?)</li>", m_new.group(1), re.DOTALL):
@@ -88,7 +88,7 @@ def extract_breadcrumbs(html):
 
 def extract_h1(html):
     # Сначала пробуем новый шаблон
-    m = re.search(r'<h1[^>]*class="lx-page-title"[^>]*>(.*?)</h1>', html, re.DOTALL)
+    m = re.search(r'<h1[^>]*class="kn-page-title"[^>]*>(.*?)</h1>', html, re.DOTALL)
     if m:
         text = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
         text = re.sub(r"\s+", " ", text)
@@ -107,12 +107,12 @@ def extract_h1(html):
 def _strip_template_wrappers(content):
     """Удаляет любые вложенные блоки шаблона (на случай повторной конвертации)."""
     patterns = [
-        r'<div class="lx-topbar">.*?</div>\s*</div>\s*</div>',  # topbar (3 уровня div)
-        r'<div class="lx-topbar">.*?(?=<header|<section|<footer|$)',
-        r'<header class="lx-header">.*?</header>',
-        r'<section class="lx-page-head"[^>]*>.*?</section>',
-        r'<section class="lx-section"[^>]*id="contact-form"[^>]*>.*?</section>',
-        r'<footer class="lx-footer">.*?</footer>',
+        r'<div class="kn-topbar">.*?</div>\s*</div>\s*</div>',  # topbar (3 уровня div)
+        r'<div class="kn-topbar">.*?(?=<header|<section|<footer|$)',
+        r'<header class="kn-header">.*?</header>',
+        r'<section class="kn-page-head"[^>]*>.*?</section>',
+        r'<section class="kn-section"[^>]*id="contact-form"[^>]*>.*?</section>',
+        r'<footer class="kn-footer">.*?</footer>',
         r'<script src="[^"]*contact-form\.js"[^>]*>\s*</script>',
         r'</body>\s*</html>',
     ]
@@ -123,11 +123,11 @@ def _strip_template_wrappers(content):
 
 def extract_main_content(html):
     """Контент между </ul> крошек и блоком sharing/cookie/footer.
-    Идемпотентно: на уже сконвертированной странице возвращает содержимое .lx-page."""
+    Идемпотентно: на уже сконвертированной странице возвращает содержимое .kn-page."""
 
-    # Уже новый шаблон — берём только содержимое последнего (внутреннего) .lx-page
+    # Уже новый шаблон — берём только содержимое последнего (внутреннего) .kn-page
     matches = list(re.finditer(
-        r'<section class="lx-page"[^>]*>\s*<div class="lx-container">\s*(.*?)\s*</div>\s*</section>',
+        r'<section class="kn-page"[^>]*>\s*<div class="kn-container">\s*(.*?)\s*</div>\s*</section>',
         html, re.DOTALL,
     ))
     if matches:
@@ -205,98 +205,98 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
     <title>{title}</title>
     <meta name="description" content="{description}">
     <link rel="icon" href="{base}static/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{base}static/css/custom/lexakova-style.css">
+    <link rel="stylesheet" href="{base}static/css/custom/main-style.css">
     <link rel="stylesheet" href="{base}static/css/custom/contact-form.css">
 </head>
-<body class="lx">
+<body class="kn">
 
-<div class="lx-topbar">
-    <div class="lx-container lx-topbar__row">
-        <div class="lx-topbar__contacts">
+<div class="kn-topbar">
+    <div class="kn-container kn-topbar__row">
+        <div class="kn-topbar__contacts">
             <span>Пн–Пт 10:00–19:00</span>
             <a href="mailto:Notarius@okolganov.ru">Notarius@okolganov.ru</a>
         </div>
-        <div class="lx-topbar__contacts">
+        <div class="kn-topbar__contacts">
             <span>Реестр Минюста № 77/2542-н/77</span>
         </div>
     </div>
 </div>
 
-<header class="lx-header">
-    <div class="lx-container">
-        <div class="lx-header__row">
-            <a href="{base}index.html" class="lx-logo">
-                <span class="lx-logo__mark">КО</span>
-                <span class="lx-logo__text">
-                    <span class="lx-logo__name">Колганов О. И.</span>
-                    <span class="lx-logo__role">Нотариус города Москвы</span>
+<header class="kn-header">
+    <div class="kn-container">
+        <div class="kn-header__row">
+            <a href="{base}index.html" class="kn-logo">
+                <span class="kn-logo__mark">КО</span>
+                <span class="kn-logo__text">
+                    <span class="kn-logo__name">Колганов О. И.</span>
+                    <span class="kn-logo__role">Нотариус города Москвы</span>
                 </span>
             </a>
 
-            <div class="lx-header__meta">
-                <div class="lx-meta-item">
-                    <svg class="lx-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="kn-header__meta">
+                <div class="kn-meta-item">
+                    <svg class="kn-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <div>
-                        <div class="lx-meta-item__label">Адрес</div>
-                        <div class="lx-meta-item__value">Москва, ул. Фестивальная, 13к3</div>
+                        <div class="kn-meta-item__label">Адрес</div>
+                        <div class="kn-meta-item__value">Москва, ул. Фестивальная, 13к3</div>
                     </div>
                 </div>
-                <div class="lx-meta-item">
-                    <svg class="lx-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                <div class="kn-meta-item">
+                    <svg class="kn-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
                     <div>
-                        <div class="lx-meta-item__label">Метро</div>
-                        <div class="lx-meta-item__value">Речной вокзал, 3 мин</div>
+                        <div class="kn-meta-item__label">Метро</div>
+                        <div class="kn-meta-item__value">Речной вокзал, 3 мин</div>
                     </div>
                 </div>
-                <div class="lx-meta-item">
-                    <svg class="lx-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="kn-meta-item">
+                    <svg class="kn-meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     <div>
-                        <div class="lx-meta-item__label">Часы работы</div>
-                        <div class="lx-meta-item__value">Пн–Пт 10:00–19:00</div>
+                        <div class="kn-meta-item__label">Часы работы</div>
+                        <div class="kn-meta-item__value">Пн–Пт 10:00–19:00</div>
                     </div>
                 </div>
             </div>
 
-            <div class="lx-header__cta">
-                <a href="tel:+79956564404" class="lx-header__phone">+7 995 656-44-04</a>
-                <a href="#contact-form" class="lx-btn lx-btn--primary">Задать вопрос</a>
+            <div class="kn-header__cta">
+                <a href="tel:+79956564404" class="kn-header__phone">+7 995 656-44-04</a>
+                <a href="#contact-form" class="kn-btn kn-btn--primary">Задать вопрос</a>
             </div>
         </div>
 
-        <nav class="lx-nav">
-            <div class="lx-nav__row">
-                <a href="{base}index.html" class="lx-nav__link">Главная</a>
-                <a href="{base}notarialnaya-kontora/index.html" class="lx-nav__link">О нотариусе</a>
-                <a href="{base}celi-obrashhenija/index.html" class="lx-nav__link">Нотариальные действия</a>
-                <a href="{base}fnc/tarify/index.html" class="lx-nav__link">Тарифы</a>
-                <a href="{base}articles/index.html" class="lx-nav__link">Статьи</a>
-                <a href="{base}pravovaya-informaciya/index.html" class="lx-nav__link">Правовая информация</a>
-                <a href="{base}kontakty/index.html" class="lx-nav__link">Контакты</a>
-                <a href="#contact-form" class="lx-nav__link lx-nav__link--cta">Онлайн-запись</a>
+        <nav class="kn-nav">
+            <div class="kn-nav__row">
+                <a href="{base}index.html" class="kn-nav__link">Главная</a>
+                <a href="{base}notarialnaya-kontora/index.html" class="kn-nav__link">О нотариусе</a>
+                <a href="{base}celi-obrashhenija/index.html" class="kn-nav__link">Нотариальные действия</a>
+                <a href="{base}fnc/tarify/index.html" class="kn-nav__link">Тарифы</a>
+                <a href="{base}articles/index.html" class="kn-nav__link">Статьи</a>
+                <a href="{base}pravovaya-informaciya/index.html" class="kn-nav__link">Правовая информация</a>
+                <a href="{base}kontakty/index.html" class="kn-nav__link">Контакты</a>
+                <a href="#contact-form" class="kn-nav__link kn-nav__link--cta">Онлайн-запись</a>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="lx-page-head">
-    <div class="lx-container">
-        <ul class="lx-breadcrumbs">
+<section class="kn-page-head">
+    <div class="kn-container">
+        <ul class="kn-breadcrumbs">
                 {breadcrumbs_html}
         </ul>
-        <h1 class="lx-page-title">{h1}</h1>
+        <h1 class="kn-page-title">{h1}</h1>
     </div>
 </section>
 
-<section class="lx-page">
-    <div class="lx-container">
+<section class="kn-page">
+    <div class="kn-container">
 {body}
     </div>
 </section>
 
-<section class="lx-section" id="contact-form" style="background: var(--c-bg-soft);">
-    <div class="lx-container">
-        <h2 class="lx-h2" style="text-align:center;">Задать вопрос нотариусу</h2>
-        <p class="lx-lead" style="margin: 0 auto 32px; text-align:center;">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение.</p>
+<section class="kn-section" id="contact-form" style="background: var(--c-bg-soft);">
+    <div class="kn-container">
+        <h2 class="kn-h2" style="text-align:center;">Задать вопрос нотариусу</h2>
+        <p class="kn-lead" style="margin: 0 auto 32px; text-align:center;">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение.</p>
 
         <form class="contact-form" novalidate>
             <div class="contact-form__row contact-form__row--split">
@@ -348,18 +348,18 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
     </div>
 </section>
 
-<footer class="lx-footer">
-    <div class="lx-container">
-        <div class="lx-footer__grid">
-            <div class="lx-footer__about">
-                <div class="lx-footer__title">Колганов О. И.</div>
+<footer class="kn-footer">
+    <div class="kn-container">
+        <div class="kn-footer__grid">
+            <div class="kn-footer__about">
+                <div class="kn-footer__title">Колганов О. И.</div>
                 <p><strong>Нотариус города Москвы</strong></p>
                 <p style="margin-top: 12px;">Реестр Минюста № 77/2542-н/77<br>Приказ № 126 от 03.03.2026</p>
                 <p style="margin-top: 12px;">125565, г. Москва,<br>ул. Фестивальная, дом 13, корпус 3</p>
             </div>
             <div>
-                <div class="lx-footer__title">Разделы</div>
-                <nav class="lx-footer__nav">
+                <div class="kn-footer__title">Разделы</div>
+                <nav class="kn-footer__nav">
                     <a href="{base}notarialnaya-kontora/index.html">О нотариусе</a>
                     <a href="{base}celi-obrashhenija/index.html">Нотариальные действия</a>
                     <a href="{base}fnc/tarify/index.html">Тарифы</a>
@@ -368,8 +368,8 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
                 </nav>
             </div>
             <div>
-                <div class="lx-footer__title">Информация</div>
-                <nav class="lx-footer__nav">
+                <div class="kn-footer__title">Информация</div>
+                <nav class="kn-footer__nav">
                     <a href="{base}pravovaya-informaciya/index.html">Правовая информация</a>
                     <a href="{base}fnc/tarify/index.html">Тарифы</a>
                     <a href="{base}fnc/reestry/index.html">Публичные реестры</a>
@@ -378,8 +378,8 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
                 </nav>
             </div>
             <div>
-                <div class="lx-footer__title">Контакты</div>
-                <nav class="lx-footer__nav">
+                <div class="kn-footer__title">Контакты</div>
+                <nav class="kn-footer__nav">
                     <a href="tel:+79956564404">+7 995 656-44-04</a>
                     <a href="mailto:Notarius@okolganov.ru">Notarius@okolganov.ru</a>
                     <span>Max: +7 995 656-44-04</span>
@@ -388,7 +388,7 @@ def build_template(p: Path, title: str, description: str, breadcrumbs, h1, body:
                 </nav>
             </div>
         </div>
-        <div class="lx-footer__bottom">
+        <div class="kn-footer__bottom">
             <span>© 2026 Нотариус Колганов О. И. Все права защищены.</span>
             <span><a href="{base}fnc/personalnye-dannye/index.html">Политика конфиденциальности</a></span>
         </div>

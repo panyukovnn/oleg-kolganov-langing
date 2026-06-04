@@ -6,13 +6,13 @@
     document.addEventListener('DOMContentLoaded', init);
 
     function init() {
-        var root = document.querySelector('.lx-reviews');
+        var root = document.querySelector('.kn-reviews');
         if (!root) return;
 
-        var track = root.querySelector('.lx-reviews__track');
-        var tpl = document.getElementById('lx-review-tpl');
-        var prev = root.querySelector('.lx-reviews__nav--prev');
-        var next = root.querySelector('.lx-reviews__nav--next');
+        var track = root.querySelector('.kn-reviews__track');
+        var tpl = document.getElementById('kn-review-tpl');
+        var prev = root.querySelector('.kn-reviews__nav--prev');
+        var next = root.querySelector('.kn-reviews__nav--next');
         if (!track || !tpl) return;
 
         var url = track.getAttribute('data-src') || 'static/data/reviews.json';
@@ -34,18 +34,18 @@
         var node = tpl.content.firstElementChild.cloneNode(true);
 
         var name = String(r.name || '').trim() || 'Аноним';
-        var avatar = node.querySelector('.lx-review__avatar');
+        var avatar = node.querySelector('.kn-review__avatar');
         avatar.textContent = name.charAt(0).toUpperCase();
         avatar.style.setProperty('--avatar-bg', colorFromName(name));
 
-        node.querySelector('.lx-review__name').textContent = name;
-        node.querySelector('.lx-review__meta').textContent =
+        node.querySelector('.kn-review__name').textContent = name;
+        node.querySelector('.kn-review__meta').textContent =
             'Источник: ' + (r.source || 'Яндекс.Карты') + ' · ' + formatDate(r.date);
 
-        var textEl = node.querySelector('.lx-review__text');
+        var textEl = node.querySelector('.kn-review__text');
         textEl.textContent = String(r.text || ''); // textContent — без инъекций
 
-        var more = node.querySelector('.lx-review__more');
+        var more = node.querySelector('.kn-review__more');
         // Кнопка «ещё» нужна, только если текст реально обрезается
         requestAnimationFrame(function () {
             if (textEl.scrollHeight - textEl.clientHeight > 4) {
@@ -53,7 +53,7 @@
             }
         });
         more.addEventListener('click', function () {
-            var expanded = textEl.classList.toggle('lx-review__text--expanded');
+            var expanded = textEl.classList.toggle('kn-review__text--expanded');
             more.setAttribute('aria-expanded', String(expanded));
             more.textContent = expanded ? 'свернуть' : 'ещё';
         });
@@ -63,7 +63,7 @@
 
     function wireNav(track, prev, next) {
         function step() {
-            var card = track.querySelector('.lx-review');
+            var card = track.querySelector('.kn-review');
             var gap = 24;
             return card ? card.getBoundingClientRect().width + gap : track.clientWidth;
         }

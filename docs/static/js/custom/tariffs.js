@@ -2,8 +2,8 @@
 (function () {
     'use strict';
 
-    var toggleBtn = document.querySelector('.lx-tariff-toggle-all');
-    var groups = Array.prototype.slice.call(document.querySelectorAll('.lx-tariff-group'));
+    var toggleBtn = document.querySelector('.kn-tariff-toggle-all');
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.kn-tariff-group'));
     if (!toggleBtn || !groups.length) {
         return;
     }
@@ -34,7 +34,7 @@
     function openFromHash() {
         if (!location.hash) { return; }
         var target = document.querySelector(location.hash);
-        if (target && target.classList.contains('lx-tariff-group')) {
+        if (target && target.classList.contains('kn-tariff-group')) {
             target.open = true;
             syncLabel();
         }

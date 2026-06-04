@@ -1,6 +1,6 @@
 /* ============================================================
    Сетка тарифов /fnc/tarify/ — оформление под эталон
-   notkolganov.ru/tarify/. Расширяет lexakova-style.css.
+   notkolganov.ru/tarify/. Расширяет main-style.css.
    ============================================================ */
 
 :root {
@@ -14,10 +14,10 @@
 }
 
 /* Единый блок сетки тарифов */
-.lx-tariffs { margin: 28px 0 0; }
+.kn-tariffs { margin: 28px 0 0; }
 
 /* Карточка-резюме сверху: контакты + CTA */
-.lx-tariff-summary {
+.kn-tariff-summary {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -29,30 +29,30 @@
     margin: 0 0 24px;
     box-shadow: var(--shadow-sm);
 }
-.lx-tariff-summary__item {
+.kn-tariff-summary__item {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
-.lx-tariff-summary__lead { font-size: 16px; font-weight: 600; max-width: 560px; line-height: 1.4; }
-.lx-tariff-summary__label {
+.kn-tariff-summary__lead { font-size: 16px; font-weight: 600; max-width: 560px; line-height: 1.4; }
+.kn-tariff-summary__label {
     font-size: 12px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     opacity: 0.75;
 }
-.lx-tariff-summary__value { font-size: 16px; font-weight: 600; }
-.lx-tariff-summary__value a { color: #fff !important; text-decoration: none; border-bottom: none !important; }
-.lx-tariff-summary__cta { margin-left: auto; }
-.lx-tariff-summary__cta .lx-btn {
+.kn-tariff-summary__value { font-size: 16px; font-weight: 600; }
+.kn-tariff-summary__value a { color: #fff !important; text-decoration: none; border-bottom: none !important; }
+.kn-tariff-summary__cta { margin-left: auto; }
+.kn-tariff-summary__cta .kn-btn {
     background: #fff;
     color: var(--c-primary) !important;
     border-color: #fff;
 }
-.lx-tariff-summary__cta .lx-btn:hover { background: var(--c-accent); color: #fff !important; border-color: var(--c-accent); }
+.kn-tariff-summary__cta .kn-btn:hover { background: var(--c-accent); color: #fff !important; border-color: var(--c-accent); }
 
 /* Дата вступления в силу */
-.lx-tariff-effective {
+.kn-tariff-effective {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -67,14 +67,14 @@
 }
 
 /* Якорное оглавление */
-.lx-tariff-toc {
+.kn-tariff-toc {
     background: #fff;
     border: 1px solid var(--c-border);
     border-radius: var(--radius);
     padding: 20px 24px;
     margin: 0 0 20px;
 }
-.lx-tariff-toc__title {
+.kn-tariff-toc__title {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -82,15 +82,15 @@
     color: var(--c-text-muted);
     margin: 0 0 12px;
 }
-.lx-tariff-toc__list {
+.kn-tariff-toc__list {
     list-style: none;
     margin: 0;
     padding: 0;
     columns: 2;
     column-gap: 32px;
 }
-.lx-tariff-toc__list li { margin: 0 0 8px; break-inside: avoid; }
-.lx-tariff-toc__list a {
+.kn-tariff-toc__list li { margin: 0 0 8px; break-inside: avoid; }
+.kn-tariff-toc__list a {
     color: var(--c-text);
     text-decoration: none;
     border-bottom: none;
@@ -99,16 +99,16 @@
     display: inline-flex;
     gap: 8px;
 }
-.lx-tariff-toc__list a:hover { color: var(--c-primary); }
-.lx-tariff-toc__list a span { color: var(--c-text-muted); font-weight: 600; flex-shrink: 0; }
+.kn-tariff-toc__list a:hover { color: var(--c-primary); }
+.kn-tariff-toc__list a span { color: var(--c-text-muted); font-weight: 600; flex-shrink: 0; }
 
 /* Тулбар «свернуть/развернуть всё» */
-.lx-tariff-toolbar {
+.kn-tariff-toolbar {
     display: flex;
     justify-content: flex-end;
     margin: 0 0 12px;
 }
-.lx-tariff-toggle-all {
+.kn-tariff-toggle-all {
     appearance: none;
     background: #fff;
     border: 1px solid var(--c-border);
@@ -121,50 +121,50 @@
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
 }
-.lx-tariff-toggle-all:hover { background: var(--c-bg-soft); border-color: var(--c-primary); }
+.kn-tariff-toggle-all:hover { background: var(--c-bg-soft); border-color: var(--c-primary); }
 
 /* Якоря на группах — учёт sticky-шапки сайта */
-.lx-tariff-group { scroll-margin-top: var(--tariff-head-offset); }
+.kn-tariff-group { scroll-margin-top: var(--tariff-head-offset); }
 
 /* Колоночные ширины из переменных */
-.lx-tariff-table .lx-tariff-num { width: var(--tariff-col-num); }
-.lx-tariff-table .lx-tariff-fed { width: var(--tariff-col-fed); }
-.lx-tariff-table .lx-tariff-reg { width: var(--tariff-col-reg); }
-.lx-tariff-table .lx-tariff-note-col { width: var(--tariff-col-note); }
+.kn-tariff-table .kn-tariff-num { width: var(--tariff-col-num); }
+.kn-tariff-table .kn-tariff-fed { width: var(--tariff-col-fed); }
+.kn-tariff-table .kn-tariff-reg { width: var(--tariff-col-reg); }
+.kn-tariff-table .kn-tariff-note-col { width: var(--tariff-col-note); }
 
 /* Зебра-строки для читаемости длинной таблицы */
-.lx-tariff-table tbody tr:nth-child(even) td { background: rgba(245, 247, 251, 0.6); }
-.lx-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
+.kn-tariff-table tbody tr:nth-child(even) td { background: rgba(245, 247, 251, 0.6); }
+.kn-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
 
 /* Суммы регионального тарифа — заметнее */
-.lx-tariff-table .lx-tariff-reg {
+.kn-tariff-table .kn-tariff-reg {
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
 
 /* Примечание — серым курсивом, читаемый межстрочный */
-.lx-tariff-table .lx-tariff-note-col {
+.kn-tariff-table .kn-tariff-note-col {
     font-style: italic;
     line-height: 1.5;
 }
 
 /* Ссылки на статьи НК/Основ — мелким моноширинным */
-.lx-tariff-table .lx-tariff-fed {
+.kn-tariff-table .kn-tariff-fed {
     font-size: 12.5px;
     line-height: 1.5;
 }
 
 /* Анимация раскрытия группы */
-@keyframes lx-tariff-reveal {
+@keyframes kn-tariff-reveal {
     from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-.lx-tariff-group[open] .lx-tariff-group__body {
-    animation: lx-tariff-reveal 0.22s ease;
+.kn-tariff-group[open] .kn-tariff-group__body {
+    animation: kn-tariff-reveal 0.22s ease;
 }
 
 /* Дисклеймер */
-.lx-tariff-disclaimer {
+.kn-tariff-disclaimer {
     border-left: 3px solid var(--c-accent);
     background: var(--c-bg-soft);
     border-radius: var(--radius-sm);
@@ -176,16 +176,16 @@
 }
 
 /* Блок «Льготы» внизу */
-.lx-tariff-lgoty {
+.kn-tariff-lgoty {
     background: #fff;
     border: 1px solid var(--c-border);
     border-radius: var(--radius);
     padding: 22px 26px;
     margin: 20px 0 0;
 }
-.lx-tariff-lgoty__title { font-size: 17px; font-weight: 700; margin: 0 0 10px; color: var(--c-text); }
-.lx-tariff-lgoty p { margin: 0 0 12px; color: var(--c-text-muted); font-size: 14px; line-height: 1.55; }
-.lx-tariff-lgoty__links { display: flex; flex-wrap: wrap; gap: 12px; }
+.kn-tariff-lgoty__title { font-size: 17px; font-weight: 700; margin: 0 0 10px; color: var(--c-text); }
+.kn-tariff-lgoty p { margin: 0 0 12px; color: var(--c-text-muted); font-size: 14px; line-height: 1.55; }
+.kn-tariff-lgoty__links { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* Планшет: ужать колонки и шрифт примечаний */
 @media (max-width: 1023px) {
@@ -194,29 +194,29 @@
         --tariff-col-reg: 130px;
         --tariff-col-note: 220px;
     }
-    .lx-tariff-table .lx-tariff-note-col { font-size: 12px; }
+    .kn-tariff-table .kn-tariff-note-col { font-size: 12px; }
 }
 
-/* Мобильный: карточный вид строк (наследует базовые правила из lexakova-style.css) */
+/* Мобильный: карточный вид строк (наследует базовые правила из main-style.css) */
 @media (max-width: 720px) {
-    .lx-tariff-summary { padding: 18px 20px; gap: 16px 24px; }
-    .lx-tariff-summary__cta { margin-left: 0; width: 100%; }
-    .lx-tariff-summary__cta .lx-btn { width: 100%; text-align: center; }
-    .lx-tariff-toc__list { columns: 1; }
-    .lx-tariff-table thead th { position: static; }
+    .kn-tariff-summary { padding: 18px 20px; gap: 16px 24px; }
+    .kn-tariff-summary__cta { margin-left: 0; width: 100%; }
+    .kn-tariff-summary__cta .kn-btn { width: 100%; text-align: center; }
+    .kn-tariff-toc__list { columns: 1; }
+    .kn-tariff-table thead th { position: static; }
     /* Подписи колонок в карточном виде */
-    .lx-tariff-table .lx-tariff-fed::before { content: 'Федеральный тариф: '; }
-    .lx-tariff-table .lx-tariff-fed { font-style: normal; }
+    .kn-tariff-table .kn-tariff-fed::before { content: 'Федеральный тариф: '; }
+    .kn-tariff-table .kn-tariff-fed { font-style: normal; }
 }
 
 /* Печать: не резать строки посередине, скрыть интерактив */
 @media print {
-    .lx-tariff-toolbar,
-    .lx-tariff-toggle-all,
-    .lx-tariff-summary__cta { display: none; }
-    .lx-tariff-group { break-inside: avoid; border: 1px solid #ccc; }
-    .lx-tariff-group .lx-tariff-group__body { display: block !important; }
-    .lx-tariff-table tbody tr { break-inside: avoid; }
-    .lx-tariff-table thead th { position: static; }
+    .kn-tariff-toolbar,
+    .kn-tariff-toggle-all,
+    .kn-tariff-summary__cta { display: none; }
+    .kn-tariff-group { break-inside: avoid; border: 1px solid #ccc; }
+    .kn-tariff-group .kn-tariff-group__body { display: block !important; }
+    .kn-tariff-table tbody tr { break-inside: avoid; }
+    .kn-tariff-table thead th { position: static; }
     a[href]::after { content: ''; }
 }
