@@ -1348,7 +1348,7 @@ img, svg { max-width: 100%; display: block; }
     .kn-tariff-num { display: inline-block; font-weight: 600; }
     .kn-tariff-num::after { content: ' '; }
     .kn-tariff-fed::before { content: 'Федеральный: '; color: var(--c-text-muted); font-weight: 500; }
-    .kn-tariff-reg::before { content: 'УПТХ: '; color: var(--c-text-muted); font-weight: 500; }
+    .kn-tariff-reg::before { content: 'Тариф: '; color: var(--c-text-muted); font-weight: 500; }
     .kn-tariff-note-col::before { content: 'Примечание: '; color: var(--c-text-muted); font-weight: 500; }
     .kn-tariff-reg { color: var(--c-primary); }
     .kn-tariff-note-col, .kn-tariff-num, .kn-tariff-fed, .kn-tariff-reg { width: auto; }
@@ -1601,3 +1601,22 @@ img, svg { max-width: 100%; display: block; }
 @media (max-width: 480px) {
     .kn-page .kn-container .row { grid-template-columns: 1fr !important; }
 }
+
+/* ===== Текстовая страница нотариального действия (.kn-prose) ===== */
+.kn-prose { max-width: 820px; }
+.kn-prose > .kn-lead { margin-bottom: 24px; }
+.kn-prose .kn-h3 { margin-top: 32px; margin-bottom: 12px; }
+.kn-prose p { color: var(--c-text); line-height: 1.7; margin: 0 0 16px; }
+.kn-prose ul { margin: 0 0 18px; padding-left: 22px; }
+.kn-prose li { color: var(--c-text); line-height: 1.7; margin-bottom: 8px; }
+.kn-prose a { color: var(--c-primary); text-decoration: underline; }
+.kn-prose a:hover { color: var(--c-primary-dark); }
+.kn-prose__cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--c-border);
+}
+.kn-prose__note { color: var(--c-text-muted); font-size: 14px; margin-top: 12px; }

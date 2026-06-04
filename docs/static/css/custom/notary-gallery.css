@@ -39,3 +39,92 @@
     object-fit: cover;
     height: auto;
 }
+
+/* ===== Персональный блок «Обо мне» ===== */
+
+.notary-about {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+    margin: 0 0 8px;
+}
+
+@media (min-width: 768px) {
+    .notary-about {
+        grid-template-columns: minmax(0, 320px) 1fr;
+        gap: 40px;
+    }
+}
+
+.notary-about__photo {
+    margin: 0;
+    border-radius: var(--radius-lg, 20px);
+    overflow: hidden;
+    box-shadow: var(--shadow, 0 6px 24px rgba(30, 77, 139, 0.08));
+    background: var(--c-bg-card, #fff);
+}
+
+.notary-about__photo picture,
+.notary-about__photo img {
+    display: block;
+    width: 100%;
+}
+
+.notary-about__photo img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    height: auto;
+}
+
+.notary-about__eyebrow {
+    display: inline-block;
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-accent, #c9a456);
+}
+
+.notary-about__body h2 {
+    margin-top: 0;
+}
+
+.notary-about__body p {
+    color: var(--c-text, #1a1f2e);
+    line-height: 1.7;
+    margin: 0 0 16px;
+}
+
+.notary-about__facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+@media (min-width: 560px) {
+    .notary-about__facts {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.notary-about__fact {
+    padding: 16px 18px;
+    background: var(--c-bg-soft, #f5f7fb);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius, 12px);
+}
+
+.notary-about__fact-label {
+    font-size: 13px;
+    color: var(--c-text-muted, #6b7280);
+    margin-bottom: 4px;
+}
+
+.notary-about__fact-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--c-primary, #1e4d8b);
+}
