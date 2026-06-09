@@ -138,61 +138,16 @@
         <h2 class="kn-h2" style="text-align:center;">Задать вопрос нотариусу</h2>
         <p class="kn-lead" style="margin: 0 auto 32px; text-align:center;">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение.</p>
 
-        <form class="contact-form" novalidate>
-            <div class="contact-form__row contact-form__row--split">
-                <div class="contact-form__field">
-                    <label class="contact-form__label contact-form__label--required" for="cf-name">Имя</label>
-                    <input class="contact-form__input" type="text" id="cf-name" name="name" required autocomplete="name">
-                </div>
-                <div class="contact-form__field">
-                    <label class="contact-form__label contact-form__label--required" for="cf-phone">Телефон</label>
-                    <input class="contact-form__input" type="tel" id="cf-phone" name="phone" required autocomplete="tel" placeholder="+7 ___ ___ __ __">
-                </div>
-            </div>
-            <div class="contact-form__row">
-                <div class="contact-form__field">
-                    <label class="contact-form__label" for="cf-email">Email <span style="color:var(--c-text-muted);font-weight:400;">(необязательно)</span></label>
-                    <input class="contact-form__input" type="email" id="cf-email" name="email" autocomplete="email">
-                </div>
-            </div>
-            <div class="contact-form__row">
-                <div class="contact-form__field">
-                    <label class="contact-form__label contact-form__label--required" for="cf-purpose">Цель обращения</label>
-                    <select class="contact-form__select" id="cf-purpose" name="purpose" required>
-                        <option value="">— Выберите —</option>
-                        <option value="Сделки с недвижимостью">Сделки с недвижимостью</option>
-                        <option value="Наследство">Наследство</option>
-                        <option value="Завещание">Завещание</option>
-                        <option value="Доверенность">Доверенность</option>
-                        <option value="Брачно-семейные отношения">Брачно-семейные отношения</option>
-                        <option value="Корпоративные отношения">Корпоративные отношения</option>
-                        <option value="Депозит нотариуса">Депозит нотариуса</option>
-                        <option value="Уведомление о залоге движимого имущества">Уведомление о залоге движимого имущества</option>
-                        <option value="Свидетельствование верности копий">Свидетельствование верности копий</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                </div>
-            </div>
-            <div class="contact-form__row">
-                <div class="contact-form__field">
-                    <label class="contact-form__label contact-form__label--required" for="cf-message">Опишите вопрос</label>
-                    <textarea class="contact-form__textarea" id="cf-message" name="message" rows="4" required></textarea>
-                </div>
-            </div>
-            <div class="contact-form__row">
-                <button class="contact-form__submit" type="submit">Отправить</button>
-            </div>
-            <div class="contact-form__status"></div>
-            <p class="contact-form__hint">Отправляя форму, вы соглашаетесь с <a href="../fnc/personalnye-dannye/index.html">обработкой персональных данных</a></p>
-        </form>
+        <div data-contact-form></div>
     </div>
 </section>
 
+<!-- FOOTER:START (генерируется scripts/build-footer.py — не редактировать вручную) -->
 <footer class="kn-footer">
     <div class="kn-container">
         <div class="kn-footer__grid">
             <div class="kn-footer__about">
-                <div class="kn-footer__title">Колганов О. И.</div>
+                <div class="kn-footer__title">Колганов О. И.</div>
                 <p><strong>Нотариус города Москвы</strong></p>
                 <p style="margin-top: 12px;">Реестр Минюста № 77/2542-н/77<br>Приказ № 126 от 03.03.2026</p>
                 <p style="margin-top: 12px;">125565, г. Москва,<br>ул. Фестивальная, дом 13, корпус 3</p>
@@ -229,11 +184,12 @@
             </div>
         </div>
         <div class="kn-footer__bottom">
-            <span>© 2026 Нотариус Колганов О. И. Все права защищены.</span>
+            <span>© 2026 Нотариус Колганов О. И. Все права защищены.</span>
             <span><a href="../fnc/personalnye-dannye/index.html">Политика конфиденциальности</a></span>
         </div>
     </div>
 </footer>
+<!-- FOOTER:END -->
 
 <script src="../static/js/custom/contact-form.js"></script>
 <!-- YClients online booking widget (филиал 2097567) -->

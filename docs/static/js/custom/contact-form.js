@@ -1,6 +1,14 @@
 (function () {
     'use strict';
 
+    // Путь до этого скрипта (нужен, чтобы вычислить «глубину» страницы и собрать
+    // относительные ссылки внутри подключаемой формы). document.currentScript
+    // доступен только во время синхронного выполнения скрипта — фиксируем сразу.
+    var SCRIPT_SRC = (document.currentScript && document.currentScript.getAttribute('src')) || 'static/js/custom/contact-form.js';
+    // База = путь до корня сайта относительно текущей страницы ('', '../', '../../../' …)
+    var BASE = SCRIPT_SRC.replace(/static\/js\/custom\/contact-form\.js.*$/, '');
+    var SNIPPET_URL = BASE + 'static/html-snippets/contact-form.html';
+
     // ============================================================
     // Конфиг Google Form
     // ============================================================
@@ -46,9 +54,10 @@
     function validate(values) {
         if (!values.name || values.name.length < 2) return 'Укажите имя';
         if (!values.phone || values.phone.replace(/\D/g, '').length < 10) return 'Укажите корректный телефон';
+        if (!values.email) return 'Укажите email';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) return 'Некорректный email';
         if (!values.purpose) return 'Выберите цель обращения';
         if (!values.message || values.message.length < 3) return 'Опишите ваш вопрос';
-        if (values.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) return 'Некорректный email';
         return null;
     }
 
@@ -108,9 +117,40 @@
             });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.querySelector('.contact-form');
-        if (!form) return;
+    function bindForm(form) {
+        if (!form || form.getAttribute('data-bound')) return;
+        form.setAttribute('data-bound', '1');
         form.addEventListener('submit', handleSubmit);
+    }
+
+    // Подключает форму из общего сниппета в каждый <div data-contact-form>.
+    // Так разметка формы хранится в одном файле (static/html-snippets/contact-form.html)
+    // и не дублируется на каждой странице.
+    function injectForms() {
+        var mounts = document.querySelectorAll('[data-contact-form]');
+        if (!mounts.length) return;
+
+        fetch(SNIPPET_URL)
+            .then(function (resp) {
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                return resp.text();
+            })
+            .then(function (html) {
+                // Подставляем относительный префикс ссылок ({{BASE}}) под глубину страницы.
+                html = html.replace(/\{\{BASE\}\}/g, BASE);
+                for (var i = 0; i < mounts.length; i++) {
+                    mounts[i].innerHTML = html;
+                    bindForm(mounts[i].querySelector('.contact-form'));
+                }
+            })
+            .catch(function (err) {
+                console.error('Не удалось загрузить форму обратной связи:', err);
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        injectForms();
+        // На случай, если форма всё же вставлена в страницу статически — навешиваем обработчик.
+        bindForm(document.querySelector('.contact-form'));
     });
 })();
