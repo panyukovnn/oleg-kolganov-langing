@@ -1669,3 +1669,39 @@ a.kn-meta-item__value:hover,
     border-top: 1px solid var(--c-border);
 }
 .kn-prose__note { color: var(--c-text-muted); font-size: 14px; margin-top: 12px; }
+
+/* ===== Cookie-уведомление ===== */
+.kn-cookie {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--c-text);
+    color: #fff;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+    padding: 16px 0;
+}
+.kn-cookie[hidden] { display: none; }
+.kn-cookie__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.kn-cookie__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #fff;
+}
+.kn-cookie__text a {
+    color: #fff;
+    text-decoration: underline;
+}
+.kn-cookie__text a:hover { color: var(--c-accent); }
+.kn-cookie__accept { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 640px) {
+    .kn-cookie__row { flex-direction: column; align-items: stretch; gap: 12px; text-align: center; }
+    .kn-cookie__accept { width: 100%; }
+}
