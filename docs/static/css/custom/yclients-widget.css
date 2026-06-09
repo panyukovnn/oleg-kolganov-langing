@@ -9,7 +9,7 @@
     max-width: 760px;
     margin: 0 auto;
     border-radius: var(--radius-lg, 20px);
-    box-shadow: var(--shadow, 0 6px 24px rgba(30, 77, 139, 0.08));
+    box-shadow: var(--shadow, 0 6px 24px rgba(64, 73, 99, 0.08));
     background: var(--c-bg-card, #fff);
     overflow: hidden;
 }
@@ -31,7 +31,7 @@
 }
 
 .yclients-widget__fallback a {
-    color: var(--c-primary, #1e4d8b);
+    color: var(--c-primary, #404963);
     font-weight: 600;
 }
 

@@ -1,6 +1,6 @@
 /* Hero, хедер и CTA-стили теперь в redesign.css */
 .notary-header-mob__menu--link.cta-link {
-    color: var(--c-accent, #2c5aa0);
+    color: var(--c-primary, #404963);
     font-weight: 600;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .contact-section {
-    background: linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
+    background: #fff;
     padding: 72px 16px;
 }
 
@@ -88,7 +88,7 @@
     display: block;
     width: 56px;
     height: 3px;
-    background: #2c5aa0;
+    background: var(--c-primary);
     margin: 16px auto 0;
     border-radius: 2px;
 }
@@ -110,7 +110,7 @@
     border-radius: 12px;
     box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.04),
-        0 8px 28px rgba(20, 40, 80, 0.08);
+        0 8px 28px rgba(64, 73, 99, 0.08);
     border: 1px solid #e6ebf2;
 }
 
@@ -173,9 +173,9 @@
 .contact-form__input:focus,
 .contact-form__select:focus,
 .contact-form__textarea:focus {
-    border-color: #2c5aa0;
+    border-color: var(--c-primary);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.12);
+    box-shadow: 0 0 0 3px rgba(64, 73, 99, 0.12);
 }
 
 .contact-form__input::placeholder,
@@ -199,7 +199,7 @@
 
 .contact-form__submit {
     margin-top: 8px;
-    background: linear-gradient(180deg, #3367b8 0%, #2c5aa0 100%);
+    background: var(--c-primary);
     color: #fff;
     border: none;
     padding: 14px 32px;
@@ -210,17 +210,17 @@
     letter-spacing: 0.2px;
     transition: transform 0.1s ease, box-shadow 0.15s ease, filter 0.15s ease;
     width: 100%;
-    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.25);
+    box-shadow: 0 4px 12px rgba(64, 73, 99, 0.25);
 }
 
 .contact-form__submit:hover:not(:disabled) {
-    filter: brightness(1.05);
-    box-shadow: 0 6px 16px rgba(44, 90, 160, 0.35);
+    background: var(--c-primary-dark);
+    box-shadow: 0 6px 16px rgba(64, 73, 99, 0.35);
 }
 
 .contact-form__submit:active:not(:disabled) {
     transform: translateY(1px);
-    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.25);
+    box-shadow: 0 2px 8px rgba(64, 73, 99, 0.25);
 }
 
 .contact-form__submit:disabled {
@@ -261,7 +261,7 @@
 }
 
 .contact-form__hint a {
-    color: #2c5aa0;
+    color: var(--c-primary);
     text-decoration: none;
 }
 

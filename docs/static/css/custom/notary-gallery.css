@@ -61,7 +61,7 @@
     margin: 0;
     border-radius: var(--radius-lg, 20px);
     overflow: hidden;
-    box-shadow: var(--shadow, 0 6px 24px rgba(30, 77, 139, 0.08));
+    box-shadow: var(--shadow, 0 6px 24px rgba(64, 73, 99, 0.08));
     background: var(--c-bg-card, #fff);
 }
 
@@ -126,5 +126,5 @@
 .notary-about__fact-value {
     font-size: 15px;
     font-weight: 700;
-    color: var(--c-primary, #1e4d8b);
+    color: var(--c-primary, #404963);
 }
