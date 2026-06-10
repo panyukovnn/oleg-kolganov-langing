@@ -136,11 +136,24 @@
 .kn-tariff-table tbody tr:nth-child(even) td { background: rgba(245, 247, 251, 0.6); }
 .kn-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
 
-/* Суммы регионального тарифа — заметнее */
+/* Суммы регионального тарифа — заметнее.
+   Без nowrap: в разделе «Выезд нотариуса» эта колонка содержит длинный текст,
+   а nowrap растягивал таблицу за пределы контейнера (горизонтальная прокрутка).
+   Числа сумм («6 000») не рвутся, т.к. в разметке используется неразрывный пробел. */
 .kn-tariff-table .kn-tariff-reg {
     font-variant-numeric: tabular-nums;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
+
+/* Раздел «Выезд нотариуса»: колонка «Региональный тариф» содержит развёрнутый
+   текст, поэтому фиксированная узкая ширина её сжимала. Делаем относительные
+   ширины: правая колонка вдвое шире левой («Ситуация»).
+   Селекторы той же специфичности, что и базовые (.kn-tariff-table .kn-tariff-reg),
+   но идут ниже по файлу — поэтому переопределяют их для таблиц с модификатором. */
+.kn-tariff-table--balanced { table-layout: fixed; }
+.kn-tariff-table--balanced .kn-tariff-num { width: 44px; }
+.kn-tariff-table--balanced .kn-tariff-reg { width: 40%; }
 
 /* Примечание — серым курсивом, читаемый межстрочный */
 .kn-tariff-table .kn-tariff-note-col {
