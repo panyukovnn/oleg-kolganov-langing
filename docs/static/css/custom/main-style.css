@@ -227,6 +227,11 @@ a.kn-meta-item__value:hover,
     gap: 12px;
     margin-left: auto;
 }
+.kn-header__phones {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
 .kn-header__phone {
     font-weight: 700;
     font-size: 17px;
@@ -1678,7 +1683,7 @@ a.kn-meta-item__value:hover,
 }
 @media (max-width: 400px) {
     /* Совсем узкий экран — телефон прячем (он есть в подменю «Связаться» → «Позвонить»), оставляем лого + бургер */
-    .kn-header__phone { display: none; }
+    .kn-header__phones { display: none; }
 }
 
 /* ============================================================
