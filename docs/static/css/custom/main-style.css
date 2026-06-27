@@ -151,7 +151,10 @@ img, svg { max-width: 100%; display: block; }
     top: 0;
     z-index: 100;
     box-shadow: var(--shadow-sm);
+    transition: transform .25s ease;
 }
+/* Автоскрытие при скролле вниз (TASK-24): шапка уезжает вверх. */
+.kn-header--hidden { transform: translateY(-100%); }
 .kn-header__row {
     display: flex;
     align-items: center;
