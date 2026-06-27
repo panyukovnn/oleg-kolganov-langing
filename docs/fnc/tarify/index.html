@@ -82,22 +82,76 @@
                     <a href="mailto:Notarius@okolganov.ru" class="kn-msg-btn kn-msg-btn--email" aria-label="Написать на email" title="Электронная почта"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 7.1 8-5.1H4l8 5.1zM4 8.2V18h16V8.2l-8 5.1-8-5.1z"/></svg></a>
                 </div>
                 <a href="../../index.html#contact-form" class="kn-btn kn-btn--primary">Задать вопрос</a>
+                <button type="button" class="kn-burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="kn-mainnav">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
 
-        <nav class="kn-nav">
+        <nav class="kn-nav" id="kn-mainnav" aria-label="Основное меню">
+            <button type="button" class="kn-nav__close" aria-label="Закрыть меню">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
             <div class="kn-nav__row">
                 <a href="../../index.html" class="kn-nav__link">Главная</a>
                 <a href="../../notarialnaya-kontora/index.html" class="kn-nav__link">О нотариусе</a>
-                <a href="../../celi-obrashhenija/index.html" class="kn-nav__link">Нотариальные действия</a>
+                <div class="kn-nav__item kn-nav__item--has-sub">
+                    <div class="kn-nav__head">
+                        <a href="../../celi-obrashhenija/index.html" class="kn-nav__link">Нотариальные действия</a>
+                        <button type="button" class="kn-nav__toggle" aria-label="Раскрыть подменю «Нотариальные действия»" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+                    <div class="kn-nav__sub">
+                        <a href="../../celi-obrashhenija/sdelki-s-nedvizhimostju.html">Сделки с недвижимостью</a>
+                        <a href="../../celi-obrashhenija/sdelki-s-matkapitalom.html">Сделки с маткапиталом</a>
+                        <a href="../../celi-obrashhenija/nasledstvo.html">Наследство</a>
+                        <a href="../../celi-obrashhenija/zaveschanija.html">Завещания</a>
+                        <a href="../../celi-obrashhenija/doverennosti-i-soglasija.html">Доверенности и согласия</a>
+                        <a href="../../celi-obrashhenija/brachno-semejnye-otnoshenija.html">Брачно-семейные отношения</a>
+                        <a href="../../celi-obrashhenija/korporativnye-otnoshenija.html">Корпоративные отношения</a>
+                        <a href="../../celi-obrashhenija/spiski-uchastnikov-ooo.html">Списки участников ООО</a>
+                        <a href="../../celi-obrashhenija/depozit-notariusa.html">Депозит нотариуса</a>
+                        <a href="../../celi-obrashhenija/uvedomlenija-o-zaloge-dvizhimogo-imuschestva.html">Уведомления о залоге движимого имущества</a>
+                        <a href="../../celi-obrashhenija/kopii-podlinnost-podpisi.html">Копии, подлинность подписи</a>
+                        <a href="../../celi-obrashhenija/perevody.html">Переводы</a>
+                        <a href="../../celi-obrashhenija/perevod-dokumenta-v-elektronnyj-vid-i-obratno.html">Перевод документа в электронный вид и обратно</a>
+                        <a href="../../celi-obrashhenija/udostoverenie-faktov.html">Удостоверение фактов</a>
+                        <a href="../../celi-obrashhenija/udostoverenie-mediativnyh-soglashenij.html">Удостоверение медиативных соглашений</a>
+                        <a href="../../celi-obrashhenija/obespechenie-dokazatelstv.html">Обеспечение доказательств</a>
+                        <a href="../../celi-obrashhenija/ispolnitelnaja-nadpis.html">Исполнительная надпись</a>
+                        <a href="../../celi-obrashhenija/morskoj-protest.html">Морской протест</a>
+                        <a href="../../celi-obrashhenija/vekseli-i-cheki.html">Векселя и чеки</a>
+                        <a href="../../celi-obrashhenija/prochie-dogovory.html">Прочие договоры</a>
+                        <a href="../../celi-obrashhenija/inoe.html">Иное</a>
+                    </div>
+                </div>
                 <a href="../../fnc/tarify/index.html" class="kn-nav__link kn-nav__link--active">Тарифы</a>
                 <a href="../../articles/index.html" class="kn-nav__link">Статьи</a>
                 <a href="../../pravovaya-informaciya/index.html" class="kn-nav__link">Правовая информация</a>
                 <a href="../../kontakty/index.html" class="kn-nav__link">Контакты</a>
+                <div class="kn-nav__item kn-nav__item--has-sub kn-nav__item--contact">
+                    <div class="kn-nav__head">
+                        <button type="button" class="kn-nav__link kn-nav__sublabel">Связаться</button>
+                        <button type="button" class="kn-nav__toggle" aria-label="Раскрыть подменю «Связаться»" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+                    <div class="kn-nav__sub">
+                        <a href="tel:+79956564404">Позвонить</a>
+                        <a href="https://t.me/" target="_blank" rel="noopener">Телеграмм</a>
+                        <a href="https://wa.me/79956564404" target="_blank" rel="noopener">Ватсап</a>
+                        <a href="https://max.ru/u/f9LHodD0cOIRdgVJ1zxPwkshPcipNgZIbqhFZIq8madFqTMSitCO0bGGb80" target="_blank" rel="noopener">Макс</a>
+                        <a href="mailto:Notarius@okolganov.ru">Почта</a>
+                        <a href="../../index.html#contact-form">Задать вопрос</a>
+                    </div>
+                </div>
                 <a href="https://n2097567.yclients.com" class="kn-nav__link kn-nav__link--cta ms-button" data-url="https://n2097567.yclients.com" target="_blank" rel="noopener">Онлайн запись</a>
             </div>
         </nav>
     </div>
+    <div class="kn-nav-overlay"></div>
+    <script src="../../static/js/custom/mobile-menu.js" defer></script>
 </header>
 <!-- HEADER:END -->
 

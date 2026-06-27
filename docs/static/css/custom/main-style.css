@@ -329,6 +329,18 @@ a.kn-meta-item__value:hover,
     font-weight: 600;
 }
 
+/* ---- Бургер + боковое меню: базовое состояние (десктоп — подменю скрыты) ---- */
+.kn-burger { display: none; }
+/* Обёртки пунктов с подменю на десктопе «исчезают» из потока — ссылка ведёт себя как обычный пункт */
+.kn-nav__item,
+.kn-nav__head { display: contents; }
+.kn-nav__toggle,
+.kn-nav__sub,
+.kn-nav__close,
+.kn-nav-overlay { display: none; }
+/* «Связаться» — пункт только для мобильного меню */
+.kn-nav__item--contact { display: none; }
+
 /* ============================================================
    Hero
    ============================================================ */
@@ -1638,13 +1650,12 @@ a.kn-meta-item__value:hover,
     .kn-topbar { display: none; }
     .kn-nav__row { gap: 14px; overflow-x: auto; flex-wrap: nowrap; padding: 10px 0; }
     .kn-nav__link { white-space: nowrap; font-size: 14px; }
-    .kn-header__row { gap: 12px; flex-wrap: wrap; }
+    .kn-header__row { gap: 12px; flex-wrap: nowrap; }
     .kn-logo { min-width: 0; flex-shrink: 1; }
     .kn-header__cta .kn-btn { display: none; }
-    .kn-header__cta { gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-    .kn-header__messengers { gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-    .kn-msg-btn { width: 30px; height: 30px; }
-    .kn-msg-btn svg { width: 16px; height: 16px; }
+    /* Мессенджеры дублируются в подменю «Связаться» бокового меню — в шапке прячем, чтобы бургер не уходил на 2-ю строку */
+    .kn-header__messengers { display: none; }
+    .kn-header__cta { gap: 10px; flex-wrap: nowrap; justify-content: flex-end; margin-left: auto; }
     .kn-logo { gap: 10px; }
     .kn-logo__role { font-size: 11px; }
     .kn-logo__name { font-size: 16px; }
@@ -1657,6 +1668,175 @@ a.kn-meta-item__value:hover,
 }
 @media (max-width: 480px) {
     .kn-page .kn-container .row { grid-template-columns: 1fr !important; }
+    /* На узких экранах оставляем в шапке только лого + телефон + бургер, чуть ужимаем */
+    .kn-header__cta { gap: 6px; }
+    .kn-header__phone { font-size: 15px; }
+    .kn-burger { margin-left: 0; }
+}
+@media (max-width: 400px) {
+    /* Совсем узкий экран — телефон прячем (он есть в подменю «Связаться» → «Позвонить»), оставляем лого + бургер */
+    .kn-header__phone { display: none; }
+}
+
+/* ============================================================
+   Моб. меню: бургер → боковое выезжающее меню (off-canvas)
+   ============================================================ */
+@media (max-width: 720px) {
+    /* Бургер */
+    .kn-burger {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        flex-shrink: 0;
+        margin-left: 4px;
+    }
+    .kn-burger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--c-text);
+        border-radius: 2px;
+        transition: transform .25s ease, opacity .2s ease;
+    }
+    body.kn-menu-open .kn-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.kn-menu-open .kn-burger span:nth-child(2) { opacity: 0; }
+    body.kn-menu-open .kn-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Навигация превращается в боковую панель */
+    .kn-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        height: 100dvh;
+        width: min(86vw, 360px);
+        background: #fff;
+        border-top: none;
+        box-shadow: -8px 0 30px rgba(15, 23, 42, .18);
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        z-index: 1200;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    body.kn-menu-open .kn-nav { transform: translateX(0); }
+
+    .kn-nav__row {
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        overflow: visible;
+        gap: 0;
+        padding: 60px 0 24px;
+    }
+
+    /* Пункты-обёртки снова становятся блоками */
+    .kn-nav__item { display: block; }
+    .kn-nav__item--contact { display: block; }
+    .kn-nav__head { display: flex; align-items: stretch; }
+
+    /* Граница между пунктами */
+    .kn-nav__row > .kn-nav__link,
+    .kn-nav__item { border-bottom: 1px solid var(--c-border); }
+
+    .kn-nav__link {
+        display: block;
+        flex: 1 1 auto;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 14px 22px;
+        white-space: normal;
+    }
+    .kn-nav__link--active::after { display: none; }
+
+    /* Кнопка-заголовок «Связаться» */
+    .kn-nav__sublabel {
+        text-align: left;
+        background: none;
+        border: none;
+        color: var(--c-text);
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    /* Стрелка раскрытия подменю */
+    .kn-nav__toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        flex-shrink: 0;
+        border: none;
+        border-left: 1px solid var(--c-border);
+        background: transparent;
+        color: var(--c-text-muted);
+        cursor: pointer;
+    }
+    .kn-nav__toggle svg {
+        width: 18px;
+        height: 18px;
+        transition: transform .25s ease;
+    }
+    .kn-nav__item--open > .kn-nav__head .kn-nav__toggle svg { transform: rotate(180deg); }
+
+    /* Подменю (аккордеон) */
+    .kn-nav__sub {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--c-bg-soft);
+        transition: max-height .3s ease;
+    }
+    .kn-nav__item--open > .kn-nav__sub { max-height: 1600px; }
+    .kn-nav__sub a {
+        display: block;
+        padding: 12px 22px 12px 34px;
+        font-size: 14px;
+        color: var(--c-text);
+        border-top: 1px solid var(--c-border);
+        transition: color .15s ease;
+    }
+    .kn-nav__sub a:hover { color: var(--c-primary); }
+
+    /* Кнопка закрытия меню */
+    .kn-nav__close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        color: var(--c-text);
+        cursor: pointer;
+    }
+    .kn-nav__close svg { width: 24px; height: 24px; }
+
+    /* Затемняющий оверлей */
+    .kn-nav-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, .5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease, visibility .3s ease;
+        z-index: 1100;
+    }
+    body.kn-menu-open .kn-nav-overlay { opacity: 1; visibility: visible; }
+
+    /* Блокируем прокрутку фона при открытом меню */
+    body.kn-menu-open { overflow: hidden; }
 }
 
 /* ===== Текстовая страница нотариального действия (.kn-prose) ===== */
