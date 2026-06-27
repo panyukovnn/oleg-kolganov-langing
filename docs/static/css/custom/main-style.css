@@ -1482,21 +1482,87 @@ a.kn-meta-item__value:hover,
     margin-top: 24px;
 }
 .kn-directions {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 32px;
 }
+/* «Как добраться» — раскрывающиеся спойлеры (details/summary) */
 .kn-direction {
     background: #fff;
     border-radius: var(--radius);
-    padding: 24px;
     border: 1px solid var(--c-border);
+    overflow: hidden;
 }
-.kn-direction__title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.kn-direction__text { color: var(--c-text-muted); font-size: 14px; line-height: 1.5; }
-@media (max-width: 1024px) {
-    .kn-directions { grid-template-columns: 1fr; }
+.kn-direction__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    background: var(--c-bg-soft);
+    list-style: none;
+    user-select: none;
+}
+.kn-direction__summary::-webkit-details-marker { display: none; }
+.kn-direction__title { font-size: 16px; font-weight: 700; color: var(--c-text); }
+.kn-direction__icon {
+    flex-shrink: 0;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--c-primary);
+    border: 1px solid var(--c-border);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.kn-direction__icon::before,
+.kn-direction__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+}
+.kn-direction__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.kn-direction[open] .kn-direction__icon { border-color: var(--c-primary); }
+.kn-direction[open] .kn-direction__icon::after { opacity: 0; }
+.kn-direction[open] .kn-direction__summary { border-bottom: 1px solid var(--c-border); }
+.kn-direction__body { padding: 20px 22px; }
+.kn-direction__text {
+    color: var(--c-text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 12px;
+}
+.kn-direction__body > :last-child { margin-bottom: 0; }
+.kn-direction__note {
+    margin: 0 0 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    background: rgba(201, 164, 86, 0.1);
+    border-left: 3px solid var(--c-accent);
+    color: var(--c-text);
+    font-size: 15px;
+    line-height: 1.6;
+}
+.kn-direction__note strong { color: var(--c-accent); }
+.kn-direction__photos {
+    margin: 0;
+    color: var(--c-text-muted);
+    font-size: 14px;
+    font-style: italic;
+}
+@media (max-width: 720px) {
+    .kn-direction__summary { padding: 16px 18px; }
+    .kn-direction__body { padding: 18px; }
 }
 
 /* ============================================================
