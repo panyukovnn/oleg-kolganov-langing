@@ -133,7 +133,7 @@
 .kn-tariff-table .kn-tariff-note-col { width: var(--tariff-col-note); }
 
 /* Зебра-строки для читаемости длинной таблицы */
-.kn-tariff-table tbody tr:nth-child(even) td { background: rgba(245, 247, 251, 0.6); }
+.kn-tariff-table tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.02); }
 .kn-tariff-table tbody tr:hover td { background: var(--c-bg-soft); }
 
 /* Суммы регионального тарифа — заметнее.

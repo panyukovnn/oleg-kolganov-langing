@@ -112,7 +112,7 @@
 
 .notary-about__fact {
     padding: 16px 18px;
-    background: var(--c-bg-soft, #f5f7fb);
+    background: var(--c-bg-soft, #f5f6f7);
     border: 1px solid var(--c-border, #e3e8ef);
     border-radius: var(--radius, 12px);
 }

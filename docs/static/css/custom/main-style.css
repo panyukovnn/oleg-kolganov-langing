@@ -742,7 +742,7 @@ a.kn-meta-item__value:hover,
    ============================================================ */
 
 .kn-page-head {
-    background: linear-gradient(135deg, #f5f7fb 0%, #e8eef7 100%);
+    background: var(--c-bg);
     padding: 40px 0 32px;
     border-bottom: 1px solid var(--c-border);
 }
