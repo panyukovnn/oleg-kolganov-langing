@@ -172,7 +172,7 @@ img, svg { max-width: 100%; display: block; }
     place-items: center;
     flex-shrink: 0;
 }
-.kn-logo__icon { width: 48px; height: 52px; color: var(--c-primary); display: block; }
+.kn-logo__icon { width: 58px; height: 63px; color: var(--c-primary); display: block; }
 .kn-logo__text { display: flex; flex-direction: column; gap: 2px; line-height: 1.15; }
 .kn-logo__role { font-size: 13px; color: var(--c-text-muted); font-weight: 400; }
 .kn-logo__name { font-weight: 700; font-size: 21px; color: var(--c-text); line-height: 1.1; }
@@ -257,7 +257,8 @@ a.kn-meta-item__value:hover,
     flex-shrink: 0;
     transition: transform 0.15s ease, filter 0.15s ease;
 }
-.kn-msg-btn svg {
+.kn-msg-btn svg,
+.kn-msg-btn img {
     display: block;
     width: 17px;
     height: 17px;
@@ -1667,7 +1668,7 @@ a.kn-meta-item__value:hover,
     .kn-logo { gap: 10px; }
     .kn-logo__role { font-size: 11px; }
     .kn-logo__name { font-size: 16px; }
-    .kn-logo__icon { width: 36px; height: 39px; }
+    .kn-logo__icon { width: 46px; height: 50px; }
     .kn-page .main-carusel,
     .kn-page .owl-carousel { grid-template-columns: 1fr !important; }
     .kn-page .kn-container .row { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }

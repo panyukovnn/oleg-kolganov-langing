@@ -23,8 +23,7 @@ WA = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="current
 TG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
       '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.21-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>')
 
-MAX = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
-       '<path d="M12 2.5c-5.52 0-10 3.81-10 8.51 0 2.69 1.46 5.09 3.74 6.66-.16 1.32-.71 2.49-1.62 3.42-.21.22-.05.59.25.56 1.84-.16 3.45-.74 4.74-1.66.92.21 1.89.32 2.89.32 5.52 0 10-3.81 10-8.5S17.52 2.5 12 2.5zm-3.6 10.7L6.5 9.1c-.05-.13.03-.27.17-.27h.86c.08 0 .16.05.18.13l1.13 2.83 1.13-2.83a.2.2 0 0 1 .19-.13h.79c.14 0 .22.14.17.27l-1.9 4.1a.2.2 0 0 1-.18.12h-.66a.2.2 0 0 1-.18-.12zm5.3.12h-.79a.2.2 0 0 1-.19-.13l-1.7-4.1c-.05-.13.03-.27.17-.27h.86c.08 0 .16.05.18.13l1.1 2.86 1.1-2.86a.2.2 0 0 1 .19-.13h.79c.14 0 .22.14.17.27l-1.7 4.1a.2.2 0 0 1-.18.13z"/></svg>')
+MAX = '<img src="/static/image/max-logo.png" alt="" width="17" height="17">'
 
 EMAIL = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
          '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 7.1 8-5.1H4l8 5.1zM4 8.2V18h16V8.2l-8 5.1-8-5.1z"/></svg>')
@@ -34,10 +33,8 @@ NEW = (
     '                <a href="tel:+79956564404" class="kn-header__phone">+7 (995) 656-44-04</a>\n'
     '                <div class="kn-header__messengers">\n'
     f'                    <a href="https://wa.me/79956564404" class="kn-msg-btn kn-msg-btn--whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp" title="WhatsApp">{WA}</a>\n'
-    '                    <!-- TODO: уточнить username Telegram у заказчика (сейчас placeholder) -->\n'
-    f'                    <a href="https://t.me/" class="kn-msg-btn kn-msg-btn--telegram" target="_blank" rel="noopener" aria-label="Написать в Telegram" title="Telegram">{TG}</a>\n'
-    '                    <!-- TODO: уточнить ссылку Max у заказчика (сейчас placeholder) -->\n'
-    f'                    <a href="#" class="kn-msg-btn kn-msg-btn--max" target="_blank" rel="noopener" aria-label="Написать в Max" title="Max">{MAX}</a>\n'
+    f'                    <a href="https://t.me/Okolganov" class="kn-msg-btn kn-msg-btn--telegram" target="_blank" rel="noopener" aria-label="Написать в Telegram" title="Telegram">{TG}</a>\n'
+    f'                    <a href="https://max.ru/u/f9LHodD0cOIRdgVJ1zxPwkshPcipNgZIbqhFZIq8madFqTMSitCO0bGGb80" class="kn-msg-btn kn-msg-btn--max" target="_blank" rel="noopener" aria-label="Написать в Max" title="Max">{MAX}</a>\n'
     f'                    <a href="mailto:Notarius@okolganov.ru" class="kn-msg-btn kn-msg-btn--email" aria-label="Написать на email" title="Электронная почта">{EMAIL}</a>\n'
     '                </div>\n'
     '                <a href="#contact-form" class="kn-btn kn-btn--primary">Задать вопрос</a>\n'
