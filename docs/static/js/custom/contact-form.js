@@ -18,13 +18,13 @@
     // 4. В полученной ссылке найди ID формы (формат: 1FAIpQLSe...) и ID каждого поля (формат: entry.123456789).
     // 5. Подставь значения ниже.
     // ============================================================
-    var GOOGLE_FORM_ID = 'PASTE_FORM_ID_HERE';
+    var GOOGLE_FORM_ID = '1FAIpQLSeQsqkfe-mDxsQUjPZmBHNcC86Zvhi9iSgarmP01OnqjKdu_Q';
     var FIELDS = {
-        name: 'entry.PASTE_NAME_ID',
-        phone: 'entry.PASTE_PHONE_ID',
-        email: 'entry.PASTE_EMAIL_ID',
-        purpose: 'entry.PASTE_PURPOSE_ID',
-        message: 'entry.PASTE_MESSAGE_ID'
+        name: 'entry.1604397642',
+        phone: 'entry.1362560022',
+        email: 'entry.1344492135',
+        purpose: 'entry.1845173671',
+        message: 'entry.1139492886'
     };
 
     function getFormUrl() {

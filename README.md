@@ -36,7 +36,13 @@ Jekyll — см. раздел [«Локальный предпросмотр»](
 
 Форма отправляет ответы в публичную Google Form через `POST` на `formResponse`.
 
-### 1. Создать Google Form
+> ✅ **Статус: настроено.** Форма подключена к Google Form
+> `1FAIpQLSeQsqkfe-mDxsQUjPZmBHNcC86Zvhi9iSgarmP01OnqjKdu_Q`
+> (https://docs.google.com/forms/d/e/1FAIpQLSeQsqkfe-mDxsQUjPZmBHNcC86Zvhi9iSgarmP01OnqjKdu_Q/viewform).
+> ID формы и полей уже прописаны в `docs/static/js/custom/contact-form.js` (см. шаг 3).
+> Инструкция ниже нужна, только если потребуется переподключить другую форму.
+
+### 1. ✅ Создать Google Form
 
 1. Открыть https://forms.google.com → создать новую форму.
 2. Добавить поля:
@@ -47,7 +53,7 @@ Jekyll — см. раздел [«Локальный предпросмотр»](
    - **Сообщение** (абзац)
 3. Открыть **«Ответы» → таблица Google Sheets** — туда будут падать заявки.
 
-### 2. Получить ID формы и полей
+### 2. ✅ Получить ID формы и полей
 
 1. В редакторе формы нажми `⋮` (три точки сверху) → **«Получить ссылку для предзаполнения»**.
 2. Заполни все поля любыми пробными значениями → **«Получить ссылку»**.
@@ -55,16 +61,18 @@ Jekyll — см. раздел [«Локальный предпросмотр»](
    - **ID формы** (между `/d/e/` и `/viewform`): `https://docs.google.com/forms/d/e/`**`1FAIpQLSe...`**`/viewform`
    - **ID каждого поля**: параметры `entry.123456789=значение`
 
-### 3. Подставить значения в `docs/static/js/custom/contact-form.js`
+### 3. ✅ Подставить значения в `docs/static/js/custom/contact-form.js`
+
+Текущие (рабочие) значения:
 
 ```js
-var GOOGLE_FORM_ID = '1FAIpQLSe...';
+var GOOGLE_FORM_ID = '1FAIpQLSeQsqkfe-mDxsQUjPZmBHNcC86Zvhi9iSgarmP01OnqjKdu_Q';
 var FIELDS = {
-    name:    'entry.111111111',
-    phone:   'entry.222222222',
-    email:   'entry.333333333',
-    purpose: 'entry.444444444',
-    message: 'entry.555555555'
+    name:    'entry.1604397642',
+    phone:   'entry.1362560022',
+    email:   'entry.1344492135',
+    purpose: 'entry.1845173671',
+    message: 'entry.1139492886'
 };
 ```
 
