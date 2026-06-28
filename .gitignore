@@ -16,3 +16,9 @@ node_modules/
 
 # Исходники фото — оптимизированные версии лежат в docs/static/image/
 /photo/
+
+# Jekyll — сборочные артефакты, сайт пересобирается из исходников
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/Gemfile.lock

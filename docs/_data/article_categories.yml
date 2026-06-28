@@ -1,0 +1,17 @@
+# Категории статей и порядок их вывода на странице /articles/.
+# slug — значение data-cat (используется кнопками фильтра и JS),
+# label — заголовок группы и подпись кнопки фильтра.
+- slug: nedvizhimost
+  label: Недвижимость
+- slug: nasledstvo
+  label: Наследство и завещания
+- slug: doverennosti
+  label: Доверенности и согласия
+- slug: semya
+  label: Семья
+- slug: biznes
+  label: Бизнес и долги
+- slug: avto
+  label: Авто
+- slug: inoe
+  label: Иное

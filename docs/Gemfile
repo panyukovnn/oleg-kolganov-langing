@@ -1,0 +1,14 @@
+# Локальная разработка Jekyll-сайта.
+# На GitHub Pages сборка идёт автоматически из папки /docs — этот Gemfile нужен
+# только для локального предпросмотра, чтобы версии гемов совпадали с GitHub Pages.
+#
+#   cd docs
+#   bundle install
+#   bundle exec jekyll serve
+#
+source "https://rubygems.org"
+
+gem "github-pages", group: :jekyll_plugins
+
+# Совместимость с Ruby 3.x (эти гемы вынесены из стандартной библиотеки).
+gem "webrick", "~> 1.8"

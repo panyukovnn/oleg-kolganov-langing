@@ -96,40 +96,44 @@ grep -rl 'index.html%3Fpage=2.html' --include="*.html" docs/ \
 python3 scripts/post-process.py
 ```
 
-## Единая шапка сайта
+## Движок: Jekyll (GitHub Pages)
 
-Шапка (верхняя плашка + хедер + меню) описана **один раз** в
-`docs/static/html-snippets/header.html` (пути от корня, `/...`) и вставляется
-во все страницы скриптом:
+Сайт собирается нативным для GitHub Pages движком **Jekyll** — самописная сборка
+шапки/подвала Python-скриптами больше не используется.
+
+Структура Jekyll (внутри `docs/`):
+
+- `_config.yml` — конфигурация (`baseurl: /oleg-kolganov-langing`, коллекция статей).
+- `_layouts/default.html` — общий каркас страницы: `<head>`, подключение
+  `_includes/header.html` и `_includes/footer.html`, общие CSS/JS.
+- `_includes/header.html`, `_includes/footer.html` — **единый источник** шапки и
+  подвала. Пути собираются фильтром `{{ '/path' | relative_url }}` с учётом
+  `baseurl`, активный пункт меню — по переменной `page.section`.
+- `_articles/*.html` — статьи как коллекция (front matter + permalink, см. ниже).
+- `_data/article_categories.yml` — категории и порядок их вывода на `/articles/`.
+
+Каждая страница начинается с front matter (`layout`, `title`, `description`,
+`section`, при необходимости `styles` / `head_scripts` / `body_scripts`).
+
+> Менять шапку/подвал нужно в `_includes/header.html` / `_includes/footer.html`.
+> Отдельные страницы трогать не нужно — общий каркас даёт layout.
+
+### Локальный предпросмотр
 
 ```bash
-python3 scripts/build-header.py
+cd docs
+bundle install
+bundle exec jekyll serve
 ```
 
-Скрипт сам подставляет относительные пути нужной глубины, подсвечивает активный
-пункт меню по разделу страницы и оборачивает блок в маркеры
-`<!-- HEADER:START ... -->` / `<!-- HEADER:END -->`. Повторный запуск
-идемпотентен — просто пересинхронизирует шапку на всех страницах.
+### Статьи (коллекция `_articles`)
 
-> Менять шапку нужно только в сниппете, затем прогнать скрипт. Руками внутри
-> маркеров на отдельных страницах не править — перетрётся при следующем запуске.
-
-## Единый подвал сайта
-
-Подвал устроен так же, как шапка: описан **один раз** в
-`docs/static/html-snippets/footer.html` (пути от корня, `/...`) и вставляется
-во все страницы скриптом:
-
-```bash
-python3 scripts/build-footer.py
-```
-
-Скрипт подставляет относительные пути нужной глубины и оборачивает блок в
-маркеры `<!-- FOOTER:START ... -->` / `<!-- FOOTER:END -->`. Повторный запуск
-идемпотентен.
-
-> Менять подвал нужно только в сниппете, затем прогнать скрипт. Руками внутри
-> маркеров на отдельных страницах не править — перетрётся при следующем запуске.
+Каждая статья — файл `docs/_articles/<slug>.html` с front matter: `title`,
+`description`, `permalink` (сохраняет прежний URL `/articles/<slug>.html`),
+`category` (slug из `_data/article_categories.yml`), `tag`, `card_title`,
+`excerpt`, `order`. Список статей и фильтр по категориям на странице
+`/articles/` строятся Liquid-ом по `site.articles` — вручную карточки добавлять
+не нужно, достаточно создать новый файл в `_articles/`.
 
 ## Деплой на GitHub Pages
 

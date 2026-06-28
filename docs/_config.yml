@@ -1,0 +1,38 @@
+# Конфигурация Jekyll — сайт нотариуса Колганова О. И.
+# Публикация: GitHub Pages, источник — папка /docs ветки публикации.
+# Project pages: https://panyukovnn.github.io/oleg-kolganov-langing/
+
+title: "Нотариус Колганов О. И."
+description: "Нотариус города Москвы Колганов О. И. — официальный сайт."
+url: "https://panyukovnn.github.io"
+baseurl: "/oleg-kolganov-langing"
+lang: ru
+
+# Кодировка и часовой пояс
+encoding: utf-8
+timezone: Europe/Moscow
+
+# Статьи вынесены в коллекцию: единый источник для страниц статей и для
+# списка статей на /articles/. Человекочитаемые URL заданы через permalink
+# в front matter каждой статьи (см. _articles/*.html) — старые адреса сохранены.
+collections:
+  articles:
+    output: true
+
+# Значения по умолчанию для всех статей коллекции.
+defaults:
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: default
+      section: articles
+
+# Файлы, не относящиеся к публикуемому сайту.
+# ВНИМАНИЕ: static/html-snippets/contact-form.html подгружается на лету скриптом
+# contact-form.js (по data-contact-form), поэтому каталог НЕ исключаем из сборки.
+# Шапка и подвал из этого каталога перенесены в _includes (единый источник).
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
