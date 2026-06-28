@@ -120,10 +120,39 @@ python3 scripts/post-process.py
 
 ### Локальный предпросмотр
 
+> ⚠️ Каталог `.devcontainer/` к сайту отношения не имеет — это контейнер для
+> запуска агента Claude Code (базовый образ Java + `claude-code`). Сам сайт в
+> Docker’е не «стартует»: на проде его собирает GitHub Pages, а локально его
+> нужно собрать движком Jekyll одним из способов ниже. Готовый сайт Jekyll
+> кладёт в `docs/_site/` (этот каталог в `.gitignore`).
+
+После запуска сервер слушает порт `4000`, но из-за `baseurl` сайт открывается по
+адресу **http://localhost:4000/oleg-kolganov-langing/** (со слешем на конце).
+Jekyll следит за файлами и пересобирает сайт при изменениях — достаточно обновить
+страницу в браузере.
+
+#### Вариант A — через Docker (рекомендуется, Ruby ставить не нужно)
+
+Системный Ruby на macOS (2.6) слишком старый для гема `github-pages` (нужен
+Ruby 3.x), поэтому проще всего поднять предпросмотр в контейнере с Ruby 3:
+
+```bash
+cd docs
+docker run --rm -it \
+  -v "$PWD":/srv -w /srv -p 4000:4000 \
+  ruby:3.3 \
+  sh -c "bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload"
+```
+
+Первый запуск дольше — контейнер скачивает образ и ставит гемы; повторные
+быстрее. Остановить — `Ctrl+C`.
+
+#### Вариант B — нативно (нужен Ruby 3.x, напр. через Homebrew или rbenv)
+
 ```bash
 cd docs
 bundle install
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload
 ```
 
 ### Статьи (коллекция `_articles`)
