@@ -167,14 +167,17 @@
 .contact-form__select:hover,
 .contact-form__textarea:hover {
     border-color: #c0cad9;
-    background: #fff;
+    /* background-color, а не shorthand background: иначе у select сбрасывается
+       background-image со стрелкой и треугольник пропадает на hover. */
+    background-color: #fff;
 }
 
 .contact-form__input:focus,
 .contact-form__select:focus,
 .contact-form__textarea:focus {
     border-color: var(--c-primary);
-    background: #fff;
+    /* см. комментарий выше про background-color */
+    background-color: #fff;
     box-shadow: 0 0 0 3px rgba(64, 73, 99, 0.12);
 }
 
