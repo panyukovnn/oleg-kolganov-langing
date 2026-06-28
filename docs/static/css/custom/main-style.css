@@ -183,9 +183,16 @@ img, svg { max-width: 100%; display: block; }
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 28px;
     flex: 1;
     flex-wrap: nowrap;
+}
+/* Мета-блоки сгруппированы по два в столбец (Адрес/Режим, Метро/Эл. почта),
+   чтобы шапка занимала меньше ширины (TASK-37). */
+.kn-meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .kn-meta-item {
     display: flex;
@@ -381,10 +388,10 @@ a.kn-meta-item__value:hover,
 }
 .kn-hero__bg-seal {
     position: absolute;
-    right: -80px;
+    right: clamp(-20px, 2vw, 40px);
     top: 50%;
     transform: translateY(-50%);
-    width: min(640px, 60vw);
+    width: min(560px, 48vw);
     color: var(--hero-seal);
     opacity: 0.1;
 }
@@ -1682,8 +1689,14 @@ a.kn-meta-item__value:hover,
    Mobile
    ============================================================ */
 
+/* Мета-блок в шапке показываем только когда он реально влезает рядом с лого и CTA
+   (порог чуть выше --container-w: 1240px), иначе шапка переполняется (TASK-37, вариант A). */
+@media (max-width: 1300px) {
+    .kn-header__meta { display: none; }
+}
+
 @media (max-width: 1279px) {
-    .kn-hero__bg-seal { right: -160px; width: min(520px, 58vw); }
+    .kn-hero__bg-seal { right: 0; width: min(460px, 48vw); }
 }
 
 /* ≤767px — печать скрывается, остаётся только градиент + шум */
@@ -1701,7 +1714,6 @@ a.kn-meta-item__value:hover,
     .kn-adv-grid { grid-template-columns: repeat(2, 1fr); }
     .kn-footer__grid { grid-template-columns: 1fr 1fr; }
     .kn-loc { grid-template-columns: 1fr; }
-    .kn-header__meta { display: none; }
     /* На планшете меню переносится на 2 строки — выравниваем по левому краю, без растягивания */
     .kn-nav__row { justify-content: flex-start; }
     .kn-page .main-carusel,
