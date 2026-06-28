@@ -1,0 +1,64 @@
+{%- comment -%}
+Структурированные данные о нотариальной конторе (schema.org).
+Тип LegalService + Notary (подтип LocalBusiness) — данные берутся из
+site.notary в _config.yml. Выводится на каждой странице через layout.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LegalService", "Notary"],
+  "name": {{ site.notary.legal_name | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "url": "{{ '/' | absolute_url }}",
+  "image": "{{ site.default_image | absolute_url }}",
+  "telephone": "{{ site.notary.phone }}",
+  "email": "{{ site.notary.email }}",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ site.notary.street | jsonify }},
+    "addressLocality": {{ site.notary.locality | jsonify }},
+    "addressRegion": {{ site.notary.region | jsonify }},
+    "postalCode": "{{ site.notary.postal_code }}",
+    "addressCountry": "{{ site.notary.country }}"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{ site.notary.latitude }}",
+    "longitude": "{{ site.notary.longitude }}"
+  },
+  "hasMap": "{{ site.notary.map_url }}",
+  "areaServed": {{ site.notary.locality | jsonify }},
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "{{ site.notary.opens }}",
+      "closes": "{{ site.notary.closes }}"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "{{ site.notary.phone }}",
+      "contactType": "customer service",
+      "areaServed": "RU",
+      "availableLanguage": "Russian"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "{{ site.notary.phone_alt }}",
+      "contactType": "customer service",
+      "areaServed": "RU",
+      "availableLanguage": "Russian"
+    }
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Ближайшее метро",
+      "value": {{ site.notary.metro | jsonify }}
+    }
+  ]
+}
+</script>

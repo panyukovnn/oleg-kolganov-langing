@@ -6,11 +6,24 @@
     <meta name="format-detection" content="telephone=no">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.description }}">
+    <link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}">
+{%- if site.yandex_verification and site.yandex_verification != "" %}
+    <meta name="yandex-verification" content="{{ site.yandex_verification }}">
+{%- endif %}
+{%- if site.google_site_verification and site.google_site_verification != "" %}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{%- endif %}
     <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:title" content="{{ page.og_title | default: page.title }}">
     <meta property="og:description" content="{{ page.og_description | default: page.description }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ page.image | default: site.default_image | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.og_title | default: page.title }}">
+    <meta name="twitter:description" content="{{ page.og_description | default: page.description }}">
+    <meta name="twitter:image" content="{{ page.image | default: site.default_image | absolute_url }}">
     <link rel="icon" href="{{ '/static/favicon.ico' | relative_url }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ '/static/css/custom/main-style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/static/css/custom/contact-form.css' | relative_url }}">
@@ -25,6 +38,8 @@
 {{ page.jsonld }}
     </script>
 {%- endif %}
+{% include business-jsonld.html %}
+{% include breadcrumbs-jsonld.html %}
 </head>
 <body class="kn">
 

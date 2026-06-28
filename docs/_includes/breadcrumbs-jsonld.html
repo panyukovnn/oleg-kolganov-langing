@@ -1,0 +1,25 @@
+{%- comment -%}
+BreadcrumbList (schema.org) для вложенных страниц.
+Источник — массив page.breadcrumbs в front matter страницы, элементы:
+  - name: "Главная"
+    url: "/index.html"   # site-root-relative, без baseurl; baseurl добавит absolute_url
+Последний элемент (текущая страница) можно указывать без url.
+{%- endcomment -%}
+{%- if page.breadcrumbs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+{%- for crumb in page.breadcrumbs %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "name": {{ crumb.name | jsonify }}{% if crumb.url %},
+      "item": "{{ crumb.url | absolute_url }}"{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+  ]
+}
+</script>
+{%- endif -%}

@@ -1,0 +1,8 @@
+---
+# robots.txt — управление индексацией сайта нотариуса Колганова О. И.
+# Front matter обязателен, чтобы Jekyll подставил абсолютный URL карты сайта.
+---
+User-agent: *
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

@@ -12,6 +12,42 @@ lang: ru
 encoding: utf-8
 timezone: Europe/Moscow
 
+# Плагины (входят в состав гема github-pages, поэтому работают и на GitHub Pages).
+# jekyll-sitemap автоматически генерирует /sitemap.xml для поисковиков.
+plugins:
+  - jekyll-sitemap
+
+# Картинка по умолчанию для Open Graph / Twitter Card (можно переопределить
+# на странице через front matter `image`).
+default_image: "/static/image/notary/kolganov-01.jpg"
+
+# Коды подтверждения прав в кабинетах вебмастера. Заполнить после регистрации
+# сайта в Яндекс.Вебмастер и Google Search Console (см. TASK-36, раздел 5):
+# вставить значение атрибута content из выданного мета-тега.
+yandex_verification: ""
+google_site_verification: ""
+
+# Данные нотариальной конторы для структурированных данных schema.org
+# (JSON-LD LegalService/Notary, см. _includes/business-jsonld.html).
+notary:
+  name: "Колганов Олег Игоревич"
+  legal_name: "Нотариус города Москвы Колганов Олег Игоревич"
+  phone: "+79956564404"
+  phone_alt: "+79950040744"
+  phone_display: "+7 (995) 656-44-04"
+  email: "Notarius@okolganov.ru"
+  street: "ул. Фестивальная, д. 13, корп. 3"
+  locality: "Москва"
+  region: "Москва"
+  postal_code: "125565"
+  country: "RU"
+  latitude: "55.857321"
+  longitude: "37.475522"
+  metro: "Речной вокзал"
+  opens: "10:00"
+  closes: "19:00"
+  map_url: "https://yandex.ru/maps/org/notarius_kolganov_o_i_/164041573820/"
+
 # Статьи вынесены в коллекцию: единый источник для страниц статей и для
 # списка статей на /articles/. Человекочитаемые URL заданы через permalink
 # в front matter каждой статьи (см. _articles/*.html) — старые адреса сохранены.
