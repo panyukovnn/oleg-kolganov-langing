@@ -1,11 +1,11 @@
 # Конфигурация Jekyll — сайт нотариуса Колганова О. И.
 # Публикация: GitHub Pages, источник — папка /docs ветки публикации.
-# Project pages: https://panyukovnn.github.io/oleg-kolganov-langing/
+# Домен: https://okolganov.ru (custom domain, см. файл CNAME).
 
 title: "Нотариус Колганов О. И."
 description: "Нотариус города Москвы Колганов О. И. — официальный сайт."
-url: "https://panyukovnn.github.io"
-baseurl: "/oleg-kolganov-langing"
+url: "https://okolganov.ru"
+baseurl: ""
 lang: ru
 
 # Кодировка и часовой пояс
