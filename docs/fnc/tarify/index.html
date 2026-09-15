@@ -30,7 +30,7 @@ breadcrumbs:
     {% for section in reference.sections %}<details class="nt-category" id="{{ section.id }}" open><summary><h2>{{ section.title | escape }}</h2><span>{{ section.actions.size }}</span></summary><div class="nt-category-body">
     {% for action in section.actions %}<article class="nt-action" id="{{ action.id }}" data-search="{{ action.search | escape }}">
       <div class="nt-action-heading"><span class="nt-number">{{ action.number }}</span><h3>{{ action.title | escape }}</h3><a class="nt-permalink" href="#{{ action.id }}" aria-label="Ссылка на действие {{ action.number }}">#</a></div>
-      <dl class="nt-rates"><div><dt>Федеральный тариф</dt><dd>{{ action.federal | escape | newline_to_br }}</dd></div><div><dt>Региональный тариф</dt><dd>{{ action.regional | escape | newline_to_br }}</dd>{% if action.number == 65 %}<dd class="nt-exemption">Освобождение от регионального тарифа — 100%.</dd>{% endif %}</div></dl>
+      <dl class="nt-rates"><div><dt>Федеральный тариф</dt><dd>{% assign federal_parts = action.federal | split: '; ' %}{% for part in federal_parts %}<p>{{ part | escape }}{% unless forloop.last %};{% endunless %}</p>{% endfor %}</dd></div><div><dt>Региональный тариф</dt><dd>{{ action.regional | escape | newline_to_br }}</dd>{% if action.number == 65 %}<dd class="nt-exemption">Освобождение от регионального тарифа — 100%.</dd>{% endif %}</div></dl>
       {% if action.notes != '' %}<div class="nt-conditions"><strong>Условия и льготы</strong><p>{{ action.notes | escape }}</p></div>{% endif %}
       <p class="nt-law">Основание федерального тарифа: {{ action.legalBasis | escape }}</p>
     </article>{% endfor %}</div></details>{% endfor %}
