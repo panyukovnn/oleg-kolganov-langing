@@ -97,6 +97,13 @@
     margin: 0 0 16px;
 }
 
+.notary-about__body .notary-about__commissions {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--c-text-muted, #6b7280);
+    margin: -12px 0 24px;
+}
+
 .notary-about__facts {
     display: grid;
     grid-template-columns: 1fr;
