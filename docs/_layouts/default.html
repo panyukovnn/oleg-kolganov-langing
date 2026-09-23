@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.description }}">
+    {% if site.local_preview %}<meta name="robots" content="noindex,nofollow">{% elsif page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
+    {% if page.redirect_target %}<meta http-equiv="refresh" content="0;url={{ page.redirect_target }}">{% endif %}
+    <title>{{ page.title | escape }}</title>
+    <meta name="description" content="{{ page.description | escape }}">
     <link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}">
 {%- if site.yandex_verification and site.yandex_verification != "" %}
     <meta name="yandex-verification" content="{{ site.yandex_verification }}">
@@ -16,19 +18,19 @@
     <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:title" content="{{ page.og_title | default: page.title }}">
-    <meta property="og:description" content="{{ page.og_description | default: page.description }}">
+    <meta property="og:title" content="{{ page.og_title | default: page.title | escape }}">
+    <meta property="og:description" content="{{ page.og_description | default: page.description | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:image" content="{{ page.image | default: site.default_image | absolute_url }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.og_title | default: page.title }}">
-    <meta name="twitter:description" content="{{ page.og_description | default: page.description }}">
+    <meta name="twitter:title" content="{{ page.og_title | default: page.title | escape }}">
+    <meta name="twitter:description" content="{{ page.og_description | default: page.description | escape }}">
     <meta name="twitter:image" content="{{ page.image | default: site.default_image | absolute_url }}">
     <link rel="icon" href="{{ '/static/favicon.ico' | relative_url }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ '/static/css/custom/main-style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/static/css/custom/contact-form.css' | relative_url }}">
 {%- for css in page.styles %}
-    <link rel="stylesheet" href="{{ css | relative_url }}">
+    <link rel="stylesheet" href="{{ css | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 {%- endfor %}
 {%- for js in page.head_scripts %}
     <script src="{{ js | relative_url }}" defer></script>
@@ -44,6 +46,7 @@
 <body class="kn">
 
 {% include header.html %}
+{% if site.local_preview %}<div style="background:#fff4d9;color:#403619;padding:10px 20px;text-align:center;font:15px/1.5 Arial,sans-serif">{{ site.preview_label | default: 'Локальный просмотр' }} · <a href="/articles/" style="color:inherit;text-decoration:underline">Каталог статей</a> · Запись с этого стенда не отправляется</div>{% endif %}
 
 {{ content }}
 
@@ -51,9 +54,12 @@
 
 <script src="{{ '/static/js/custom/contact-form.js' | relative_url }}"></script>
 {%- for js in page.body_scripts %}
-<script src="{{ js | relative_url }}"></script>
+<script src="{{ js | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
 {%- endfor %}
+{% unless site.local_preview %}
 <!-- YClients online booking widget (филиал 2097567) -->
 <script type="text/javascript" charset="UTF-8" src="https://w2097567.yclients.com/widgetJS" async></script>
+{% endunless %}
+{% if site.local_preview %}<script>document.addEventListener('submit',function(e){if(!e.target.classList.contains('kb-search')){e.preventDefault();e.stopImmediatePropagation();alert('Это тестовая версия. Заявка не отправлена.');}},true);document.addEventListener('click',function(e){var a=e.target.closest('a');if(a&&/yclients\.com/.test(a.href)){e.preventDefault();e.stopImmediatePropagation();alert('Это тестовая версия. Переход к записи отключен.');}},true);</script>{% endif %}
 </body>
 </html>

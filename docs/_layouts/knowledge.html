@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<main id="main-content" class="kb-page">
+  <div class="kn-container">
+    <nav class="kb-crumbs" aria-label="Путь к странице"><a href="/">Главная</a><span aria-hidden="true">/</span><a href="/articles/">Статьи</a><span aria-hidden="true">/</span><a href="/articles/?topic={{ page.category }}">{{ page.cat_label }}</a></nav>
+    {% if site.local_preview and page.release_blocked %}<aside class="kb-review"><strong>Черновик для просмотра владельцем</strong><p>{{ page.block_reason }} Эта редакция исключена из публикации.</p></aside>{% endif %}
+    <header class="kb-title"><p class="kb-eyebrow">{{ page.cat_label }}</p><h1>{{ page.heading }}</h1></header>
+    <div class="kb-tools" hidden>
+      <button type="button" data-kb-print title="Распечатать статью или сохранить в PDF">Печать / PDF</button>
+      <button type="button" data-kb-copy>Скопировать ссылку</button>
+      <span class="kb-tool-status" role="status" aria-live="polite"></span>
+      <label class="kb-copy-fallback" hidden>Ссылка на эту страницу<input type="text" readonly aria-label="Ссылка для копирования"></label>
+    </div>
+    <div class="kb-reading-grid">
+      <article class="kb-prose" aria-label="{{ page.heading }}">
+      {% if page.content_kind != 'articles' and page.content_kind != 'legacy' %}<a class="kb-back" href="{{ page.article_url }}">← {{ page.article_title }}</a>{% endif %}
+      {{ content }}
+      <div class="kb-end"><a href="/articles/?topic={{ page.category }}">Все материалы по теме «{{ page.cat_label }}» →</a></div>
+      </article>
+      <aside class="kb-aside">
+        {% if page.toc.size > 1 %}<details class="kb-toc" open><summary>На этой странице</summary><nav aria-label="Оглавление">{% for item in page.toc %}<a href="#{{ item.id }}">{{ item.label }}</a>{% endfor %}</nav></details>{% endif %}
+        <div class="kb-location"><span class="kb-eyebrow">Москва · Речной вокзал</span><p>Фестивальная улица,<br>дом 13, корпус 3</p><a href="/kontakty/index.html">Как добраться →</a></div>
+      </aside>
+    </div>
+  </div>
+</main>
