@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /articles/search.json
+sitemap: false
+---
+[{% assign sep = '' %}{% for item in site.data.knowledge.catalog %}{% if site.local_preview or item.blocked == false %}{{ sep }}{{ item | jsonify }}{% assign sep = ',' %}{% endif %}{% endfor %}]

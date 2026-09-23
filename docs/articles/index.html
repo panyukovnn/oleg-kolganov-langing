@@ -1,67 +1,35 @@
 ---
-layout: "default"
-title: "Нотариус поможет — Нотариус Колганов О. И."
-description: "Полезная правовая информация для граждан и юридических лиц. Здесь вы сможете найти рекомендации специалистов, как юридически правильно поступить в той или иной ситуации и защитить свои права. Нотариус города Москвы Колганов О. И., официальный сайт"
-section: "articles"
-permalink: "/articles/index.html"
-og_title: "Нотариус поможет"
-styles:
-  - "/static/css/custom/yclients-widget.css"
-body_scripts:
-  - "/static/js/custom/articles-filter.js"
-breadcrumbs:
-  - name: "Главная"
-    url: "/articles/{{ '/index.html' | relative_url }}"
-  - name: "Статьи"
+layout: default
+title: "Статьи и ответы на вопросы — нотариус Колганов Олег Игоревич"
+description: "Наследство, доверенности, сделки и нотариальные действия: ответы на вопросы и разбор жизненных ситуаций."
+permalink: /articles/index.html
+styles: [/static/css/custom/knowledge.css]
+body_scripts: [/static/js/custom/knowledge.js]
 ---
-<section class="kn-page-head">
-    <div class="kn-container">
-        <ul class="kn-breadcrumbs">
-                <li><a href="{{ '/index.html' | relative_url }}">Главная</a></li>
-                <li>Статьи</li>
-        </ul>
-        <h1 class="kn-page-title">Статьи</h1>
-    </div>
+<main id="main-content" class="kb-catalog">
+<section class="kb-catalog-head"><div class="kn-container">
+<nav class="kb-crumbs" aria-label="Путь к странице"><a href="/">Главная</a><span>/</span><span>Статьи</span></nav>
+<p class="kb-eyebrow">Нотариус Колганов Олег Игоревич</p>
+<h1>Нотариальные вопросы<br>по темам</h1>
+<p class="kb-intro">Как вступить в наследство, передать имущество или оформить доверенность. Найдите свою тему в разделе или через поиск.</p>
+<form class="kb-search" role="search" action="/articles/" method="get"><label for="kb-query">Какой вопрос нужно решить?</label><div><input id="kb-query" type="search" name="q" placeholder="Например, доверенность на дому" autocomplete="off"><button type="submit">Найти</button></div></form>
+</div></section>
+<div class="kn-container kb-catalog-body">
+<section aria-labelledby="kb-topics-title"><div class="kb-section-heading"><h2 id="kb-topics-title" tabindex="-1">Разделы статей</h2><button type="button" id="kb-reset" hidden>К разделам</button></div>
+<p id="kb-count" class="kb-count" role="status" aria-live="polite">Откройте нужный раздел или найдите статью по вопросу.</p>
+<noscript><p>Разделы раскрываются без JavaScript. Для поиска по всем статьям включите JavaScript.</p></noscript>
+<div id="kb-sections" class="kb-sections">
+{% for group in site.data.knowledge.groups %}
+{% assign group_count = 0 %}{% for item in site.data.knowledge.catalog %}{% if item.category == group.slug %}{% if site.local_preview or item.blocked == false %}{% assign group_count = group_count | plus: 1 %}{% endif %}{% endif %}{% endfor %}
+<details class="kb-group" data-topic="{{ group.slug }}">
+<summary><span><strong>{{ group.label }}</strong><span class="kb-group-description">{{ group.description }}</span></span><span class="kb-group-count">{{ group_count }} <span class="kb-sr-only">материалов</span></span></summary>
+<div class="kb-group-items">
+{% for item in site.data.knowledge.catalog %}{% if item.category == group.slug %}{% if site.local_preview or item.blocked == false %}<a class="kb-card" data-slug="{{ item.slug }}" data-category="{{ item.category }}" href="{{ item.url }}"><span class="kb-eyebrow">{{ item.category_label }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p><span class="kb-card-bottom">{% if item.blocked %}<span class="kb-draft">На проверке</span>{% else %}<span>Читать статью</span>{% endif %}<span aria-hidden="true">↗</span></span></a>{% endif %}{% endif %}{% endfor %}
+</div></details>
+{% endfor %}
+</div>
+<div id="kb-results" class="kb-results" hidden></div>
+<div id="kb-empty" class="kb-empty" hidden><h3>По этому запросу ничего не найдено</h3><p>Попробуйте назвать документ или действие короче. Например, «завещание», «дарение», «переписка».</p><a href="/kontakty/index.html">Контакты нотариальной конторы →</a></div>
 </section>
-
-<section class="kn-section">
-    <div class="kn-container">
-        <p class="kn-lead">Практические разборы типовых ситуаций и ответы на частые вопросы по нотариальным действиям. Выберите тему или посмотрите все материалы.</p>
-
-        <div class="kn-art-filter">
-            <button type="button" class="kn-art-filter__btn kn-art-filter__btn--active" data-filter="all">Все</button>
-            {%- for cat in site.data.article_categories %}
-            <button type="button" class="kn-art-filter__btn" data-filter="{{ cat.slug }}">{{ cat.label }}</button>
-            {%- endfor %}
-        </div>
-
-        {%- for cat in site.data.article_categories %}
-        {%- assign items = site.articles | where: "category", cat.slug | sort: "order" %}
-        {%- if items.size > 0 %}
-        <div class="kn-art-group" data-cat="{{ cat.slug }}">
-            <h3 class="kn-h3">{{ cat.label }}</h3>
-            <div class="kn-articles">
-                {%- for post in items %}
-                <a href="{{ post.url | relative_url }}" class="kn-article">
-                    <div class="kn-article__body">
-                        <div class="kn-article__tag">{{ post.tag }}</div>
-                        <h3 class="kn-article__title">{{ post.card_title }}</h3>
-                        <p class="kn-article__text">{{ post.excerpt }}</p>
-                    </div>
-                </a>
-                {%- endfor %}
-            </div>
-        </div>
-        {%- endif %}
-        {%- endfor %}
-    </div>
-</section>
-
-<section class="kn-section" id="contact-form" style="background: var(--c-bg);">
-    <div class="kn-container">
-        <h2 class="kn-h2" style="text-align:center;">Задать вопрос нотариусу</h2>
-        <p class="kn-lead" style="margin: 0 auto 32px; text-align:center;">Опишите вашу ситуацию — мы свяжемся с вами и подберём оптимальное решение.</p>
-
-        <div data-contact-form></div>
-    </div>
-</section>
+<section class="kb-start-section kb-start-after" aria-labelledby="kb-start-title"><h2 id="kb-start-title">Если пока не знаете название действия</h2>{% include knowledge-start.html %}</section>
+</div></main>
