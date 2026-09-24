@@ -7,13 +7,13 @@ site.notary в _config.yml. Выводится на каждой страниц�
 {
   "@context": "https://schema.org",
   "@type": ["LegalService", "Notary"],
+  "@id": "{{ '/#notary' | absolute_url }}",
   "name": {{ site.notary.legal_name | jsonify }},
   "description": {{ site.description | jsonify }},
   "url": "{{ '/' | absolute_url }}",
   "image": "{{ site.default_image | absolute_url }}",
   "telephone": "{{ site.notary.phone }}",
   "email": "{{ site.notary.email }}",
-  "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": {{ site.notary.street | jsonify }},

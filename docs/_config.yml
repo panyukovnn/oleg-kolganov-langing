@@ -63,6 +63,11 @@ defaults:
     values:
       layout: default
       section: articles
+  # Фрагмент формы остаётся доступен для fetch, но не является страницей поиска.
+  - scope:
+      path: "static/html-snippets/contact-form.html"
+    values:
+      sitemap: false
 
 # Файлы, не относящиеся к публикуемому сайту.
 # ВНИМАНИЕ: static/html-snippets/contact-form.html подгружается на лету скриптом

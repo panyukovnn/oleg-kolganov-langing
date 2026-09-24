@@ -1980,3 +1980,28 @@ a.kn-meta-item__value:hover,
     .kn-cookie__row { flex-direction: column; align-items: stretch; gap: 12px; text-align: center; }
     .kn-cookie__accept { width: 100%; }
 }
+
+/* На узких экранах компактная запись меньше перекрывает текст и оглавление. */
+@media (max-width: 1360px) {
+    a.yButton.bottom.right {
+        width: 122px !important;
+        height: 42px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        border-radius: 21px !important;
+    }
+    a.yButton.bottom.right .yButtonBackground {
+        width: 122px !important;
+        height: 42px !important;
+        border-radius: 21px !important;
+    }
+    a.yButton.bottom.right .yButtonText {
+        top: 0 !important;
+        left: 0 !important;
+        width: 122px !important;
+        height: 42px !important;
+        font-size: 14px !important;
+        line-height: 42px !important;
+        white-space: nowrap !important;
+    }
+}

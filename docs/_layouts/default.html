@@ -20,7 +20,7 @@
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:title" content="{{ page.og_title | default: page.title | escape }}">
     <meta property="og:description" content="{{ page.og_description | default: page.description | escape }}">
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:url" content="{{ page.canonical | default: page.url | absolute_url }}">
     <meta property="og:image" content="{{ page.image | default: site.default_image | absolute_url }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.og_title | default: page.title | escape }}">

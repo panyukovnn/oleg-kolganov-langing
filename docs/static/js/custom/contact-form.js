@@ -52,12 +52,12 @@
     }
 
     function validate(values) {
-        if (!values.name || values.name.length < 2) return 'Укажите имя';
-        if (!values.phone || values.phone.replace(/\D/g, '').length < 10) return 'Укажите корректный телефон';
-        if (!values.email) return 'Укажите email';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) return 'Некорректный email';
-        if (!values.purpose) return 'Выберите цель обращения';
-        if (!values.message || values.message.length < 3) return 'Опишите ваш вопрос';
+        if (!values.name || values.name.length < 2) return {field: 'name', message: 'Укажите имя'};
+        if (!values.phone || values.phone.replace(/\D/g, '').length < 10) return {field: 'phone', message: 'Укажите корректный телефон'};
+        if (!values.email) return {field: 'email', message: 'Укажите email'};
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) return {field: 'email', message: 'Некорректный email'};
+        if (!values.purpose) return {field: 'purpose', message: 'Выберите цель обращения'};
+        if (!values.message || values.message.length < 3) return {field: 'message', message: 'Опишите ваш вопрос'};
         return null;
     }
 
@@ -90,12 +90,14 @@
 
         var error = validate(values);
         if (error) {
-            showStatus(form, 'error', error);
+            showStatus(form, 'error', error.message);
+            var invalidField = form.querySelector('[name="' + error.field + '"]');
+            if (invalidField) invalidField.focus();
             return;
         }
 
         if (!isConfigured()) {
-            showStatus(form, 'error', 'Форма ещё не настроена: укажите GOOGLE_FORM_ID и entry.XXX в static/js/custom/contact-form.js');
+            showStatus(form, 'error', 'Отправка через форму сейчас недоступна. Свяжитесь с нотариальной конторой по телефону или через раздел «Контакты».');
             console.warn('Contact form is not configured. See static/js/custom/contact-form.js');
             return;
         }
@@ -104,7 +106,7 @@
 
         submitToGoogleForm(values)
             .then(function () {
-                showStatus(form, 'success', 'Спасибо! Ваш запрос отправлен. Мы свяжемся с вами в ближайшее время.');
+                showStatus(form, 'success', 'Спасибо! Запрос отправлен. Если вопрос срочный, позвоните в контору.');
                 form.reset();
             })
             .catch(function () {
@@ -145,6 +147,20 @@
             })
             .catch(function (err) {
                 console.error('Не удалось загрузить форму обратной связи:', err);
+                for (var i = 0; i < mounts.length; i++) {
+                    var message = document.createElement('p');
+                    message.className = 'contact-form__status contact-form__status--error';
+                    message.setAttribute('role', 'alert');
+                    message.textContent = 'Форма не загрузилась. Обновите страницу или откройте ';
+                    var contactLink = document.createElement('a');
+                    contactLink.href = BASE + 'kontakty/';
+                    contactLink.textContent = 'контакты нотариальной конторы';
+                    contactLink.style.textDecoration = 'underline';
+                    message.appendChild(contactLink);
+                    message.appendChild(document.createTextNode('.'));
+                    mounts[i].textContent = '';
+                    mounts[i].appendChild(message);
+                }
             });
     }
 
