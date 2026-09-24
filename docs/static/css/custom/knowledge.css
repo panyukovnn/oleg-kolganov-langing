@@ -14,6 +14,7 @@
 @media(max-width:760px){.kb-group summary{padding:18px 16px;gap:10px}.kb-group summary strong{font-size:19px}.kb-group-description{font-size:15px}.kb-group-items{padding:0 16px}.kb-group-items .kb-card h3{font-size:19px}}
 
 .kb-prose > p,.kb-prose blockquote p{text-align:justify;text-align-last:start;hyphens:auto;-webkit-hyphens:auto;}
+@media(max-width:900px){.kb-prose > p,.kb-prose blockquote p{text-align:left}}
 /* Reading edition: one article, contents and related topics. */
 .kb-title{margin-bottom:24px}.kb-tools{margin:0 0 30px}.kb-reading-grid{align-items:start}.kb-toc{background:#fafbfc}.kb-toc a{padding:5px 0}.kb-toc summary{min-height:28px}.kb-prose h2:target{color:#71501e}.kb-catalog-head .kb-intro{max-width:780px}
 @media(min-width:1001px){.kb-aside{position:sticky;top:112px;max-height:calc(100vh - 132px);overflow-y:auto;overscroll-behavior:contain}.kb-reading-grid{grid-template-columns:minmax(0,790px) minmax(230px,280px);gap:55px}}
