@@ -23,7 +23,7 @@ body_scripts: [/static/js/custom/knowledge.js]
 {% for group in site.data.knowledge.groups %}
 {% assign group_count = 0 %}{% for item in site.data.knowledge.catalog %}{% if item.category == group.slug %}{% if site.local_preview or item.blocked == false %}{% assign group_count = group_count | plus: 1 %}{% endif %}{% endif %}{% endfor %}
 <details class="kb-group" data-topic="{{ group.slug }}">
-<summary><span><strong>{{ group.label }}</strong><span class="kb-group-description">{{ group.description }}</span></span><span class="kb-group-count">{{ group_count }} <span class="kb-sr-only">материалов</span></span></summary>
+<summary><span><strong>{{ group.label }}</strong><span class="kb-group-description">{{ group.description }}</span></span><span class="kb-group-count"><span class="kb-sr-only">Статей: </span>{{ group_count }}</span></summary>
 <div class="kb-group-items">
 {% for item in site.data.knowledge.catalog %}{% if item.category == group.slug %}{% if site.local_preview or item.blocked == false %}<a class="kb-card" data-slug="{{ item.slug }}" data-category="{{ item.category }}" href="{{ item.url }}"><span class="kb-eyebrow">{{ item.category_label }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p><span class="kb-card-bottom">{% if item.blocked %}<span class="kb-draft">На проверке</span>{% else %}<span>Читать статью</span>{% endif %}<span aria-hidden="true">↗</span></span></a>{% endif %}{% endif %}{% endfor %}
 </div></details>

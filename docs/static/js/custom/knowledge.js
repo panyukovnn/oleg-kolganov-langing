@@ -24,7 +24,7 @@ function apply(push=false){
  const ranked=cards.map((card,i)=>{const item=data.get(card.dataset.slug),title=norm(card.querySelector('h3').textContent),aliases=norm(item?[item.query,...item.synonyms].join(' '):''),body=norm(item?.text||card.textContent);const score=!words.length?1:(title.includes(query)?100:aliases.includes(query)?90:words.every(w=>(title+' '+aliases).includes(w))?70:words.every(w=>body.includes(w))?10:0);const show=!query||((topic==='all'||card.dataset.category===topic)&&score>0);card.hidden=!show;if(show)visible++;return{card,score,i}});
  if(query){ranked.sort((a,b)=>b.score-a.score||a.i-b.i).forEach(x=>box.append(x.card))}
  else{cards.forEach(card=>groups.find(g=>g.dataset.topic===card.dataset.category).querySelector('.kb-group-items').append(card));groups.forEach(g=>g.open=g.dataset.topic===topic)}
- count.textContent=query?'Найдено материалов: '+visible:'Откройте нужный раздел или найдите статью по вопросу.';
+ count.textContent=query?'Найдено: '+visible:'Откройте нужный раздел или найдите статью по вопросу.';
  empty.hidden=!query||!!visible;reset.hidden=!query&&topic==='all';if(push)saveUrl();
 }
 function restore(){const p=new URLSearchParams(location.search);input.value=p.get('q')||'';const t=p.get('topic');topic=groups.some(g=>g.dataset.topic===t)?t:'all';apply()}
