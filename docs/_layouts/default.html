@@ -53,8 +53,27 @@
 {%- endif %}
 {% include business-jsonld.html %}
 {% include breadcrumbs-jsonld.html %}
+{% unless site.local_preview %}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113891464', 'ym');
+
+        ym(113891464, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <!-- /Yandex.Metrika counter -->
+{% endunless %}
 </head>
 <body class="kn">
+{% unless site.local_preview %}
+    <!-- Yandex.Metrika counter (noscript) -->
+    <noscript><div><img src="https://mc.yandex.ru/watch/113891464" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter (noscript) -->
+{% endunless %}
 
 {% include header.html %}
 {% if site.local_preview %}<div style="background:#fff4d9;color:#403619;padding:10px 20px;text-align:center;font:15px/1.5 Arial,sans-serif">{{ site.preview_label | default: 'Локальный просмотр' }} · <a href="/articles/" style="color:inherit;text-decoration:underline">Каталог статей</a> · Запись с этого стенда не отправляется</div>{% endif %}
