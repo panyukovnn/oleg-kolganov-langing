@@ -144,6 +144,7 @@ img, svg { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
+.kn-schedule-notice-expired .kn-schedule-notice { display: none; }
 .kn-schedule-notice {
     background: var(--c-primary-dark);
     color: var(--c-bg);

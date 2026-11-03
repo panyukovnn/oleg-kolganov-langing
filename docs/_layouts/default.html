@@ -14,6 +14,26 @@
 {% endunless %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            var expiresAt = Date.parse('2026-11-05T00:00:00+03:00');
+            var timer;
+            function updateScheduleNotice() {
+                window.clearTimeout(timer);
+                var remaining = expiresAt - Date.now();
+                if (remaining <= 0) {
+                    document.documentElement.classList.add('kn-schedule-notice-expired');
+                } else {
+                    timer = window.setTimeout(updateScheduleNotice, Math.min(remaining, 2147483647));
+                }
+            }
+            updateScheduleNotice();
+            window.addEventListener('pageshow', updateScheduleNotice);
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden) updateScheduleNotice();
+            });
+        })();
+    </script>
     <meta name="format-detection" content="telephone=no">
     {% if site.local_preview %}<meta name="robots" content="noindex,nofollow">{% elsif page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
     {% if page.redirect_target %}<meta http-equiv="refresh" content="0;url={{ page.redirect_target }}">{% endif %}
