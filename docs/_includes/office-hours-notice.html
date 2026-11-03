@@ -1,0 +1,23 @@
+{%- assign hours = site.data.office_hours -%}
+{%- if hours.version == 1 -%}
+{%- for entry in hours.notices -%}
+{%- assign notice = entry.notice -%}
+{%- if notice.text != empty and notice.text -%}
+{%- if include.head -%}
+    <meta name="office-hours-notice" content="{{ notice.text | escape }}" data-id="{{ entry.id | escape }}" data-from="{{ notice.visible_from | escape }}" data-until="{{ notice.visible_until | escape }}" data-timezone="{{ hours.timezone | escape }}" data-dates="{{ entry.dates | jsonify | escape }}">
+{%- else -%}
+{%- assign build_time = site.time | date: '%s' | plus: 0 -%}
+{%- assign starts = notice.visible_from | date: '%s' | plus: 0 -%}
+{%- assign ends = notice.visible_until | date: '%s' | plus: 0 -%}
+{%- assign greeting = 'Уважаемые посетители!' -%}
+{%- assign prefix = notice.text | slice: 0, greeting.size -%}
+<aside class="kn-schedule-notice{% if build_time < starts or build_time >= ends %} kn-schedule-notice--outside-window{% endif %}" data-notice-id="{{ entry.id | escape }}" aria-label="Изменение режима работы">
+    <p class="kn-container">{% if prefix == greeting %}<strong>{{ greeting }}</strong> <span>{{ notice.text | remove_first: greeting | strip | escape }}</span>{% else %}{{ notice.text | escape }}{% endif %}</p>
+</aside>
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if include.head and hours.notices.size > 0 -%}
+    <script src="{{ '/static/js/custom/office-hours-notice.js' | relative_url }}"></script>
+{%- endif -%}
+{%- endif -%}

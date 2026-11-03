@@ -144,7 +144,7 @@ img, svg { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
-.kn-schedule-notice-expired .kn-schedule-notice { display: none; }
+.kn-schedule-notice--outside-window { display: none; }
 .kn-schedule-notice {
     background: var(--c-primary-dark);
     color: var(--c-bg);
@@ -159,6 +159,7 @@ img, svg { max-width: 100%; display: block; }
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 8px;
+    overflow-wrap: anywhere;
 }
 
 .kn-header {

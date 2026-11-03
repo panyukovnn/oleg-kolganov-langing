@@ -14,26 +14,7 @@
 {% endunless %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        (function () {
-            var expiresAt = Date.parse('2026-11-05T00:00:00+03:00');
-            var timer;
-            function updateScheduleNotice() {
-                window.clearTimeout(timer);
-                var remaining = expiresAt - Date.now();
-                if (remaining <= 0) {
-                    document.documentElement.classList.add('kn-schedule-notice-expired');
-                } else {
-                    timer = window.setTimeout(updateScheduleNotice, Math.min(remaining, 2147483647));
-                }
-            }
-            updateScheduleNotice();
-            window.addEventListener('pageshow', updateScheduleNotice);
-            document.addEventListener('visibilitychange', function () {
-                if (!document.hidden) updateScheduleNotice();
-            });
-        })();
-    </script>
+    {% include office-hours-notice.html head=true %}
     <meta name="format-detection" content="telephone=no">
     {% if site.local_preview %}<meta name="robots" content="noindex,nofollow">{% elsif page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
     {% if page.redirect_target %}<meta http-equiv="refresh" content="0;url={{ page.redirect_target }}">{% endif %}
@@ -95,9 +76,7 @@
     <!-- /Yandex.Metrika counter (noscript) -->
 {% endunless %}
 
-<aside class="kn-schedule-notice" aria-label="Изменение режима работы">
-    <p class="kn-container"><strong>Уважаемые посетители!</strong> <span>В связи с Днём народного единства <time datetime="2026-11-04">4 ноября</time> нотариальная контора не работает.</span></p>
-</aside>
+{% include office-hours-notice.html %}
 
 {% include header.html %}
 {% if site.local_preview %}<div style="background:#fff4d9;color:#403619;padding:10px 20px;text-align:center;font:15px/1.5 Arial,sans-serif">{{ site.preview_label | default: 'Локальный просмотр' }} · <a href="/articles/" style="color:inherit;text-decoration:underline">Каталог статей</a> · Запись с этого стенда не отправляется</div>{% endif %}
