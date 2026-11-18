@@ -8,7 +8,7 @@
 
 .error-page-subtitle{
   color: #000;
-  font-family: TT Hoves;
+  font-family: Onest;
   font-style: normal;
   font-weight: 500;
   font-size: 2.375rem;
@@ -22,7 +22,7 @@
 }
 
 .error-page-title{
-  font-family: TT Hoves;
+  font-family: Onest;
   font-style: normal;
   font-weight: 500;
   font-size: 4.5rem;
@@ -36,7 +36,7 @@
 }
 
 .error-page-label{
-  font-family: TT Hoves;
+  font-family: Onest;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5rem;
@@ -53,7 +53,7 @@
 .error-page-link{
   background: #2C77CF;
   border-radius: 0.3125rem;
-  font-family: TT Hoves;
+  font-family: Onest;
   font-style: normal;
   font-weight: 600;
   font-size: 1.125rem;

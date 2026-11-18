@@ -39,7 +39,8 @@
     <meta name="twitter:description" content="{{ page.og_description | default: page.description | escape }}">
     <meta name="twitter:image" content="{{ page.image | default: site.default_image | absolute_url }}">
     <link rel="icon" href="{{ '/static/favicon.ico' | relative_url }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ '/static/css/custom/main-style.css' | relative_url }}">
+    <link rel="preload" href="{{ '/static/fonts/Onest-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/static/css/custom/main-style.css' | relative_url }}?v=onest-20261118">
     <link rel="stylesheet" href="{{ '/static/css/custom/contact-form.css' | relative_url }}">
 {%- for css in page.styles %}
     <link rel="stylesheet" href="{{ css | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">

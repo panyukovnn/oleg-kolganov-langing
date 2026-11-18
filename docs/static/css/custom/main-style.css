@@ -3,37 +3,13 @@
    нотариальной конторы. Полностью свой CSS, без зависимостей.
    ============================================================ */
 
+/* Onest — SIL Open Font License 1.1. See ../../fonts/Onest-OFL.txt. */
 @font-face {
-    font-family: 'TT Hoves';
-    src: url('../../fonts/TTHoves-Regular.woff2') format('woff2'),
-         url('../../fonts/TTHoves-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'TT Hoves';
-    src: url('../../fonts/TTHoves-Medium.woff2') format('woff2'),
-         url('../../fonts/TTHoves-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'TT Hoves';
-    src: url('../../fonts/TTHoves-DemiBold.woff2') format('woff2'),
-         url('../../fonts/TTHoves-DemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'TT Hoves';
-    src: url('../../fonts/TTHoves-Bold.woff2') format('woff2'),
-         url('../../fonts/TTHoves-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Onest';
+  src: url('../../fonts/Onest-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -56,7 +32,7 @@
     --shadow: 0 6px 24px rgba(64, 73, 99, 0.08);
     --shadow-lg: 0 12px 40px rgba(64, 73, 99, 0.12);
     --container-w: 1240px;
-    --font: 'TT Hoves', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     /* Палитра hero-секции: светлые оттенки основного синего #404963 */
     --hero-bg-from: #eef0f4;
     --hero-bg-to: #d7dbe4;
