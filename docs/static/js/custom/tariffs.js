@@ -4,20 +4,45 @@
 
     var nextPeriod = document.getElementById('tariff-next-period');
     var year = new URLSearchParams(location.search).get('year');
-    if (nextPeriod && year !== '2026') {
+    if (nextPeriod && year !== '2026' && nextPeriod.dataset.clockUrl) {
         var effectiveAt = Date.parse(nextPeriod.dataset.effectiveFrom);
-        var periodTimer;
-        function followCurrentPeriod() {
+        var periodTimer, checkingPeriod = false;
+        async function followCurrentPeriod() {
+            if (checkingPeriod) { return; }
+            checkingPeriod = true;
             window.clearTimeout(periodTimer);
-            var remaining = effectiveAt - Date.now();
-            if (remaining <= 0) {
-                location.replace(nextPeriod.href + location.hash);
-                return;
+            var delay = 30000;
+            var started = performance.now();
+            var controller = new AbortController();
+            var timeout = window.setTimeout(function () { controller.abort(); }, 5000);
+            try {
+                var response = await fetch(nextPeriod.dataset.clockUrl, {
+                    cache: 'no-store', credentials: 'omit', signal: controller.signal
+                });
+                if (response.ok) {
+                    var clock = await response.json();
+                    if (Number.isSafeInteger(clock.serverTime)) {
+                        if (clock.tariffYear === 2027 && clock.serverTime >= effectiveAt) {
+                            location.replace(nextPeriod.href + location.hash);
+                            return;
+                        }
+                        if (clock.tariffYear === 2026 && clock.serverTime < effectiveAt) {
+                            delay = Math.max(100, Math.min(3600000, effectiveAt - clock.serverTime - (performance.now() - started)));
+                        }
+                    }
+                }
+            } catch (error) {
+                // The dated link remains available while the clock service is unreachable.
+            } finally {
+                window.clearTimeout(timeout);
+                checkingPeriod = false;
             }
-            periodTimer = window.setTimeout(followCurrentPeriod, Math.min(remaining, 2147483647));
+            periodTimer = window.setTimeout(followCurrentPeriod, delay);
         }
         followCurrentPeriod();
-        window.addEventListener('pageshow', followCurrentPeriod);
+        window.addEventListener('online', followCurrentPeriod);
+        window.addEventListener('pageshow', function (event) { if (event.persisted) { followCurrentPeriod(); } });
+        document.addEventListener('visibilitychange', function () { if (!document.hidden) { followCurrentPeriod(); } });
     }
 
     var toggleBtn = document.querySelector('.kn-tariff-toggle-all');
